@@ -6,11 +6,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import * as React from 'react';
 import { useFonts } from 'expo-font';
 import Provider from '@/components/provider/provider';
-import {
-  PrayerBootstrapData,
-  PrayerProvider,
-  initializePrayerData,
-} from '@/hooks/usePrayerContext';
+import { useLocationBootstrap } from '@/components/ui/core/block/home/hooks/use-location-bootstrap';
 import { Poppins_400Regular } from '@expo-google-fonts/poppins/400Regular';
 import { Poppins_500Medium } from '@expo-google-fonts/poppins/500Medium';
 import { Poppins_600SemiBold } from '@expo-google-fonts/poppins/600SemiBold';
@@ -21,10 +17,14 @@ import { Teko_500Medium } from '@expo-google-fonts/teko/500Medium';
 import { Teko_600SemiBold } from '@expo-google-fonts/teko/600SemiBold';
 import { Teko_700Bold } from '@expo-google-fonts/teko/700Bold';
 
+import { configureReanimatedLogger, ReanimatedLogLevel } from 'react-native-reanimated';
 export { ErrorBoundary } from 'expo-router';
 
 SplashScreen.preventAutoHideAsync();
-
+configureReanimatedLogger({
+  level: ReanimatedLogLevel.warn,
+  strict: false,
+});
 export default function RootLayout() {
   return <AppBootstrap />;
 }
@@ -44,38 +44,24 @@ function AppBootstrap() {
     Teko_700Bold,
   });
 
-  const [bootstrapData, setBootstrapData] = React.useState<PrayerBootstrapData | null>(null);
+  // Kicks off GPS → reverse-geocode → resolve-against-equran.id once, writing
+  // results into use-location-store. Not a Provider — just a side effect.
+  useLocationBootstrap();
 
   React.useEffect(() => {
     if (!fontsLoaded && !fontError) return;
-    async function prepare() {
-      try {
-        const data = await initializePrayerData();
-        setBootstrapData(data);
-      } catch {
-        // fallback handled inside initializePrayerData
-      } finally {
-        await SplashScreen.hideAsync();
-      }
-    }
-    prepare();
+    SplashScreen.hideAsync();
   }, [fontsLoaded, fontError]);
 
-  if ((!fontsLoaded && !fontError) || !bootstrapData) return null;
+  if (!fontsLoaded && !fontError) return null;
 
   return (
-    <PrayerProvider initialData={bootstrapData}>
-      <Provider>
-        {/*
-          ✅ Stack root hanya punya SATU entry point: (drawer)
-          Semua route (tabs, doa, article) dikelola di dalam Drawer.
-          Stack ini hanya untuk hal-hal di luar Drawer seperti modal global.
-        */}
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="(drawer)" />
-        </Stack>
-        <PortalHost />
-      </Provider>
-    </PrayerProvider>
+    <Provider>
+      <Stack screenOptions={{ headerShown: false, animation: 'slide_from_right' }}>
+        <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
+        <Stack.Screen name="surah" options={{ headerShown: false }} />
+      </Stack>
+      <PortalHost />
+    </Provider>
   );
 }

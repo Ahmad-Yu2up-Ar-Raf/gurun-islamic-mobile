@@ -13,10 +13,7 @@ import { useColorScheme } from 'nativewind';
 import { THEME } from '@/lib/theme';
 import { View, Pressable } from 'react-native';
 import { Text } from '@/components/ui/fragments/shadcn-ui/text';
-import {
-  DrawerContentScrollView,
-  type DrawerContentComponentProps,
-} from '@react-navigation/drawer';
+import { DrawerContentScrollView, type DrawerContentComponentProps } from 'expo-router/drawer';
 import { router, usePathname } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -29,9 +26,9 @@ const DRAWER_MENU = [
   { label: '🤲 Doa', route: '/(drawer)/doa', match: '/doa' },
   { label: '📚  Dzikir', route: '/(drawer)/dzikir', match: '/dzikir' },
   { label: '⭐ Asmaul Husna', route: '/(drawer)/asmaul_husna', match: '/asmaul_husna' },
-  { label: '🤖 Ai Chat', route: '/(drawer)/chat', match: '/chat' },
+
   { label: '📖 Hadist', route: '/(drawer)/hadist', match: '/hadist' },
-  { label: '📰  Article', route: '/(drawer)/article', match: '/article' },
+
   { label: '⚙️  Settings', route: '/(drawer)/(tabs)/settings', match: '/settings' },
 ] as const;
 
@@ -70,7 +67,7 @@ function CustomDrawerContent(props: DrawerContentComponentProps) {
       />
 
       {/* Menu Items */}
-      <View className="gap-0.5 px-3">
+      {/* <View className="gap-0.5 px-3">
         {DRAWER_MENU.map((item) => {
           const isActive = pathname.includes(item.match);
           return (
@@ -95,7 +92,7 @@ function CustomDrawerContent(props: DrawerContentComponentProps) {
             </Pressable>
           );
         })}
-      </View>
+      </View> */}
     </DrawerContentScrollView>
   );
 }
@@ -141,13 +138,7 @@ export default function DrawerLayout() {
             drawerItemStyle: { display: 'none' },
           }}
         />
-        <Drawer.Screen
-          name="article"
-          options={{
-            drawerLabel: 'Article',
-            drawerItemStyle: { display: 'none' },
-          }}
-        />
+
         <Drawer.Screen
           name="dzikir"
           options={{
@@ -169,14 +160,6 @@ export default function DrawerLayout() {
             drawerItemStyle: { display: 'none' },
           }}
         />
-        <Drawer.Screen
-          name="chat"
-          options={{
-            drawerLabel: 'Chat',
-            drawerItemStyle: { display: 'none' },
-          }}
-        />
-
       </Drawer>
     </GestureHandlerRootView>
   );

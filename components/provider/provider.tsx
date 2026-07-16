@@ -2,16 +2,13 @@
 // ✅ FIXED: Removed duplicate <PortalHost /> — it belongs ONLY in root _layout.tsx
 import React from 'react';
 import { NAV_THEME } from '@/lib/theme';
-import { ThemeProvider } from '@react-navigation/native';
+
 import { StatusBar } from 'expo-status-bar';
 import { useColorScheme } from 'nativewind';
 import { focusManager, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AppState, Platform } from 'react-native';
 import type { AppStateStatus } from 'react-native';
-import { AudioProvider } from './AudioProvider';
-import { BookmarkProvider } from './BookmarkProvider';
-import { LastReadProvider } from './LastReadProvider';
-
+import { ThemeProvider, type Theme } from 'expo-router/react-navigation';
 type ComponentProps = {
   children?: React.ReactNode;
 };
@@ -51,24 +48,9 @@ export default function Provider({ children }: ComponentProps) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider value={NAV_THEME[colorScheme ?? 'light']}>
+      <ThemeProvider value={NAV_THEME[colorScheme ?? 'light'] as Theme}>
         <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
-        {/*
-          ✅ Provider order:
-          - LastRead: paling luar karena dibutuhkan AudioProvider (audio sambil baca)
-          - Audio: di luar Bookmark karena audio bisa jalan lintas screen
-          - Bookmark: paling dalam, scoped ke konten
-        */}
-        <LastReadProvider>
-          <AudioProvider>
-            <BookmarkProvider>{children}</BookmarkProvider>
-          </AudioProvider>
-        </LastReadProvider>
-        {/*
-          ❌ DIHAPUS: <PortalHost /> dari sini
-          PortalHost hanya boleh ada SATU, letaknya di root _layout.tsx
-          Duplikasi PortalHost → context collision → hook order error di BottomTabView
-        */}
+        {children}
       </ThemeProvider>
     </QueryClientProvider>
   );

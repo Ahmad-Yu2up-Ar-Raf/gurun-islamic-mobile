@@ -1,0 +1,1826 @@
+[
+  {
+    "number": 1,
+    "name": "الفاتحة",
+    "englishName": "Al-Faatiha",
+    "englishNameTranslation": "The Opening",
+    "numberOfAyahs": 7,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/001.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/001.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/001.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/001.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/001.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/001.mp3"
+    }
+  },
+  {
+    "number": 2,
+    "name": "البقرة",
+    "englishName": "Al-Baqara",
+    "englishNameTranslation": "The Cow",
+    "numberOfAyahs": 286,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/002.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/002.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/002.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/002.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/002.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/002.mp3"
+    }
+  },
+  {
+    "number": 3,
+    "name": "اٰل عمران",
+    "englishName": "Aal-i-Imraan",
+    "englishNameTranslation": "The Family of Imraan",
+    "numberOfAyahs": 200,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/003.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/003.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/003.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/003.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/003.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/003.mp3"
+    }
+  },
+  {
+    "number": 4,
+    "name": "النساۤء",
+    "englishName": "An-Nisaa",
+    "englishNameTranslation": "The Women",
+    "numberOfAyahs": 176,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/004.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/004.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/004.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/004.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/004.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/004.mp3"
+    }
+  },
+  {
+    "number": 5,
+    "name": "الماۤئدة",
+    "englishName": "Al-Maaida",
+    "englishNameTranslation": "The Table",
+    "numberOfAyahs": 120,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/005.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/005.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/005.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/005.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/005.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/005.mp3"
+    }
+  },
+  {
+    "number": 6,
+    "name": "الانعام",
+    "englishName": "Al-An'aam",
+    "englishNameTranslation": "The Cattle",
+    "numberOfAyahs": 165,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/006.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/006.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/006.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/006.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/006.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/006.mp3"
+    }
+  },
+  {
+    "number": 7,
+    "name": "الاعراف",
+    "englishName": "Al-A'raaf",
+    "englishNameTranslation": "The Heights",
+    "numberOfAyahs": 206,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/007.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/007.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/007.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/007.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/007.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/007.mp3"
+    }
+  },
+  {
+    "number": 8,
+    "name": "الانفال",
+    "englishName": "Al-Anfaal",
+    "englishNameTranslation": "The Spoils of War",
+    "numberOfAyahs": 75,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/008.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/008.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/008.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/008.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/008.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/008.mp3"
+    }
+  },
+  {
+    "number": 9,
+    "name": "التوبة",
+    "englishName": "At-Tawba",
+    "englishNameTranslation": "The Repentance",
+    "numberOfAyahs": 129,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/009.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/009.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/009.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/009.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/009.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/009.mp3"
+    }
+  },
+  {
+    "number": 10,
+    "name": "يونس",
+    "englishName": "Yunus",
+    "englishNameTranslation": "Jonas",
+    "numberOfAyahs": 109,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/010.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/010.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/010.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/010.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/010.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/010.mp3"
+    }
+  },
+  {
+    "number": 11,
+    "name": "هود",
+    "englishName": "Hud",
+    "englishNameTranslation": "Hud",
+    "numberOfAyahs": 123,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/011.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/011.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/011.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/011.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/011.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/011.mp3"
+    }
+  },
+  {
+    "number": 12,
+    "name": "يوسف",
+    "englishName": "Yusuf",
+    "englishNameTranslation": "Joseph",
+    "numberOfAyahs": 111,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/012.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/012.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/012.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/012.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/012.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/012.mp3"
+    }
+  },
+  {
+    "number": 13,
+    "name": "الرّعد",
+    "englishName": "Ar-Ra'd",
+    "englishNameTranslation": "The Thunder",
+    "numberOfAyahs": 43,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/013.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/013.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/013.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/013.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/013.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/013.mp3"
+    }
+  },
+  {
+    "number": 14,
+    "name": "ابرٰهيم",
+    "englishName": "Ibrahim",
+    "englishNameTranslation": "Abraham",
+    "numberOfAyahs": 52,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/014.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/014.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/014.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/014.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/014.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/014.mp3"
+    }
+  },
+  {
+    "number": 15,
+    "name": "الحجر",
+    "englishName": "Al-Hijr",
+    "englishNameTranslation": "The Rock",
+    "numberOfAyahs": 99,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/015.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/015.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/015.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/015.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/015.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/015.mp3"
+    }
+  },
+  {
+    "number": 16,
+    "name": "النحل",
+    "englishName": "An-Nahl",
+    "englishNameTranslation": "The Bee",
+    "numberOfAyahs": 128,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/016.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/016.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/016.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/016.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/016.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/016.mp3"
+    }
+  },
+  {
+    "number": 17,
+    "name": "الاسراۤء",
+    "englishName": "Al-Israa",
+    "englishNameTranslation": "The Night Journey",
+    "numberOfAyahs": 111,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/017.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/017.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/017.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/017.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/017.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/017.mp3"
+    }
+  },
+  {
+    "number": 18,
+    "name": "الكهف",
+    "englishName": "Al-Kahf",
+    "englishNameTranslation": "The Cave",
+    "numberOfAyahs": 110,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/018.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/018.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/018.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/018.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/018.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/018.mp3"
+    }
+  },
+  {
+    "number": 19,
+    "name": "مريم",
+    "englishName": "Maryam",
+    "englishNameTranslation": "Mary",
+    "numberOfAyahs": 98,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/019.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/019.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/019.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/019.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/019.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/019.mp3"
+    }
+  },
+  {
+    "number": 20,
+    "name": "طٰهٰ",
+    "englishName": "Taa-Haa",
+    "englishNameTranslation": "Taa-Haa",
+    "numberOfAyahs": 135,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/020.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/020.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/020.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/020.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/020.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/020.mp3"
+    }
+  },
+  {
+    "number": 21,
+    "name": "الانبياۤء",
+    "englishName": "Al-Anbiyaa",
+    "englishNameTranslation": "The Prophets",
+    "numberOfAyahs": 112,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/021.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/021.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/021.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/021.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/021.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/021.mp3"
+    }
+  },
+  {
+    "number": 22,
+    "name": "الحج",
+    "englishName": "Al-Hajj",
+    "englishNameTranslation": "The Pilgrimage",
+    "numberOfAyahs": 78,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/022.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/022.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/022.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/022.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/022.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/022.mp3"
+    }
+  },
+  {
+    "number": 23,
+    "name": "المؤمنون",
+    "englishName": "Al-Muminoon",
+    "englishNameTranslation": "The Believers",
+    "numberOfAyahs": 118,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/023.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/023.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/023.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/023.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/023.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/023.mp3"
+    }
+  },
+  {
+    "number": 24,
+    "name": "النّور",
+    "englishName": "An-Noor",
+    "englishNameTranslation": "The Light",
+    "numberOfAyahs": 64,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/024.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/024.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/024.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/024.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/024.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/024.mp3"
+    }
+  },
+  {
+    "number": 25,
+    "name": "الفرقان",
+    "englishName": "Al-Furqaan",
+    "englishNameTranslation": "The Criterion",
+    "numberOfAyahs": 77,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/025.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/025.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/025.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/025.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/025.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/025.mp3"
+    }
+  },
+  {
+    "number": 26,
+    "name": "الشعراۤء",
+    "englishName": "Ash-Shu'araa",
+    "englishNameTranslation": "The Poets",
+    "numberOfAyahs": 227,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/026.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/026.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/026.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/026.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/026.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/026.mp3"
+    }
+  },
+  {
+    "number": 27,
+    "name": "النمل",
+    "englishName": "An-Naml",
+    "englishNameTranslation": "The Ant",
+    "numberOfAyahs": 93,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/027.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/027.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/027.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/027.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/027.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/027.mp3"
+    }
+  },
+  {
+    "number": 28,
+    "name": "القصص",
+    "englishName": "Al-Qasas",
+    "englishNameTranslation": "The Stories",
+    "numberOfAyahs": 88,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/028.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/028.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/028.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/028.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/028.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/028.mp3"
+    }
+  },
+  {
+    "number": 29,
+    "name": "العنكبوت",
+    "englishName": "Al-Ankaboot",
+    "englishNameTranslation": "The Spider",
+    "numberOfAyahs": 69,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/029.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/029.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/029.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/029.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/029.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/029.mp3"
+    }
+  },
+  {
+    "number": 30,
+    "name": "الرّوم",
+    "englishName": "Ar-Room",
+    "englishNameTranslation": "The Romans",
+    "numberOfAyahs": 60,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/030.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/030.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/030.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/030.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/030.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/030.mp3"
+    }
+  },
+  {
+    "number": 31,
+    "name": "لقمٰن",
+    "englishName": "Luqman",
+    "englishNameTranslation": "Luqman",
+    "numberOfAyahs": 34,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/031.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/031.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/031.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/031.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/031.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/031.mp3"
+    }
+  },
+  {
+    "number": 32,
+    "name": "السّجدة",
+    "englishName": "As-Sajda",
+    "englishNameTranslation": "The Prostration",
+    "numberOfAyahs": 30,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/032.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/032.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/032.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/032.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/032.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/032.mp3"
+    }
+  },
+  {
+    "number": 33,
+    "name": "الاحزاب",
+    "englishName": "Al-Ahzaab",
+    "englishNameTranslation": "The Clans",
+    "numberOfAyahs": 73,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/033.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/033.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/033.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/033.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/033.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/033.mp3"
+    }
+  },
+  {
+    "number": 34,
+    "name": "سبأ",
+    "englishName": "Saba",
+    "englishNameTranslation": "Sheba",
+    "numberOfAyahs": 54,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/034.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/034.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/034.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/034.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/034.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/034.mp3"
+    }
+  },
+  {
+    "number": 35,
+    "name": "فاطر",
+    "englishName": "Faatir",
+    "englishNameTranslation": "The Originator",
+    "numberOfAyahs": 45,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/035.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/035.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/035.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/035.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/035.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/035.mp3"
+    }
+  },
+  {
+    "number": 36,
+    "name": "يٰسۤ",
+    "englishName": "Yaseen",
+    "englishNameTranslation": "Yaseen",
+    "numberOfAyahs": 83,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/036.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/036.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/036.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/036.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/036.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/036.mp3"
+    }
+  },
+  {
+    "number": 37,
+    "name": "الصّٰۤفّٰت",
+    "englishName": "As-Saaffaat",
+    "englishNameTranslation": "Those drawn up in Ranks",
+    "numberOfAyahs": 182,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/037.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/037.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/037.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/037.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/037.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/037.mp3"
+    }
+  },
+  {
+    "number": 38,
+    "name": "ص",
+    "englishName": "Saad",
+    "englishNameTranslation": "The letter Saad",
+    "numberOfAyahs": 88,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/038.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/038.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/038.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/038.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/038.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/038.mp3"
+    }
+  },
+  {
+    "number": 39,
+    "name": "الزمر",
+    "englishName": "Az-Zumar",
+    "englishNameTranslation": "The Groups",
+    "numberOfAyahs": 75,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/039.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/039.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/039.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/039.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/039.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/039.mp3"
+    }
+  },
+  {
+    "number": 40,
+    "name": "غافر",
+    "englishName": "Ghafir",
+    "englishNameTranslation": "The Forgiver",
+    "numberOfAyahs": 85,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/040.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/040.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/040.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/040.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/040.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/040.mp3"
+    }
+  },
+  {
+    "number": 41,
+    "name": "فصّلت",
+    "englishName": "Fussilat",
+    "englishNameTranslation": "Explained in detail",
+    "numberOfAyahs": 54,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/041.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/041.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/041.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/041.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/041.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/041.mp3"
+    }
+  },
+  {
+    "number": 42,
+    "name": "الشورى",
+    "englishName": "Ash-Shura",
+    "englishNameTranslation": "Consultation",
+    "numberOfAyahs": 53,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/042.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/042.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/042.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/042.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/042.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/042.mp3"
+    }
+  },
+  {
+    "number": 43,
+    "name": "الزخرف",
+    "englishName": "Az-Zukhruf",
+    "englishNameTranslation": "Ornaments of gold",
+    "numberOfAyahs": 89,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/043.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/043.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/043.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/043.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/043.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/043.mp3"
+    }
+  },
+  {
+    "number": 44,
+    "name": "الدخان",
+    "englishName": "Ad-Dukhaan",
+    "englishNameTranslation": "The Smoke",
+    "numberOfAyahs": 59,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/044.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/044.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/044.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/044.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/044.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/044.mp3"
+    }
+  },
+  {
+    "number": 45,
+    "name": "الجاثية",
+    "englishName": "Al-Jaathiya",
+    "englishNameTranslation": "Crouching",
+    "numberOfAyahs": 37,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/045.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/045.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/045.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/045.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/045.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/045.mp3"
+    }
+  },
+  {
+    "number": 46,
+    "name": "الاحقاف",
+    "englishName": "Al-Ahqaf",
+    "englishNameTranslation": "The Dunes",
+    "numberOfAyahs": 35,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/046.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/046.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/046.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/046.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/046.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/046.mp3"
+    }
+  },
+  {
+    "number": 47,
+    "name": "محمّد",
+    "englishName": "Muhammad",
+    "englishNameTranslation": "Muhammad",
+    "numberOfAyahs": 38,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/047.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/047.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/047.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/047.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/047.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/047.mp3"
+    }
+  },
+  {
+    "number": 48,
+    "name": "الفتح",
+    "englishName": "Al-Fath",
+    "englishNameTranslation": "The Victory",
+    "numberOfAyahs": 29,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/048.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/048.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/048.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/048.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/048.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/048.mp3"
+    }
+  },
+  {
+    "number": 49,
+    "name": "الحجرٰت",
+    "englishName": "Al-Hujuraat",
+    "englishNameTranslation": "The Inner Apartments",
+    "numberOfAyahs": 18,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/049.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/049.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/049.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/049.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/049.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/049.mp3"
+    }
+  },
+  {
+    "number": 50,
+    "name": "ق",
+    "englishName": "Qaaf",
+    "englishNameTranslation": "The letter Qaaf",
+    "numberOfAyahs": 45,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/050.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/050.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/050.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/050.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/050.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/050.mp3"
+    }
+  },
+  {
+    "number": 51,
+    "name": "الذّٰريٰت",
+    "englishName": "Adh-Dhaariyat",
+    "englishNameTranslation": "The Winnowing Winds",
+    "numberOfAyahs": 60,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/051.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/051.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/051.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/051.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/051.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/051.mp3"
+    }
+  },
+  {
+    "number": 52,
+    "name": "الطور",
+    "englishName": "At-Tur",
+    "englishNameTranslation": "The Mount",
+    "numberOfAyahs": 49,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/052.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/052.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/052.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/052.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/052.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/052.mp3"
+    }
+  },
+  {
+    "number": 53,
+    "name": "النجم",
+    "englishName": "An-Najm",
+    "englishNameTranslation": "The Star",
+    "numberOfAyahs": 62,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/053.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/053.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/053.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/053.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/053.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/053.mp3"
+    }
+  },
+  {
+    "number": 54,
+    "name": "القمر",
+    "englishName": "Al-Qamar",
+    "englishNameTranslation": "The Moon",
+    "numberOfAyahs": 55,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/054.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/054.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/054.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/054.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/054.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/054.mp3"
+    }
+  },
+  {
+    "number": 55,
+    "name": "الرحمن",
+    "englishName": "Ar-Rahmaan",
+    "englishNameTranslation": "The Beneficent",
+    "numberOfAyahs": 78,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/055.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/055.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/055.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/055.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/055.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/055.mp3"
+    }
+  },
+  {
+    "number": 56,
+    "name": "الواقعة",
+    "englishName": "Al-Waaqia",
+    "englishNameTranslation": "The Inevitable",
+    "numberOfAyahs": 96,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/056.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/056.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/056.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/056.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/056.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/056.mp3"
+    }
+  },
+  {
+    "number": 57,
+    "name": "الحديد",
+    "englishName": "Al-Hadid",
+    "englishNameTranslation": "The Iron",
+    "numberOfAyahs": 29,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/057.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/057.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/057.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/057.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/057.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/057.mp3"
+    }
+  },
+  {
+    "number": 58,
+    "name": "المجادلة",
+    "englishName": "Al-Mujaadila",
+    "englishNameTranslation": "The Pleading Woman",
+    "numberOfAyahs": 22,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/058.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/058.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/058.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/058.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/058.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/058.mp3"
+    }
+  },
+  {
+    "number": 59,
+    "name": "الحشر",
+    "englishName": "Al-Hashr",
+    "englishNameTranslation": "The Exile",
+    "numberOfAyahs": 24,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/059.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/059.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/059.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/059.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/059.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/059.mp3"
+    }
+  },
+  {
+    "number": 60,
+    "name": "الممتحنة",
+    "englishName": "Al-Mumtahana",
+    "englishNameTranslation": "She that is to be examined",
+    "numberOfAyahs": 13,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/060.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/060.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/060.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/060.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/060.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/060.mp3"
+    }
+  },
+  {
+    "number": 61,
+    "name": "الصّفّ",
+    "englishName": "As-Saff",
+    "englishNameTranslation": "The Ranks",
+    "numberOfAyahs": 14,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/061.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/061.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/061.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/061.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/061.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/061.mp3"
+    }
+  },
+  {
+    "number": 62,
+    "name": "الجمعة",
+    "englishName": "Al-Jumu'a",
+    "englishNameTranslation": "Friday",
+    "numberOfAyahs": 11,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/062.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/062.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/062.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/062.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/062.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/062.mp3"
+    }
+  },
+  {
+    "number": 63,
+    "name": "المنٰفقون",
+    "englishName": "Al-Munaafiqoon",
+    "englishNameTranslation": "The Hypocrites",
+    "numberOfAyahs": 11,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/063.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/063.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/063.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/063.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/063.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/063.mp3"
+    }
+  },
+  {
+    "number": 64,
+    "name": "التغابن",
+    "englishName": "At-Taghaabun",
+    "englishNameTranslation": "Mutual Disillusion",
+    "numberOfAyahs": 18,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/064.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/064.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/064.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/064.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/064.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/064.mp3"
+    }
+  },
+  {
+    "number": 65,
+    "name": "الطلاق",
+    "englishName": "At-Talaaq",
+    "englishNameTranslation": "Divorce",
+    "numberOfAyahs": 12,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/065.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/065.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/065.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/065.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/065.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/065.mp3"
+    }
+  },
+  {
+    "number": 66,
+    "name": "التحريم",
+    "englishName": "At-Tahrim",
+    "englishNameTranslation": "The Prohibition",
+    "numberOfAyahs": 12,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/066.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/066.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/066.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/066.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/066.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/066.mp3"
+    }
+  },
+  {
+    "number": 67,
+    "name": "الملك",
+    "englishName": "Al-Mulk",
+    "englishNameTranslation": "The Sovereignty",
+    "numberOfAyahs": 30,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/067.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/067.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/067.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/067.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/067.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/067.mp3"
+    }
+  },
+  {
+    "number": 68,
+    "name": "القلم",
+    "englishName": "Al-Qalam",
+    "englishNameTranslation": "The Pen",
+    "numberOfAyahs": 52,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/068.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/068.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/068.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/068.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/068.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/068.mp3"
+    }
+  },
+  {
+    "number": 69,
+    "name": "الحاۤقّة",
+    "englishName": "Al-Haaqqa",
+    "englishNameTranslation": "The Reality",
+    "numberOfAyahs": 52,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/069.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/069.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/069.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/069.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/069.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/069.mp3"
+    }
+  },
+  {
+    "number": 70,
+    "name": "المعارج",
+    "englishName": "Al-Ma'aarij",
+    "englishNameTranslation": "The Ascending Stairways",
+    "numberOfAyahs": 44,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/070.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/070.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/070.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/070.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/070.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/070.mp3"
+    }
+  },
+  {
+    "number": 71,
+    "name": "نوح",
+    "englishName": "Nooh",
+    "englishNameTranslation": "Noah",
+    "numberOfAyahs": 28,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/071.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/071.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/071.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/071.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/071.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/071.mp3"
+    }
+  },
+  {
+    "number": 72,
+    "name": "الجن",
+    "englishName": "Al-Jinn",
+    "englishNameTranslation": "The Jinn",
+    "numberOfAyahs": 28,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/072.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/072.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/072.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/072.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/072.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/072.mp3"
+    }
+  },
+  {
+    "number": 73,
+    "name": "المزّمّل",
+    "englishName": "Al-Muzzammil",
+    "englishNameTranslation": "The Enshrouded One",
+    "numberOfAyahs": 20,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/073.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/073.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/073.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/073.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/073.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/073.mp3"
+    }
+  },
+  {
+    "number": 74,
+    "name": "المدّثّر",
+    "englishName": "Al-Muddaththir",
+    "englishNameTranslation": "The Cloaked One",
+    "numberOfAyahs": 56,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/074.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/074.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/074.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/074.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/074.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/074.mp3"
+    }
+  },
+  {
+    "number": 75,
+    "name": "القيٰمة",
+    "englishName": "Al-Qiyaama",
+    "englishNameTranslation": "The Resurrection",
+    "numberOfAyahs": 40,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/075.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/075.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/075.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/075.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/075.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/075.mp3"
+    }
+  },
+  {
+    "number": 76,
+    "name": "الانسان",
+    "englishName": "Al-Insaan",
+    "englishNameTranslation": "Man",
+    "numberOfAyahs": 31,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/076.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/076.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/076.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/076.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/076.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/076.mp3"
+    }
+  },
+  {
+    "number": 77,
+    "name": "المرسلٰت",
+    "englishName": "Al-Mursalaat",
+    "englishNameTranslation": "The Emissaries",
+    "numberOfAyahs": 50,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/077.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/077.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/077.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/077.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/077.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/077.mp3"
+    }
+  },
+  {
+    "number": 78,
+    "name": "النبأ",
+    "englishName": "An-Naba",
+    "englishNameTranslation": "The Announcement",
+    "numberOfAyahs": 40,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/078.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/078.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/078.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/078.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/078.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/078.mp3"
+    }
+  },
+  {
+    "number": 79,
+    "name": "النّٰزعٰت",
+    "englishName": "An-Naazi'aat",
+    "englishNameTranslation": "Those who drag forth",
+    "numberOfAyahs": 46,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/079.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/079.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/079.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/079.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/079.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/079.mp3"
+    }
+  },
+  {
+    "number": 80,
+    "name": "عبس",
+    "englishName": "Abasa",
+    "englishNameTranslation": "He frowned",
+    "numberOfAyahs": 42,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/080.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/080.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/080.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/080.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/080.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/080.mp3"
+    }
+  },
+  {
+    "number": 81,
+    "name": "التكوير",
+    "englishName": "At-Takwir",
+    "englishNameTranslation": "The Overthrowing",
+    "numberOfAyahs": 29,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/081.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/081.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/081.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/081.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/081.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/081.mp3"
+    }
+  },
+  {
+    "number": 82,
+    "name": "الانفطار",
+    "englishName": "Al-Infitaar",
+    "englishNameTranslation": "The Cleaving",
+    "numberOfAyahs": 19,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/082.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/082.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/082.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/082.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/082.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/082.mp3"
+    }
+  },
+  {
+    "number": 83,
+    "name": "المطفّفين",
+    "englishName": "Al-Mutaffifin",
+    "englishNameTranslation": "Defrauding",
+    "numberOfAyahs": 36,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/083.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/083.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/083.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/083.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/083.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/083.mp3"
+    }
+  },
+  {
+    "number": 84,
+    "name": "الانشقاق",
+    "englishName": "Al-Inshiqaaq",
+    "englishNameTranslation": "The Splitting Open",
+    "numberOfAyahs": 25,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/084.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/084.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/084.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/084.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/084.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/084.mp3"
+    }
+  },
+  {
+    "number": 85,
+    "name": "البروج",
+    "englishName": "Al-Burooj",
+    "englishNameTranslation": "The Constellations",
+    "numberOfAyahs": 22,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/085.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/085.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/085.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/085.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/085.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/085.mp3"
+    }
+  },
+  {
+    "number": 86,
+    "name": "الطارق",
+    "englishName": "At-Taariq",
+    "englishNameTranslation": "The Morning Star",
+    "numberOfAyahs": 17,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/086.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/086.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/086.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/086.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/086.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/086.mp3"
+    }
+  },
+  {
+    "number": 87,
+    "name": "الاعلى",
+    "englishName": "Al-A'laa",
+    "englishNameTranslation": "The Most High",
+    "numberOfAyahs": 19,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/087.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/087.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/087.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/087.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/087.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/087.mp3"
+    }
+  },
+  {
+    "number": 88,
+    "name": "الغاشية",
+    "englishName": "Al-Ghaashiya",
+    "englishNameTranslation": "The Overwhelming",
+    "numberOfAyahs": 26,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/088.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/088.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/088.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/088.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/088.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/088.mp3"
+    }
+  },
+  {
+    "number": 89,
+    "name": "الفجر",
+    "englishName": "Al-Fajr",
+    "englishNameTranslation": "The Dawn",
+    "numberOfAyahs": 30,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/089.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/089.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/089.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/089.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/089.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/089.mp3"
+    }
+  },
+  {
+    "number": 90,
+    "name": "البلد",
+    "englishName": "Al-Balad",
+    "englishNameTranslation": "The City",
+    "numberOfAyahs": 20,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/090.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/090.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/090.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/090.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/090.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/090.mp3"
+    }
+  },
+  {
+    "number": 91,
+    "name": "الشمس",
+    "englishName": "Ash-Shams",
+    "englishNameTranslation": "The Sun",
+    "numberOfAyahs": 15,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/091.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/091.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/091.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/091.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/091.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/091.mp3"
+    }
+  },
+  {
+    "number": 92,
+    "name": "الّيل",
+    "englishName": "Al-Lail",
+    "englishNameTranslation": "The Night",
+    "numberOfAyahs": 21,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/092.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/092.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/092.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/092.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/092.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/092.mp3"
+    }
+  },
+  {
+    "number": 93,
+    "name": "الضحى",
+    "englishName": "Ad-Dhuhaa",
+    "englishNameTranslation": "The Morning Hours",
+    "numberOfAyahs": 11,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/093.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/093.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/093.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/093.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/093.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/093.mp3"
+    }
+  },
+  {
+    "number": 94,
+    "name": "الشرح",
+    "englishName": "Ash-Sharh",
+    "englishNameTranslation": "The Consolation",
+    "numberOfAyahs": 8,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/094.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/094.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/094.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/094.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/094.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/094.mp3"
+    }
+  },
+  {
+    "number": 95,
+    "name": "التين",
+    "englishName": "At-Tin",
+    "englishNameTranslation": "The Fig",
+    "numberOfAyahs": 8,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/095.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/095.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/095.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/095.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/095.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/095.mp3"
+    }
+  },
+  {
+    "number": 96,
+    "name": "العلق",
+    "englishName": "Al-Alaq",
+    "englishNameTranslation": "The Clot",
+    "numberOfAyahs": 19,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/096.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/096.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/096.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/096.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/096.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/096.mp3"
+    }
+  },
+  {
+    "number": 97,
+    "name": "القدر",
+    "englishName": "Al-Qadr",
+    "englishNameTranslation": "The Power, Fate",
+    "numberOfAyahs": 5,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/097.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/097.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/097.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/097.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/097.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/097.mp3"
+    }
+  },
+  {
+    "number": 98,
+    "name": "البيّنة",
+    "englishName": "Al-Bayyina",
+    "englishNameTranslation": "The Evidence",
+    "numberOfAyahs": 8,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/098.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/098.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/098.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/098.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/098.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/098.mp3"
+    }
+  },
+  {
+    "number": 99,
+    "name": "الزلزلة",
+    "englishName": "Az-Zalzala",
+    "englishNameTranslation": "The Earthquake",
+    "numberOfAyahs": 8,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/099.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/099.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/099.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/099.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/099.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/099.mp3"
+    }
+  },
+  {
+    "number": 100,
+    "name": "العٰديٰت",
+    "englishName": "Al-Aadiyaat",
+    "englishNameTranslation": "The Chargers",
+    "numberOfAyahs": 11,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/100.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/100.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/100.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/100.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/100.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/100.mp3"
+    }
+  },
+  {
+    "number": 101,
+    "name": "القارعة",
+    "englishName": "Al-Qaari'a",
+    "englishNameTranslation": "The Calamity",
+    "numberOfAyahs": 11,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/101.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/101.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/101.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/101.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/101.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/101.mp3"
+    }
+  },
+  {
+    "number": 102,
+    "name": "التكاثر",
+    "englishName": "At-Takaathur",
+    "englishNameTranslation": "Competition",
+    "numberOfAyahs": 8,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/102.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/102.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/102.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/102.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/102.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/102.mp3"
+    }
+  },
+  {
+    "number": 103,
+    "name": "العصر",
+    "englishName": "Al-Asr",
+    "englishNameTranslation": "The Declining Day, Epoch",
+    "numberOfAyahs": 3,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/103.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/103.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/103.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/103.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/103.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/103.mp3"
+    }
+  },
+  {
+    "number": 104,
+    "name": "الهمزة",
+    "englishName": "Al-Humaza",
+    "englishNameTranslation": "The Traducer",
+    "numberOfAyahs": 9,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/104.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/104.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/104.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/104.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/104.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/104.mp3"
+    }
+  },
+  {
+    "number": 105,
+    "name": "الفيل",
+    "englishName": "Al-Fil",
+    "englishNameTranslation": "The Elephant",
+    "numberOfAyahs": 5,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/105.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/105.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/105.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/105.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/105.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/105.mp3"
+    }
+  },
+  {
+    "number": 106,
+    "name": "قريش",
+    "englishName": "Quraish",
+    "englishNameTranslation": "Quraysh",
+    "numberOfAyahs": 4,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/106.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/106.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/106.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/106.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/106.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/106.mp3"
+    }
+  },
+  {
+    "number": 107,
+    "name": "الماعون",
+    "englishName": "Al-Maa'un",
+    "englishNameTranslation": "Almsgiving",
+    "numberOfAyahs": 7,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/107.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/107.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/107.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/107.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/107.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/107.mp3"
+    }
+  },
+  {
+    "number": 108,
+    "name": "الكوثر",
+    "englishName": "Al-Kawthar",
+    "englishNameTranslation": "Abundance",
+    "numberOfAyahs": 3,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/108.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/108.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/108.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/108.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/108.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/108.mp3"
+    }
+  },
+  {
+    "number": 109,
+    "name": "الكٰفرون",
+    "englishName": "Al-Kaafiroon",
+    "englishNameTranslation": "The Disbelievers",
+    "numberOfAyahs": 6,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/109.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/109.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/109.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/109.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/109.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/109.mp3"
+    }
+  },
+  {
+    "number": 110,
+    "name": "النصر",
+    "englishName": "An-Nasr",
+    "englishNameTranslation": "Divine Support",
+    "numberOfAyahs": 3,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/110.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/110.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/110.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/110.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/110.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/110.mp3"
+    }
+  },
+  {
+    "number": 111,
+    "name": "اللهب",
+    "englishName": "Al-Masad",
+    "englishNameTranslation": "The Palm Fibre",
+    "numberOfAyahs": 5,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/111.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/111.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/111.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/111.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/111.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/111.mp3"
+    }
+  },
+  {
+    "number": 112,
+    "name": "الاخلاص",
+    "englishName": "Al-Ikhlaas",
+    "englishNameTranslation": "Sincerity",
+    "numberOfAyahs": 4,
+    "revelationType": "Meccan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/112.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/112.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/112.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/112.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/112.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/112.mp3"
+    }
+  },
+  {
+    "number": 113,
+    "name": "الفلق",
+    "englishName": "Al-Falaq",
+    "englishNameTranslation": "The Dawn",
+    "numberOfAyahs": 5,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/113.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/113.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/113.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/113.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/113.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/113.mp3"
+    }
+  },
+  {
+    "number": 114,
+    "name": "الناس",
+    "englishName": "An-Naas",
+    "englishNameTranslation": "Mankind",
+    "numberOfAyahs": 6,
+    "revelationType": "Medinan",
+    "audioFull": {
+      "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/114.mp3",
+      "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/114.mp3",
+      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/114.mp3",
+      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/114.mp3",
+      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/114.mp3",
+      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/114.mp3"
+    }
+  }
+]

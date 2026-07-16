@@ -32,12 +32,10 @@ interface MenuItem {
 }
 
 const MENU_ITEMS: MenuItem[] = [
-  { label: 'Unta AI', icon: Bot, route: '/(drawer)/chat' },
   { label: 'Dzikir', icon: HandMetal, route: '/(drawer)/dzikir' },
   { label: 'Doa', icon: BookOpen, route: '/(drawer)/doa' },
   { label: 'Asmaul Husna', icon: Star, route: '/(drawer)/asmaul_husna' },
   { label: 'Hadist', icon: ScrollText, route: '/(drawer)/hadist' },
-  { label: 'Artikel', icon: Newspaper, route: '/(drawer)/article' },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────

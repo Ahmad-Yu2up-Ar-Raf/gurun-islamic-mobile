@@ -2,7 +2,7 @@ import React from 'react';
 
 import { router, Stack } from 'expo-router';
 import { SCREEN_OPTIONS } from '@/components/ui/core/layout/nav';
-import { ChevronLeft, MoreHorizontal } from 'lucide-react-native';
+ 
 
 export default function HomeLayout() {
   return (

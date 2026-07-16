@@ -1,4 +1,4 @@
-// components/LastReadCard.tsx
+// components/ProgressReadCard.tsx
 import {
   Card,
   CardContent,

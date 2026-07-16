@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/fragments/shadcn-ui/button';
 import { Icon } from '../../fragments/shadcn-ui/icon';
 import { MenuIcon } from 'lucide-react-native';
 import { useNavigation } from 'expo-router';
-import { DrawerActions } from '@react-navigation/native';
+import { DrawerActions } from 'expo-router/react-navigation';
 
 export function MenuSheet() {
   const navigation = useNavigation();

@@ -4,25 +4,19 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useColorScheme } from 'nativewind';
 import { THEME } from '@/lib/theme';
 import { Text } from '@/components/ui/fragments/shadcn-ui/text';
-import { Search, type LucideIcon } from 'lucide-react-native';
+
 import { Button } from '../../fragments/shadcn-ui/button';
- 
-import { MenuSheet } from './menu-sheet';
 
 import { Icon } from '../../fragments/shadcn-ui/icon';
 
 import { router } from 'expo-router';
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '../../fragments/shadcn-ui/dropdown-menu';
 import { cn } from '@/lib/utils';
-import Animated, { useAnimatedStyle, type SharedValue } from 'react-native-reanimated';
+import Animated, { type SharedValue } from 'react-native-reanimated';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
+import { LucideIcon, Search } from 'lucide-react-native';
+import { MenuSheet } from './menu-sheet';
 
 export interface ScreenOptionsParams {
   title?: string;
@@ -30,27 +24,15 @@ export interface ScreenOptionsParams {
   leftIcon?: LucideIcon;
   leftAction?: () => void;
   rightIcon?: LucideIcon;
-  id?: number;
+
   RigthComponent?: React.ReactNode | undefined;
   rightAction?: () => void;
-  rigthIconClassName?: string;
-  children?: React.ReactNode;
-  surahSetelahnya?: { id: number; namaLatin: string } | null;
-  surahSebelumnya?: { id: number; namaLatin: string } | null;
-  isFullPlaying?: boolean;
-  /**
-   * ✅ NEW: Shared animated value untuk scroll position
-   * Trigger animasi title berdasarkan scroll height
-   * Dari useScrollAnimation hook
-   */
+  className?: string;
   scrollAnimatedPosition?: SharedValue<number>;
-  /** ✅ NEW: Custom scroll trigger point untuk show title (default: 100px) */
   scrollTriggerPoint?: number;
+  scrollAnimationType?: 'fade' | 'slide' | 'scale';
+  children?: React.ReactNode;
 }
-
-// ─── HeaderComponent ──────────────────────────────────────────────────────────
-// ✅ Proper React component — semua hooks di sini, dipanggil via JSX
-// React dapat track lifecycle-nya dengan benar.
 
 interface HeaderComponentProps extends ScreenOptionsParams {}
 
@@ -63,12 +45,11 @@ function HeaderComponent({
   children,
   rightIcon: RightIcon,
   rightAction,
-  rigthIconClassName,
-  id,
+  className,
   scrollAnimatedPosition,
   scrollTriggerPoint = 100,
+  scrollAnimationType = 'slide',
 }: HeaderComponentProps) {
-  // ✅ Hook aman di sini karena ini adalah proper React component
   const insets = useSafeAreaInsets();
   const { colorScheme } = useColorScheme();
   const currentTheme = colorScheme ?? 'light';
@@ -76,41 +57,20 @@ function HeaderComponent({
   const handleLeave = () => {
     router.back();
   };
- 
+
   const bgColor = transparent ? 'transparent' : THEME[currentTheme].background;
 
-  const foregroundColor = THEME[currentTheme].foreground;
-
-  // ✅ Animated style untuk title — smooth scroll trigger
-  // Interpolate antara 0 (hidden) dan 100 (visible)
-  const animatedTitleStyle = useAnimatedStyle(() => {
-    if (!scrollAnimatedPosition) {
-      return { opacity: title ? 1 : 0 };
-    }
-
-    // Interpolate scroll position ke opacity
-    // Range: 0 (hide) sampai scrollTriggerPoint (fully visible)
-    const progress = Math.min(scrollAnimatedPosition.value / scrollTriggerPoint, 1);
-    const clampedProgress = Math.max(0, progress); // Clamp antara 0-1
-
-    return {
-      opacity: clampedProgress,
-      transform: [
-        {
-          // Slide dari bawah (translateY 10) ke normal (0)
-          translateY: (1 - clampedProgress) * 10,
-        },
-      ],
-    };
-  }, [scrollAnimatedPosition, scrollTriggerPoint, title]);
-
+  const animatedTitleStyle = useScrollAnimation(
+    scrollAnimatedPosition,
+    scrollTriggerPoint,
+    scrollAnimationType
+  );
   return (
     <>
       <View
-        style={{ paddingTop: insets.top + 7, backgroundColor: bgColor }}
-        className="flex-row items-center justify-between px-4 pb-3">
-        {/* Left action */}
-        <View className="w-10 items-start">
+        style={{ paddingTop: insets.top + 10, backgroundColor: bgColor }}
+        className={cn('flex-row items-center justify-between px-6 pb-3', className)}>
+        <View className="z-50 w-10 items-start" pointerEvents="box-none">
           {LeftIcon ? (
             <Button
               variant={'ghost'}
@@ -123,45 +83,51 @@ function HeaderComponent({
             <MenuSheet />
           )}
         </View>
-
-        {/* Title with scroll animation */}
         {title || scrollAnimatedPosition ? (
-          <Animated.View style={animatedTitleStyle}>
-            <Text
-              variant="h4"
-              className="line-clamp-1 text-center font-poppins_medium text-xl tracking-tighter"
-              numberOfLines={1}>
-              {title}
-            </Text>
-          </Animated.View>
-        ) : (
-          <View className="items-center justify-center gap-7 text-center">
-            {/* <Text
-              variant={'small'}
-              className="font-poppins_medium text-xs tracking-tighter text-muted-foreground/60">
-              Location
-            </Text> */}
-            <View className="w-fit flex-row items-center gap-1.5">
-              <View className="size-12 scale-[.70]">
-                <Text
-                  variant="h4"
-                  className="line-clamp-1 text-center font-poppins_medium text-xl tracking-tighter"
-                  numberOfLines={1}>
-                  Gurun
-                </Text>
-              </View>
-
+          <View
+            className="absolute inset-0 top-1/2 -translate-y-4 transform items-center justify-center px-5 pb-0"
+            style={{ paddingTop: insets.top + 5 }}>
+            <Animated.View
+              style={animatedTitleStyle}
+              className="flex-1 items-center justify-center">
               <Text
                 variant="h4"
-                className="text-center font-poppins_semibold text-base tracking-tighter">
-                FogyNotion
+                className="line-clamp-1 text-center font-teko_semibold text-2xl tracking-tighter"
+                numberOfLines={1}>
+                {title}
+              </Text>
+            </Animated.View>
+          </View>
+        ) : title ? (
+          <View
+            className="absolute inset-0 top-1/2 -translate-y-4 transform items-center justify-center px-5 pb-0"
+            style={{ paddingTop: insets.top + 5 }}>
+            <View className="flex-1 items-center justify-center">
+              <Text
+                variant="h4"
+                className="line-clamp-1 text-center font-teko_semibold text-2xl tracking-tighter"
+                numberOfLines={1}>
+                {title}
+              </Text>
+            </View>
+          </View>
+        ) : (
+          <View className="items-center justify-center gap-7 text-center">
+            <View className="w-fit flex-row items-center gap-1">
+              {/* <View className="size-12 scale-[.70]">
+                <LogoAdaptive />
+              </View> */}
+
+              <Text
+                variant="h3"
+                className="font-figtree_bold text-center text-2xl tracking-tighter text-primary">
+                LiveUp
               </Text>
             </View>
           </View>
         )}
 
-        {/* Right action */}
-        <View className="items-end">
+        <View className="z-50 items-end" pointerEvents="box-none">
           {RigthComponent ? (
             RigthComponent
           ) : RightIcon ? (
@@ -169,17 +135,11 @@ function HeaderComponent({
               variant={'ghost'}
               onPress={rightAction ?? handleLeave}
               size="icon"
-              className={cn(`size-10 rounded-full`, rigthIconClassName)}>
+              className={cn(`size-10 rounded-full`)}>
               <Icon as={RightIcon} className="size-5" />
             </Button>
           ) : (
-            <Button
-              onPress={() => {
-                router.push('/quran/search');
-              }}
-              variant="ghost"
-              size="icon"
-              className={cn('size-10', rigthIconClassName)}>
+            <Button variant={'ghost'} size="icon" className={cn(`size-10 rounded-full`)}>
               <Icon as={Search} className="size-5" />
             </Button>
           )}
@@ -190,11 +150,6 @@ function HeaderComponent({
     </>
   );
 }
-interface HeaderComponentProps extends ScreenOptionsParams {}
-
-// ─── SCREEN_OPTIONS ───────────────────────────────────────────────────────────
-// ✅ Arrow function di `header:` hanya thin wrapper → return JSX
-// Hooks TIDAK dipanggil di sini — semua ada di HeaderComponent di atas
 
 export const SCREEN_OPTIONS = ({
   title,
@@ -204,15 +159,17 @@ export const SCREEN_OPTIONS = ({
   rightIcon,
   RigthComponent,
   rightAction,
+  className,
   children,
   scrollAnimatedPosition,
   scrollTriggerPoint,
+  scrollAnimationType,
 }: ScreenOptionsParams) => ({
   headerShown: true,
-
   header: () => (
     <HeaderComponent
       title={title}
+      className={className}
       transparent={transparent}
       leftIcon={leftIcon}
       leftAction={leftAction}
@@ -222,6 +179,7 @@ export const SCREEN_OPTIONS = ({
       rightAction={rightAction}
       scrollAnimatedPosition={scrollAnimatedPosition}
       scrollTriggerPoint={scrollTriggerPoint}
+      scrollAnimationType={scrollAnimationType}
     />
   ),
 });

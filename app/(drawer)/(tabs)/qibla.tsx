@@ -1,5 +1,5 @@
-import HomeBlock from '@/components/ui/core/block/home-block';
-import QiblaBlock from '@/components/ui/core/block/qibla-block';
+import HomeBlock from '@/components/ui/core/block/home/home-block';
+import QiblaBlock from '@/components/ui/core/block/qibla/qibla-block';
 import { SCREEN_OPTIONS } from '@/components/ui/core/layout/nav';
 
 import { Link, Stack } from 'expo-router';

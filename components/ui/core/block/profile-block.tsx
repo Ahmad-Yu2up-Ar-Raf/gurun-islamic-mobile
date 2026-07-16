@@ -3,7 +3,7 @@ import { Wrapper } from '../layout/wrapper';
 
 import { Stack } from 'expo-router';
 
-import { batasiKata } from '@/hooks/useWord';
+import { batasiKata } from '@/hooks/use-word';
 import {
   Bell,
   ChevronLeft,

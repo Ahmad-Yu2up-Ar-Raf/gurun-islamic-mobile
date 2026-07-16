@@ -33,7 +33,10 @@
       "expo-router",
       "expo-secure-store",
       "expo-web-browser",
-      "expo-audio"
+      "expo-audio",
+      "expo-image",
+      "expo-splash-screen",
+      "expo-status-bar"
     ],
     "experiments": {
       "typedRoutes": true

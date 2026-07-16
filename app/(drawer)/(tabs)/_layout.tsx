@@ -3,7 +3,7 @@ import { Tabs } from 'expo-router';
 import { THEME } from '@/lib/theme';
 import { useColorScheme } from 'nativewind';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { HapticTab } from '@/components/ui/core/haptic-tab';
+
 import KabbahIcon from '@/components/ui/fragments/svg/icons/kabbah';
 import QuranIcon from '@/components/ui/fragments/svg/icons/quran';
 import MasjidIcon from '@/components/ui/fragments/svg/icons/masjid';
@@ -27,8 +27,6 @@ export default function TabsLayout() {
     <>
       <Tabs
         screenOptions={{
-          tabBarButton: HapticTab,
-
           tabBarActiveTintColor: tintColor,
 
           tabBarInactiveTintColor: inactiveTintColor,
@@ -67,7 +65,7 @@ export default function TabsLayout() {
                 Home
               </Text>
             ),
-            tabBarButton: HapticTab,
+
             tabBarIcon: ({ color, focused }) => (
               <View className="scale-1">
                 <HomeIcon fill={color} />
@@ -92,7 +90,7 @@ export default function TabsLayout() {
                 Quran
               </Text>
             ),
-            tabBarButton: HapticTab,
+
             tabBarIcon: ({ color, focused }) => (
               <View className="scale-1">
                 <QuranIcon fill={color} />

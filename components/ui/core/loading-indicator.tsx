@@ -18,7 +18,7 @@ export default function LoadingIndicator({ loadingText }: { loadingText?: string
       <View className="flex-1 items-center justify-center">
         <ActivityIndicator size="large" color={primaryColor} />
         <Text variant="muted" className="sr-only m-auto mt-3 text-center text-sm">
-          {loadingText || 'Memuat sensor kompas...'}
+          {loadingText || 'Memuat data...'}
         </Text>
       </View>
     </Wrapper>
