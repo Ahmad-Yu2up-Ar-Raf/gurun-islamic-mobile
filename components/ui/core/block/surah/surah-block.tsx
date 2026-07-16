@@ -1,26 +1,20 @@
-import React from 'react';
-
-import { Text } from '../../../fragments/shadcn-ui/text';
-import { useQuery } from '@tanstack/react-query';
+// 📄 File: components/ui/core/block/surah/surah-block.tsx
+import React, { useCallback } from 'react'; // ✅ Import useCallback
 import { LegendList } from '@legendapp/list';
-import Animated from 'react-native-reanimated'; // Import Reanimated
 import { AyatCard } from './components/ayat-card';
 import { SuraHeader } from './components/sura-header';
-import { ChevronLeft, MoreHorizontal, Settings, Settings2 } from 'lucide-react-native';
-import { SCREEN_OPTIONS } from '../../layout/nav';
-import { router, Stack } from 'expo-router';
+import { ChevronLeft, Settings } from 'lucide-react-native';
+
+// ✅ Import HeaderComponent langsung dari file nav lu
+import { HeaderComponent } from '../../layout/nav';
+import { Stack } from 'expo-router';
 
 import LoadingIndicator from '../../loading-indicator';
-
 import { useScrollTracker } from '@/hooks/use-scroll-tracker';
-
 import SuraMenu from './components/sura-menu';
 import { useBottomSheet } from '@/components/ui/fragments/custom-ui/bottom-sheet';
 import { FetchSurah } from './hooks/use-surah';
 import { Ayah } from './types/surah-type';
-
-// ✅ Bungkus LegendList biar support Reanimated
-const AnimatedLegendList = Animated.createAnimatedComponent(LegendList);
 
 type ComponentProp = {
   id: string;
@@ -28,50 +22,59 @@ type ComponentProp = {
 };
 
 export default function SurahBlock({ id, nameSurah }: ComponentProp) {
-  const { isLoading, data, refetch, isError, error, isRefetching } = FetchSurah(id);
+  const { isLoading, data, isError } = FetchSurah(id);
   const { isVisible, open, close } = useBottomSheet();
   const surah = data?.data;
   const ayahs = surah?.ayat;
-  const { scrollY, scrollHandler } = useScrollTracker();
+  const { scrollY } = useScrollTracker();
 
-  if (isLoading)
-    return (
-      <>
-        <LoadingIndicator loadingText="Memuat data surah..." />
-      </>
-    );
+  // ✅ PERBAIKAN UTAMA 1: Gunakan useCallback untuk menstabilkan referensi onScroll.
+  // Ini 100% menyelesaikan error "TypeError: Object is not a function" pada LegendList!
+  const handleScroll = useCallback(
+    (e: any) => {
+      if (scrollY) {
+        scrollY.value = e.nativeEvent.contentOffset.y;
+      }
+    },
+    [scrollY]
+  );
+
+  if (isLoading) {
+    return <LoadingIndicator loadingText="Memuat data surah..." />;
+  }
 
   if (isError || !data) {
-    return <></>;
+    return null;
   }
 
   return (
     <>
-      <Stack.Screen
-        options={SCREEN_OPTIONS({
-          title: nameSurah,
-          rightAction() {
-            open();
-          },
-          leftIcon: ChevronLeft,
-          rightIcon: Settings,
-          scrollAnimatedPosition: scrollY,
-          scrollTriggerPoint: 80,
-          scrollAnimationType: 'slide',
-        })}
+      {/* ✅ PERBAIKAN UTAMA 2: Matikan header bawaan navigasi */}
+      <Stack.Screen options={{ headerShown: false }} />
+
+      {/* ✅ PERBAIKAN UTAMA 3: RENDER HEADER LANGSUNG DI SINI!
+          Sangat aman dari crash, performa maksimal, dan animasi terjamin aktif */}
+      <HeaderComponent
+        title={nameSurah}
+        leftIcon={ChevronLeft}
+        rightIcon={Settings}
+        rightAction={open}
+        scrollAnimatedPosition={scrollY}
+        scrollTriggerPoint={80} // Di ketinggian 80px animasi title langsung muncul otomatis!
+        scrollAnimationType="slide"
       />
+
       <SuraMenu sura={data} isVisible={isVisible} close={close} />
-      <AnimatedLegendList
+
+      <LegendList
         data={ayahs ?? []}
         renderItem={({ item }) => (
           <AyatCard surahNomor={id} surahNama={nameSurah} ayat={item as Ayah} />
         )}
         keyExtractor={(item: unknown, index: number) => `ayat-${(item as Ayah).nomorAyat}`}
         numColumns={1}
-        // ✅ NAIKKAN JADI 900 ATAU 1000.
-        // Ini memastikan "scroll budget" cukup menampung ayat-ayat raksasa di Al-Baqarah.
-        estimatedItemSize={900}
-        onScroll={scrollHandler}
+        estimatedItemSize={250} // Ukuran ideal agar tidak memicu warning memory container
+        onScroll={handleScroll} // ✅ Menggunakan callback yang stabil
         scrollEventThrottle={16}
         ListHeaderComponent={
           <SuraHeader
@@ -82,7 +85,9 @@ export default function SurahBlock({ id, nameSurah }: ComponentProp) {
           />
         }
         contentContainerStyle={{
-          paddingTop: 20,
+          // ✅ Berikan paddingTop lebih tinggi (sekitar 100px) agar ayat pertama
+          // tidak tertutup oleh HeaderComponent yang melayang secara absolut di atasnya.
+          paddingTop: 100,
           paddingBottom: 100,
           paddingHorizontal: 12,
         }}

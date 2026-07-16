@@ -36,7 +36,7 @@ export interface ScreenOptionsParams {
 
 interface HeaderComponentProps extends ScreenOptionsParams {}
 
-function HeaderComponent({
+export function HeaderComponent({
   title,
   transparent = true,
   RigthComponent,

@@ -1,71 +1,129 @@
-# Clerk Auth Template
+# Gurun
 
-This is a [React Native](https://reactnative.dev) project built with [Expo](https://expo.dev), [Clerk](https://go.clerk.com/gjgxNgT), and [React Native Reusables](https://reactnativereusables.com).
+A modern Muslim companion app for daily worship, built with React Native and Expo.
 
-It was initialized using the following command:
+Gurun is designed to deliver a fast, elegant, privacy-focused mobile experience for prayer times, Quran reading, Qibla direction, daily duas, Asmaul Husna, and dhikr.
 
-```bash
-npx @react-native-reusables/cli@latest init -t saraya
-```
+[![Expo](https://img.shields.io/badge/Expo-56-black?logo=expo)](https://expo.dev/)
+[![React Native](https://img.shields.io/badge/React%20Native-0.81-blue?logo=react)](https://reactnative.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Strict-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![NativeWind](https://img.shields.io/badge/NativeWind-TailwindCSS-38B2AC)](https://www.nativewind.dev/)
+[![Zustand](https://img.shields.io/badge/Zustand-State%20Management-FFB000)](https://zustand-demo.pmnd.rs/)
+[![React Query](https://img.shields.io/badge/TanStack%20Query-Server%20State-FF4154)](https://tanstack.com/query/latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-## Getting Started
+## Introduction
 
-Before running the app, make sure to:
+Gurun is a modern Islamic lifestyle application built for Muslims who want a clean, fast, and reliable mobile companion for everyday worship.
 
-1. [Set up your Clerk account](https://go.clerk.com/blVsQlm)
-2. In the instance setup, leave the default option selected: **Email, phone, username**
-3. Enable Apple, GitHub, and Google as sign-in options under SSO Connections
-4. Rename `.env.example` to `.env.local` and paste your `EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY` from [your API keys](https://go.clerk.com/u8KAui7)
+It combines location-aware prayer times, a smooth Qibla finder, Quran reading, Asmaul Husna, daily duas, and dhikr into a single lightweight app experience.
 
-Then start the development server:
+The project is built with developer experience in mind:
+- scalable architecture
+- reusable UI blocks
+- clean state management
+- strong TypeScript typing
+- modern Expo-based mobile tooling
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Why Gurun?
 
-This will launch the Expo Go Server. You can open the app with:
+Most Islamic apps solve the same problems, but not all of them solve them with the same quality.
 
-- **iOS**: press `i` to launch in the iOS simulator (Mac only)
-- **Android**: press `a` to launch in the Android emulator
-- **Web**: press `w` to run in a browser
+Gurun focuses on:
+- speed over clutter
+- simplicity over complexity
+- privacy over heavy tracking
+- modern native UX over generic templates
+- clean architecture over tightly coupled logic
 
-Or scan the QR code with the [Expo Go](https://expo.dev/go) app to test on your device.
+The result is a Muslim companion app that feels lightweight, responsive, and maintainable while still being feature-rich.
 
-## Included Screens and Features
+## Features
 
-- Protected routes using Clerk authentication
-- Sign in screen
-- OAuth with Apple, GitHub, and Google
-- Forgot password screen
-- Reset password screen
-- Verify email screen
-- User profile button
-- Sign out screen
+| Feature | Description | Status |
+| --- | --- | --- |
+| Prayer Times | Location-based prayer schedules with real-time countdown and next prayer calculation | Active |
+| Qibla Finder | High-precision Qibla direction with smooth compass motion and fallback support | Active |
+| Quran Reader | Digital Quran reading experience with fast navigation and clean presentation | Active |
+| Asmaul Husna | 99 Names of Allah with Arabic text, transliteration, and meaning | Active |
+| Daily Duas | Collection of daily supplications for common worship needs | Active |
+| Dhikr | Interactive dhikr guidance and counter experience | Active |
 
-## Project Features
+## Screenshots
 
-- ⚛️ Built with [Expo Router](https://expo.dev/router)
-- 🔐 Authentication powered by [Clerk](https://go.clerk.com/Q1MKAz0)
-- 🎨 Styled with [Tailwind CSS](https://tailwindcss.com/) via [Nativewind](https://www.nativewind.dev/)
-- 📦 UI powered by [React Native Reusables](https://github.com/founded-labs/react-native-reusables)
-- 🚀 New Architecture enabled
-- 🔥 Edge to Edge enabled
-- 📱 Runs on iOS, Android, and Web
+> Replace these placeholders with actual screenshots before publishing.
 
-## Learn More
+### Light Mode
+![Light Mode](docs/screenshots/light-mode.png)
 
-- [Clerk Docs](https://go.clerk.com/Q1MKAz0)
-- [React Native Docs](https://reactnative.dev/docs/getting-started)
-- [Expo Docs](https://docs.expo.dev/)
-- [Nativewind Docs](https://www.nativewind.dev/)
-- [React Native Reusables](https://reactnativereusables.com)
+### Dark Mode
+![Dark Mode](docs/screenshots/dark-mode.png)
 
----
+### Prayer Times
+![Prayer Times](docs/screenshots/prayer-times.png)
 
-If this template helps you move faster, consider giving [React Native Reusables](https://github.com/founded-labs/react-native-reusables) a ⭐ on GitHub. It helps a lot!
+### Quran
+![Quran](docs/screenshots/quran.png)
+
+### Qibla
+![Qibla](docs/screenshots/qibla.png)
+
+### Asmaul Husna
+![Asmaul Husna](docs/screenshots/asmaul-husna.png)
+
+### Dzikir
+![Dzikir](docs/screenshots/dzikir.png)
+
+### Daily Duas
+![Daily Duas](docs/screenshots/daily-duas.png)
+
+## Tech Stack
+
+| Layer | Technology |
+| --- | --- |
+| Frontend | React Native |
+| Framework | Expo SDK 56 |
+| Language | TypeScript |
+| State Management | Zustand |
+| Server State | TanStack Query |
+| Networking | Ky |
+| Routing | Expo Router v4 |
+| Styling | NativeWind |
+| UI System | Shadcn UI-inspired mobile components |
+| Icons | Lucide React Native |
+| Animation | React Native Reanimated |
+| Gestures | React Native Gesture Handler |
+| Haptics | Expo Haptics |
+| Navigation | React Navigation v7 |
+| Theme | Custom light/dark design system |
+
+## Project Structure
+
+```txt
+.
+├── app/
+│   ├── _layout.tsx
+│   ├── +html.tsx
+│   ├── +not-found.tsx
+│   └── (drawer)/
+│       ├── (tabs)/
+│       ├── doa/
+│       ├── dzikir/
+│       ├── hadist/
+│       ├── asmaul_husna.tsx
+│       └── qibla.tsx
+├── assets/
+├── components/
+│   ├── provider/
+│   └── ui/
+├── hooks/
+├── api/
+├── lib/
+├── services/
+├── types/
+├── utils/
+├── global.css
+├── tailwind.config.js
+├── app.json
+├── babel.config.js
+└── tsconfig.json
