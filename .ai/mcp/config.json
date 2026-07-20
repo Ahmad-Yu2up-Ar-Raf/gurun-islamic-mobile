@@ -1,0 +1,45 @@
+{
+  "description": "MCP Server configuration reference for Gurun Expo project",
+  "servers": {
+    "tavily-search": {
+      "type": "remote",
+      "purpose": "Web search for documentation, best practices, and dependency research",
+      "status": "installed",
+      "configuration": "Managed via opencode.json MCP section"
+    },
+    "github": {
+      "type": "remote",
+      "purpose": "GitHub API access for issues, PRs, and repository management",
+      "status": "installed",
+      "configuration": "Managed via opencode.json MCP section"
+    },
+    "sequential-thinking": {
+      "type": "built-in",
+      "purpose": "Structured reasoning and multi-step problem solving",
+      "status": "installed",
+      "configuration": "Built into OpenCode"
+    },
+    "expo-mcp": {
+      "type": "remote",
+      "url": "https://mcp.expo.dev/mcp",
+      "auth": "OAuth (Expo account)",
+      "purpose": "Expo SDK documentation, dependency management, EAS builds, simulator automation",
+      "status": "recommended",
+      "requirement": "EAS paid plan required for server capabilities. Local capabilities free with SDK 54+",
+      "setup_command": "EXPO_UNSTABLE_MCP_SERVER=1 npx expo start",
+      "notes": "Recommended for: Expo doc search, npx expo install guidance, EAS build management, screenshot/automation testing"
+    }
+  },
+  "evalutation_notes": {
+    "context7": {
+      "purpose": "Docs-aware MCP that fetches relevant library documentation on demand",
+      "status": "optional",
+      "notes": "Not installed — tavily-search covers web research. Add if library doc access becomes a bottleneck"
+    },
+    "filesystem": {
+      "purpose": "Provides file read/write access to the agent",
+      "status": "not_needed",
+      "notes": "OpenCode already has native file system access — would duplicate functionality"
+    }
+  }
+}

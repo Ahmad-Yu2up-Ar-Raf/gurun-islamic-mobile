@@ -3,15 +3,20 @@ import { Tabs } from 'expo-router';
 import { THEME } from '@/lib/theme';
 import { useColorScheme } from 'nativewind';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import type { PressableProps } from 'react-native';
 
 import KabbahIcon from '@/components/ui/fragments/svg/icons/kabbah';
 import QuranIcon from '@/components/ui/fragments/svg/icons/quran';
 import MasjidIcon from '@/components/ui/fragments/svg/icons/masjid';
-import { View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import SettingIcon from '@/components/ui/fragments/svg/icons/setting';
 import HomeIcon from '@/components/ui/fragments/svg/icons/home';
 import { Text } from '@/components/ui/fragments/shadcn-ui/text';
 import { cn } from '@/lib/utils';
+
+function TabBarButton(props: PressableProps) {
+  return <Pressable {...props} android_ripple={{ color: 'transparent' }} />;
+}
 
 export default function TabsLayout() {
   const { colorScheme } = useColorScheme();
@@ -27,6 +32,7 @@ export default function TabsLayout() {
     <>
       <Tabs
         screenOptions={{
+          tabBarButton: TabBarButton,
           tabBarActiveTintColor: tintColor,
 
           tabBarInactiveTintColor: inactiveTintColor,

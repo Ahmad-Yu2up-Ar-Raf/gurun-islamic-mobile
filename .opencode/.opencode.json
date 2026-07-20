@@ -1,0 +1,14 @@
+{
+  "ignore": [
+    "node_modules/**",
+    ".expo/**",
+    "ios/**",
+    "android/**",
+    "dist/**",
+    "assets/**",
+    "**/*.svg",
+    "**/*.png",
+    "**/*.jpg"
+  ],
+  "instructions": "Proyek React Native Expo (Gurun). Patuhi AGENTS.md, ARCHITECTURE.md, DESIGN.md, dan file di .ai/agents/. Skill tersedia di .opencode/skills/ (GitNexus: gitnexus-*, generated/, kustom) + .agents/skills/ (Graphify, eksternal) + global ~/.config/opencode/skills/ (planning-with-files, ECC/*, graphify, superpowers). LAYER 1: ECC (tdd-workflow, security-review, coding-standards, verification-loop, eval-harness, strategic-compact, dll) — foundation instincts & security. LAYER 2: Superpowers (brainstorming, writing-plans, executing-plans, subagent-driven-development, systematic-debugging) — full SDLC workflow. LAYER 3: planning-with-files (Manus-style crash-proof plans via task_plan.md/progress.md/findings.md) — persistent planning. GitNexus MCP tools global — impact check SEBELUM edit. Graphify query graphify-out/ SEBELUM baca file. SEBELUM nulis kode library eksternal, GUNAKAN web search verifikasi sintaks."
+}

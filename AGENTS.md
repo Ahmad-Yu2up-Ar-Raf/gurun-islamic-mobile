@@ -1,92 +1,190 @@
-# AGENTS.md
+# Gurun — Agent Guide
 
-This file provides guidance to AI coding agents (Claude Code, Cursor, Copilot, Antigravity, etc.) when working with code in this repository.
+## Commands
 
-> **Scope:** This file configures agents working on the [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) repository itself. It is not meant to be copied into other projects or into a global agent configuration; the reusable assets are the skills in `skills/`, not this file.
+| Command | What it does |
+|---------|-------------|
+| `npm run dev` | `expo start -c` (always clears Metro cache) |
+| `npm run android` | `expo start -c --android` |
+| `npm run ios` | `expo start -c --ios` |
+| `npm run web` | `expo start -c --web` |
+| `npm run clean` | Wipes `.expo` and `node_modules` |
+| `npx tsc --noEmit` | TypeScript check (no dedicated script) |
+| `prettier --write <file>` | Format (uses `prettier-plugin-tailwindcss`) |
 
-## Repository Overview
+No lint, test, or typecheck scripts in `package.json`. Run these manually before committing.
 
-A collection of skills for Claude.ai and Claude Code for senior software engineers. Skills are packaged instructions and scripts that extend Claude and your coding agents capabilities.
+## Architecture
 
-## OpenCode Integration
+- **Routing**: Expo Router v4 (file-based). Root `Stack` → `(drawer)` → `(tabs)` (Home / Quran / Qibla / Settings) + standalone drawer screens (Doa, Dzikir, Hadist, Asmaul Husna) + `surah/[id]` detail.
+- **Feature blocks** live in `components/ui/core/block/<feature>/`, each with local `hooks/`, `store/`, `services/`, `types/`, `utils/`. Import via `@/` alias (maps to project root).
+- **State**: TanStack Query v5 for server data; Zustand (with persist) for client state. Feature-scoped stores beside their block.
+- **API client**: Ky instance at `api/client.ts`, base URL from `EXPO_PUBLIC_API_URL` (`.env`). Defaults to `https://equran.id/api/`.
+- **Auth**: Clerk (`@clerk/clerk-expo`) via OAuth/email + SecureStore for tokens.
+- **Styling**: NativeWind v4 + TailwindCSS v3. HSL theme variables in `global.css`. Dark mode via `.dark` class on root.
+- **Fonts**: Poppins (4 weights), Teko (5 weights), Schluber (custom), Noto Naskh Arabic — loaded in `app/_layout.tsx` via `useFonts`.
+- **Animation**: Reanimated 4 with worklets on UI thread. Reanimated logger configured `strict: false`.
+- **Components**: 21 shadcn/ui-inspired primitives at `components/ui/fragments/shadcn-ui/`. Config in `components.json`.
 
-OpenCode uses a **skill-driven execution model** powered by the `skill` tool and this repository's `/skills` directory.
+## Bootstrap flow
 
-### Core Rules
+`app/_layout.tsx` → `useBootstrap()`:
+1. Load custom fonts
+2. Hydrate location Zustand store (province/city from persisted storage or device GPS)
+3. Once ready, pre-fetch prayer schedule via TanStack Query
+4. Hide splash screen
 
-- If a task matches a skill, you MUST invoke it
-- Skills are located in `skills/<skill-name>/SKILL.md`
-- Never implement directly if a skill applies
-- Always follow the skill instructions exactly (do not partially apply them)
+## Developer conventions (enforced)
 
-### Intent → Skill Mapping
+- **Immutability**: never mutate objects/arrays — spread or return new references.
+- **No hardcoded secrets** — all configurable values from `.env` or constants.
+- **Error handling**: every async operation wrapped in try/catch with user-friendly messages.
+- **File size**: <800 lines per file, <50 lines per function.
+- **Prettier**: `printWidth: 100`, `singleQuote: true`, `bracketSameLine: true`, `trailingComma: 'es5'`.
 
-The agent should automatically map user intent to skills:
+## Relevant instruction files
 
-- Feature / new functionality → `spec-driven-development`, then `incremental-implementation`, `test-driven-development`
-- Planning / breakdown → `planning-and-task-breakdown`
-- Bug / failure / unexpected behavior → `debugging-and-error-recovery`
-- Code review → `code-review-and-quality`
-- Refactoring / simplification → `code-simplification`
-- API or interface design → `api-and-interface-design`
-- UI work → `frontend-ui-engineering`
+- `.opencode/.opencode.json` — ignore list and general instructions (Bahasa Indonesia)
+- `.opencode/skills/ecc-brain/SKILL.md` — full code style, security, TDD, git workflow rules
 
-### Lifecycle Mapping (Implicit Commands)
+## Core Thinking Layers — Global Skills (3-Layer Stack)
 
-OpenCode does not support slash commands like `/spec` or `/plan`.
+### Layer 1: ECC (Foundation OS) — `~/.config/opencode/skills/ecc/*/`
+Instinct-driven development: TDD, security, coding standards, verification loops, eval harness, strategic compact. Auto-prompt on relevant tasks.
 
-Instead, the agent must internally follow this lifecycle:
+| Skill | Use When |
+|-------|----------|
+| tdd-workflow | Writing new features or bug fixes — enforce RED-GREEN-REFACTOR |
+| security-review | Handling user input, auth, API endpoints, sensitive data |
+| coding-standards | Writing any production code |
+| verification-loop | After completing a feature — verify against criteria |
+| eval-harness | Measuring model output quality |
+| strategic-compact | Starting a large feature — align on scope before coding |
 
-- DEFINE → `spec-driven-development`
-- PLAN → `planning-and-task-breakdown`
-- BUILD → `incremental-implementation` + `test-driven-development`
-- VERIFY → `debugging-and-error-recovery`
-- REVIEW → `code-review-and-quality`
-- SHIP → `shipping-and-launch`
+### Layer 2: Superpowers (SDLC Methodology) — via `superpowers@git+https://github.com/obra/superpowers.git` plugin
+Full software development workflow: brainstorm → design → plan → execute → review.
+Installed as global plugin. Activate via: `use skill tool to load [skillname]`
 
-### Execution Model
+| Skill | Phase |
+|-------|-------|
+| brainstorming | Requirements discovery, design exploration |
+| writing-plans | Create detailed implementation plans |
+| executing-plans | Batch execution with human checkpoints |
+| subagent-driven-development | Parallel subagent task dispatch |
+| test-driven-development | Enforce RED-GREEN-REFACTOR cycle |
+| systematic-debugging | 4-phase root cause analysis |
+| requesting-code-review | Pre-commit review checklist |
+| using-git-worktrees | Parallel dev branches |
+| finishing-a-development-branch | Merge/PR workflow |
 
-For every request:
+### Layer 3: planning-with-files (Manus-Style Persistent Planning)
+Crash-proof markdown plans that survive `/clear` and context loss.
 
-1. Determine if any skill applies (even 1% chance)
-2. Invoke the appropriate skill using the `skill` tool
-3. Follow the skill workflow strictly
-4. Only proceed to implementation after required steps (spec, plan, etc.) are complete
+| File | Purpose |
+|------|---------|
+| `task_plan.md` | Phases, progress, decisions — create BEFORE any complex task |
+| `findings.md` | Research, discoveries, architecture decisions |
+| `progress.md` | Session log, test results — update after each action |
 
-### Anti-Rationalization
+**Mandatory:** read planning files before decisions, update after each phase.
+**3-Strike Error Protocol:** 3 failures → escalate to user.
+**Session Recovery:** After `/clear`, check `session-catchup.py` output.
 
-The following thoughts are incorrect and must be ignored:
+### Layer 4: Open GSD — Spec-Driven Shipping Workflow
 
-- "This is too small for a skill"
-- "I can just quickly implement this"
-- "I’ll gather context first"
+Installed at `~/.config/opencode/`. 65+ `/gsd-*` slash commands, 71 skills, and subagents for the full Research → Plan → Execute → Verify → Ship pipeline.
 
-Correct behavior:
+| Command | Phase |
+|---------|-------|
+| `/gsd-new-project` | Greenfield project setup |
+| `/gsd-discuss-phase N` | Requirements discussion & scoping |
+| `/gsd-plan-phase N` | Research + plan + verify |
+| `/gsd-execute-phase N` | Parallel execution via subagents |
+| `/gsd-verify-work N` | Manual UAT & verification |
+| `/gsd-ship N` | Create PR from verified work |
+| `/gsd-progress` | Session status & next step |
+| `/gsd-quick` | Ad-hoc task with optional research |
+| `/gsd-code-review` | Code quality review gate |
 
-- Always check for and use skills first
+**Use when:** shipping production features, managing milestones, or needing a structured workflow loop. Works alongside Superpowers — let GSD manage the phase pipeline, use Superpowers skills for individual steps.
 
-This ensures OpenCode behaves similarly to Claude Code with full workflow enforcement.
+## Claude-Mem — Cross-Session Memory
 
-## Orchestration: Personas, Skills, and Commands
+Worker running at `http://127.0.0.1:37700`. Memory context auto-injects into `~/.config/opencode/AGENTS.md`. Captures sessions for recall across restarts.
 
-This repo has three composable layers. They have different jobs and should not be confused:
+**Use when:** resuming work after a `/clear` or new session, recalling past decisions, or referencing earlier sessions.
 
-- **Skills** (`skills/<name>/SKILL.md`) — workflows with steps and exit criteria. The *how*. Mandatory hops when an intent matches.
-- **Personas** (`agents/<role>.md`) — roles with a perspective and an output format. The *who*.
-- **Slash commands** (`.claude/commands/*.md`) — user-facing entry points. The *when*. The orchestration layer.
+## Combined Tool Flow
 
-Composition rule: **the user (or a slash command) is the orchestrator. Personas do not invoke other personas.** A persona may invoke skills.
+```
+1. Claude-Mem    → Recovers context from past sessions
+2. Graphify      → Maps codebase relationships
+3. GitNexus      → Impact analysis before edits
+4. Open GSD      → Phase pipeline (discuss → plan → execute → verify → ship)
+5. Superpowers   → Individual phase skills (brainstorm, debug, review)
+6. ECC           → Foundation OS (TDD, security, standards)
+7. Planning-with-files → Persistent task plan on disk
+```
 
-The only multi-persona orchestration pattern this repo endorses is **parallel fan-out with a merge step** — used by `/ship` to run `code-reviewer`, `security-auditor`, and `test-engineer` concurrently and synthesize their reports. Do not build a "router" persona that decides which other persona to call; that's the job of slash commands and intent mapping.
+<!-- gitnexus:start -->
+# GitNexus — Code Intelligence
 
-See [docs/agents.md](docs/agents.md) for the decision matrix and [references/orchestration-patterns.md](references/orchestration-patterns.md) for the full pattern catalog.
+This project is indexed by GitNexus as **Gurun** (953 symbols, 1525 relationships, 29 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
 
-**Claude Code interop:** the personas in `agents/` work as Claude Code subagents (auto-discovered from this plugin's `agents/` directory) and as Agent Teams teammates (referenced by name when spawning). Two platform constraints align with our rules: subagents cannot spawn other subagents, and teams cannot nest. Plugin agents silently ignore the `hooks`, `mcpServers`, and `permissionMode` frontmatter fields.
+> If any GitNexus tool warns the index is stale, run `npx gitnexus analyze` in terminal first.
 
-## Creating a New Skill
+## Always Do
 
-> **Before you start:** run the pre-flight checks in [CONTRIBUTING.md](CONTRIBUTING.md#before-proposing-a-new-skill), search the catalog, check open PRs (`gh pr list --state open`), confirm the idea fits [docs/skill-anatomy.md](docs/skill-anatomy.md), and justify the gap in your PR description. Most new-skill ideas overlap an existing skill or an open PR; prefer extending an existing skill over adding a near-duplicate. CONTRIBUTING.md is the single source of truth for this workflow.
+- **MUST run impact analysis before editing any symbol.** Before modifying a function, class, or method, run `gitnexus_impact({target: "symbolName", direction: "upstream"})` and report the blast radius (direct callers, affected processes, risk level) to the user.
+- **MUST run `gitnexus_detect_changes()` before committing** to verify your changes only affect expected symbols and execution flows.
+- **MUST warn the user** if impact analysis returns HIGH or CRITICAL risk before proceeding with edits.
+- When exploring unfamiliar code, use `gitnexus_query({query: "concept"})` to find execution flows instead of grepping. It returns process-grouped results ranked by relevance.
+- When you need full context on a specific symbol — callers, callees, which execution flows it participates in — use `gitnexus_context({name: "symbolName"})`.
 
-Skills in this repo are markdown-first: each lives at `skills/<kebab-case-name>/SKILL.md` with YAML frontmatter (`name`, `description`) and follows the section anatomy (Overview, When to Use, Process, Common Rationalizations, Red Flags, Verification). Add a `scripts/` directory only when the skill ships runnable helpers; most skills are markdown only, and there are no per-skill zip packages.
+## Never Do
 
-For the full format, naming conventions, frontmatter rules, supporting-file thresholds, and writing principles, see [docs/skill-anatomy.md](docs/skill-anatomy.md), the single source of truth for skill structure. Do not restate that guidance here, link to it.
+- NEVER edit a function, class, or method without first running `gitnexus_impact` on it.
+- NEVER ignore HIGH or CRITICAL risk warnings from impact analysis.
+- NEVER rename symbols with find-and-replace — use `gitnexus_rename` which understands the call graph.
+- NEVER commit changes without running `gitnexus_detect_changes()` to check affected scope.
+
+## Resources
+
+| Resource | Use for |
+|----------|---------|
+| `gitnexus://repo/Gurun/context` | Codebase overview, check index freshness |
+| `gitnexus://repo/Gurun/clusters` | All functional areas |
+| `gitnexus://repo/Gurun/processes` | All execution flows |
+| `gitnexus://repo/Gurun/process/{name}` | Step-by-step execution trace |
+
+## CLI
+
+| Task | Read this skill file |
+|------|---------------------|
+| Understand architecture / "How does X work?" | `.opencode/skills/gitnexus-exploring/SKILL.md` |
+| Blast radius / "What breaks if I change X?" | `.opencode/skills/gitnexus-impact-analysis/SKILL.md` |
+| Trace bugs / "Why is X failing?" | `.opencode/skills/gitnexus-debugging/SKILL.md` |
+| Rename / extract / split / refactor | `.opencode/skills/gitnexus-refactoring/SKILL.md` |
+| Tools, resources, schema reference | `.opencode/skills/gitnexus-guide/SKILL.md` |
+| Index, status, clean, wiki CLI commands | `.opencode/skills/gitnexus-cli/SKILL.md` |
+| Work in the Shadcn-ui area (56 symbols) | `.opencode/skills/generated/shadcn-ui/SKILL.md` |
+| Work in the Hooks area (28 symbols) | `.opencode/skills/generated/hooks/SKILL.md` |
+| Work in the Custom-ui area (7 symbols) | `.opencode/skills/generated/custom-ui/SKILL.md` |
+| Work in the App area (5 symbols) | `.opencode/skills/generated/app/SKILL.md` |
+| Work in the Services area (5 symbols) | `.opencode/skills/generated/services/SKILL.md` |
+| Work in the Cluster_18 area (4 symbols) | `.opencode/skills/generated/cluster-18/SKILL.md` |
+| Work in the Doa area (3 symbols) | `.opencode/skills/generated/doa/SKILL.md` |
+| Work in the Hadist area (3 symbols) | `.opencode/skills/generated/hadist/SKILL.md` |
+| Work in the Asmaul_husna area (3 symbols) | `.opencode/skills/generated/asmaul-husna/SKILL.md` |
+| Work in the Server area (3 symbols) | `.opencode/skills/generated/server/SKILL.md` |
+
+## Graphify — Knowledge Graph
+
+This project has a graphify knowledge graph at `graphify-out/`. Before answering architecture or codebase questions, check it:
+- `/graphify query "question"` — scoped subgraph for a plain-language question
+- `/graphify path "A" "B"` — shortest path between two symbols
+- `/graphify explain "X"` — plain-language explanation of a node and its neighbors
+
+Run `graphify extract . --update` after significant changes to keep the graph current.
+
+<!-- gitnexus:end -->
