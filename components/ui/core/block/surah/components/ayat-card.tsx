@@ -1,3 +1,4 @@
+// components/ProgressReadCard.tsx (atau file ayat-card.tsx lu)
 import {
   Card,
   CardContent,
@@ -6,53 +7,40 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/fragments/shadcn-ui/card';
-import React from 'react';
+import React from 'react'; // ✅ Hapus import useState
 import { cn } from '@/lib/utils';
 import { View, ViewProps } from 'react-native';
 import { Text } from '../../../../fragments/shadcn-ui/text';
 
-import { Bookmark, CirclePause, CirclePlay, MoreHorizontal, Share2Icon } from 'lucide-react-native';
+import { Bookmark, MoreHorizontal, PlayCircleIcon, Share2Icon } from 'lucide-react-native';
 import { Button } from '../../../../fragments/shadcn-ui/button';
 import { Icon } from '../../../../fragments/shadcn-ui/icon';
 import {
   addBookmark,
   BookmarkType,
   removeBookmark,
-  useBookmarkStore,
+  useBookmarkStore, // ✅ Import ini biar kita bisa subscribe langsung
 } from '../store/use-bookmark-store';
-import type { Ayah, Surah } from '../types/surah-type';
-import {
-  useAudioStore,
-  useCurrentTrack,
-} from '@/components/ui/core/block/audio/store/use-audio-store';
+import { Ayah } from '../types/surah-type';
 
 type componentProps = ViewProps & {
   className?: string;
   ayat: Ayah;
-  surah: Surah;
-  ayahIndex: number;
   surahNomor: string;
   surahNama: string;
 };
 
-export function AyatCard({
-  className,
-  surahNomor,
-  surahNama,
-  surah,
-  ayahIndex,
-  ayat,
-  ...props
-}: componentProps) {
+export function AyatCard({ className, surahNomor, surahNama, ayat, ...props }: componentProps) {
+  const audio = ayat.audio['01'] ?? ayat.audio['02']; // ✅ audio belum dipakai tapi aman
   const id = `${surahNomor}:${ayat.nomorAyat}`;
+  const audioId = `${surahNomor}-${ayat.nomorAyat}`; // ✅ audioId belum dipakai tapi aman
+
+  // ✅ PERBAIKAN UTAMA: Kita membuang isBookmarked dan useState!
+  // Kita subscribe langsung secara spesifik. Jika store berubah, ayat ini akan mengecek
+  // apakah ID miliknya ada di dalam array Bookmark global.
   const isSaved = useBookmarkStore((state) =>
     state.Bookmark.some((bookmark) => bookmark.id === id)
   );
-
-  const playAyah = useAudioStore((s) => s.playAyah);
-  const currentTrack = useCurrentTrack();
-  const isActive = currentTrack?.id === id;
-  const isPlaying = isActive;
 
   const BookmarkData: BookmarkType = {
     ...ayat,
@@ -60,6 +48,8 @@ export function AyatCard({
   };
 
   const ToggleBookmark = () => {
+    // ✅ Kita tidak perlu lagi mengatur setSaved manual secara lokal.
+    // Zustand yang akan mengurus UI perubahannya secara otomatis.
     if (isSaved) {
       removeBookmark(id);
     } else {
@@ -67,26 +57,17 @@ export function AyatCard({
     }
   };
 
-  const handlePlay = () => {
-    playAyah(surah, ayahIndex);
-  };
-
   return (
     <>
       <Card
         className={cn(
-          'mb-2.5 w-full gap-1 rounded-none border-b border-b-muted-foreground/10 transition-all duration-200',
-          isActive ? 'bg-primary/5' : 'bg-background',
+          'mb-2.5 w-full gap-1 rounded-none border-b border-b-muted-foreground/10 bg-background transition-all duration-200',
           className
         )}
         {...props}>
         <CardContent className="w-full items-center justify-between gap-8 px-1">
           <View className="w-full flex-row items-center justify-between">
-            <View
-              className={cn(
-                'content-center overflow-hidden rounded-2xl px-4 py-0.5 text-center',
-                isActive ? 'bg-primary/20' : 'bg-primary/10'
-              )}>
+            <View className="content-center overflow-hidden rounded-2xl bg-primary/10 px-4 py-0.5 text-center">
               <Text className="m-auto font-poppins_semibold text-sm">
                 {surahNomor}:{ayat.nomorAyat}
               </Text>
@@ -113,15 +94,8 @@ export function AyatCard({
             </CardHeader>
 
             <CardFooter className="w-full flex-row items-center justify-start gap-5 p-0">
-              <Button
-                onPress={handlePlay}
-                variant={'ghost'}
-                size={'icon'}
-                className="size-5 h-fit p-0">
-                <Icon
-                  className={cn('size-full', isPlaying ? 'text-primary' : 'text-muted-foreground')}
-                  as={isPlaying ? CirclePause : CirclePlay}
-                />
+              <Button variant={'ghost'} size={'icon'} className="size-5 h-fit p-0">
+                <Icon className="size-full text-muted-foreground" as={PlayCircleIcon} />
               </Button>
               <Button
                 onPress={ToggleBookmark}
@@ -131,7 +105,7 @@ export function AyatCard({
                 <Icon
                   as={Bookmark}
                   className={cn(
-                    'size-full',
+                    'size-full text-muted-foreground',
                     isSaved
                       ? 'fill-primary text-primary dark:fill-secondary dark:text-secondary'
                       : 'text-muted-foreground'

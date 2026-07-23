@@ -22,7 +22,7 @@ export default function PrayTimeCard({ Pray }: componentsProps) {
   const tintColor = THEME[currentTheme].primary;
 
   return (
-    <Card className="flex w-[6.6em] content-center justify-center gap-4 bg-card/40 px-0 py-4">
+    <Card className="flex w-[6.5em] content-center justify-center gap-4 bg-card/40 px-0 py-4">
       <CardHeader className="flex content-center items-center justify-center p-0">
         <ZuhurIcon fill={tintColor} />
       </CardHeader>

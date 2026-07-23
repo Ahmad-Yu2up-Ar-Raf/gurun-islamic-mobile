@@ -18,7 +18,7 @@ export default function HomeBlock() {
         city={city}
         dateString={dateString}
       />
-      {/* <PrayTimeSection PrayerSchedule={todayPrayerSchedule?.jadwal || []} /> */}
+      <PrayTimeSection PrayerSchedule={todayPrayerSchedule?.jadwal || []} />
     </Wrapper>
   );
 }

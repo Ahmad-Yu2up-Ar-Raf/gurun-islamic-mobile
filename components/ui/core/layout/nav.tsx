@@ -121,7 +121,7 @@ export function HeaderComponent({
               <Text
                 variant="h3"
                 className="font-figtree_bold text-center text-2xl tracking-tighter text-primary">
-                Gurun
+                LiveUp
               </Text>
             </View>
           </View>

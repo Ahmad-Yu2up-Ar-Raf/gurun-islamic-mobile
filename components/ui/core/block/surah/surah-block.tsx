@@ -68,14 +68,8 @@ export default function SurahBlock({ id, nameSurah }: ComponentProp) {
 
       <LegendList
         data={ayahs ?? []}
-        renderItem={({ item, index }) => (
-          <AyatCard
-            surah={surah!}
-            ayahIndex={index}
-            surahNomor={id}
-            surahNama={nameSurah}
-            ayat={item as Ayah}
-          />
+        renderItem={({ item }) => (
+          <AyatCard surahNomor={id} surahNama={nameSurah} ayat={item as Ayah} />
         )}
         keyExtractor={(item: unknown, index: number) => `ayat-${(item as Ayah).nomorAyat}`}
         numColumns={1}
@@ -84,7 +78,6 @@ export default function SurahBlock({ id, nameSurah }: ComponentProp) {
         scrollEventThrottle={16}
         ListHeaderComponent={
           <SuraHeader
-            surah={surah}
             kategori={surah?.tempatTurun}
             namaLatin={surah?.namaLatin}
             arti={surah?.arti}
@@ -94,7 +87,7 @@ export default function SurahBlock({ id, nameSurah }: ComponentProp) {
         contentContainerStyle={{
           // ✅ Berikan paddingTop lebih tinggi (sekitar 100px) agar ayat pertama
           // tidak tertutup oleh HeaderComponent yang melayang secara absolut di atasnya.
-          paddingTop: 20,
+          paddingTop: 100,
           paddingBottom: 100,
           paddingHorizontal: 12,
         }}

@@ -1,39 +1,39 @@
 {
   "expo": {
-    "name": "Gurun",
-    "slug": "gurun",
+    "name": " ",
+    "slug": " ",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/logo/logo.png",
+    "icon": "./assets/logo/splash.svg",
     "scheme": "saraya",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/logo/logo.png"
+      "image": "./assets/logo/splash.svg"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true,
-      "infoPlist": {
-        "UIBackgroundModes": ["audio"]
-      }
+      "supportsTablet": true
     },
     "android": {
+      "edgeToEdgeEnabled": true,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/logo/logo.png",
+        "foregroundImage": "./assets/logo/logo.svg",
         "backgroundColor": "#dc2626"
-      },
-      "package": "com.anonymous"
+      }
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/logo/logo.png"
+      "favicon": "./assets/logo/logo.svg"
     },
     "plugins": [
       "expo-router",
       "expo-secure-store",
       "expo-web-browser",
+      "expo-audio",
       "expo-image",
       "expo-splash-screen",
       "expo-status-bar"
