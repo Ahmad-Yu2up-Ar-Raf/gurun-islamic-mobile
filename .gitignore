@@ -19,7 +19,7 @@ web-build/
 # Metro
 .metro-health-check*
 **/.env*
-!.env.example
+
 .env
 # debug
 npm-debug.*

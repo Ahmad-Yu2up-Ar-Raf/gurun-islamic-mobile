@@ -37,7 +37,7 @@ Most Islamic apps are either bloated with features you don't need or poorly main
 | Dhikr | Interactive digital dhikr guide with type-based filtering (morning, evening, after prayer) and counter | Active |
 | Hadith | Collection of authenticated hadiths | Active |
 
-## Screenshots
+<!-- ## Screenshots
 
 > Replace these placeholders with actual screenshots before publishing.
 
@@ -57,7 +57,7 @@ Most Islamic apps are either bloated with features you don't need or poorly main
   <img src="docs/screenshots/asmaul-husna.png" width="250" alt="Asmaul Husna" />
   <img src="docs/screenshots/dzikir.png" width="250" alt="Dhikr" />
   <img src="docs/screenshots/daily-duas.png" width="250" alt="Daily Duas" />
-</p>
+</p> -->
 
 ## Tech Stack
 
