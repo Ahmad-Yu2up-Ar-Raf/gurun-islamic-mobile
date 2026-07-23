@@ -35,36 +35,36 @@ app/
 
 **Key patterns:**
 
-| Pattern | Code |
-|---------|------|
-| Stack → Drawer → Tabs | Three-level nesting via layouts |
-| Dynamic routes | `surah/[id].tsx` → `/surah/114` |
-| Drawer screens | Flat routes under root Stack, registered as `Drawer.Screen` |
-| Tab groups | Routes inside `(tabs)/` — tabs at bottom |
-| Typed routes enabled | `"experiments": { "typedRoutes": true }` in `app.json` |
+| Pattern               | Code                                                        |
+| --------------------- | ----------------------------------------------------------- |
+| Stack → Drawer → Tabs | Three-level nesting via layouts                             |
+| Dynamic routes        | `surah/[id].tsx` → `/surah/114`                             |
+| Drawer screens        | Flat routes under root Stack, registered as `Drawer.Screen` |
+| Tab groups            | Routes inside `(tabs)/` — tabs at bottom                    |
+| Typed routes enabled  | `"experiments": { "typedRoutes": true }` in `app.json`      |
 
 ## Deep Linking
 
-**Scheme** is configured in `app.json` at `expo.scheme` (`"saraya"`).
+**Scheme** is configured in `app.json` at `expo.scheme` (`"gurun"`).
 
 ```json
 // app.json — scheme enables universal links
 {
   "expo": {
-    "scheme": "saraya",
+    "scheme": "gurun",
     "experiments": { "typedRoutes": true }
   }
 }
 ```
 
-Navigate from external links: `saraya://surah/114` or `saraya://doa`. Expo Router auto-maps deep links to file paths. No manual linking config needed unless overriding.
+Navigate from external links: `gurun://surah/114` or `gurun://doa`. Expo Router auto-maps deep links to file paths. No manual linking config needed unless overriding.
 
 **Linking config override** (if needed): pass `linking` to root `<Stack>`:
 
 ```tsx
 <Stack
   linking={{
-    prefixes: ['saraya://', 'https://gurun.app'],
+    prefixes: ['gurun://', 'https://gurun.app'],
     config: {
       screens: {
         '(drawer)': {
@@ -118,7 +118,7 @@ export default function RootLayout() {
 <Stack.Screen
   name="filter-modal"
   options={{
-    presentation: 'modal',       // iOS modal from bottom
+    presentation: 'modal', // iOS modal from bottom
     animation: 'slide_from_bottom',
   }}
 />
@@ -137,10 +137,10 @@ Navigate: `router.push('/(modals)/filter')`.
 
 ## Tab vs Drawer Best Practices
 
-| Use Case | Navigator |
-|----------|-----------|
-| Main app shell with hamburger menu | Drawer |
-| Bottom navigation (primary destinations) | Tabs inside Drawer |
+| Use Case                                            | Navigator                  |
+| --------------------------------------------------- | -------------------------- |
+| Main app shell with hamburger menu                  | Drawer                     |
+| Bottom navigation (primary destinations)            | Tabs inside Drawer         |
 | Standalone full-screen screens (e.g., surah detail) | Stack (not in Drawer/Tabs) |
 
 **Rules for this project:**
@@ -182,9 +182,9 @@ router.push({
 
 **`useGlobalSearchParams`** — for params from any screen in the navigation stack (e.g., deep links). Prefer `useLocalSearchParams` for current-route params.
 
-| Hook | Scope |
-|------|-------|
-| `useLocalSearchParams` | Params for the current screen route |
+| Hook                    | Scope                               |
+| ----------------------- | ----------------------------------- |
+| `useLocalSearchParams`  | Params for the current screen route |
 | `useGlobalSearchParams` | Params from any screen in the stack |
 
 ## Adding a Screen

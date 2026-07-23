@@ -5,15 +5,13 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/logo/splash.svg",
-    "scheme": "saraya",
+    "scheme": "gurun",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/logo/splash.svg"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
