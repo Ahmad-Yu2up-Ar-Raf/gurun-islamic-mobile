@@ -1,5 +1,14 @@
 # Gurun — Agent Guide
 
+## Session Start Protocol (MANDATORY)
+
+At the start of **every single session**, before any other action:
+
+1. **Read `.opencode/constitution.md`** — the 4 Karpathy principles (think before coding, simplicity first, surgical changes, goal-driven execution). These apply to every task.
+2. **Read `.opencode/memory/profile.md`** — the current strategy profile (active projects, strategic focus, recent decisions, next actions). This provides cross-session context and prevents amnesia.
+
+These two files establish the agent's behavioral constitution and working context. Do not skip this step.
+
 ## Commands
 
 | Command | What it does |
