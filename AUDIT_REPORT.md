@@ -1,449 +1,118 @@
-# AUDIT REPORT: Skill Activation Plan
+# AUDIT REPORT: Taste Skills for Gurun
 
-> **Source:** `~/.agents/skills/` (441 skills installed by `npx skills add -g`)
-> **Target:** `~/.opencode/skills/` (currently empty) — GLOBAL skills
-> **Active local:** `.opencode/skills/` (6 skills: expo-router-v4, nativewind-v4, reanimated-4, tanstack-query-zustand, islamic-app-domain, clerk-auth)
-> **Date:** 2026-07-22
-
----
-
-## 1. Current State
-
-| Location | Count | Status |
-|----------|-------|--------|
-| `~/.agents/skills/` | 441 | Installed by npx skills, OpenCode discovers from here |
-| `~/.opencode/skills/` | 0 | Empty — needs activation |
-| `.opencode/skills/` (project) | 6 | Already active, project-specific |
-| OpenCode system prompt | 441 | All skills listed as available_skills |
-
-**Key insight:** OpenCode already discovers `~/.agents/skills/` — skills there ARE loadable via the `skill` tool. The 441 skills in the system prompt's `available_skills` list come from this directory. However, copying the most relevant subset to `~/.opencode/skills/` makes them explicitly "activated" and gives you curation control.
+> **Repo:** [github.com/Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill) (67K stars, MIT)
+> **Website:** [tasteskill.dev](https://www.tasteskill.dev/)
+> **Project stack:** React Native 0.86 + Expo SDK 57 + NativeWind v4 + Reanimated 4
+> **Developer also builds:** Web (Next.js, landing pages, SaaS)
 
 ---
 
-## 2. Classification Key
+## 1. Skill Classification
 
-| Tag | Meaning | Target |
-|-----|---------|--------|
-| **GLOBAL** | Useful for ANY TypeScript/React/Expo project | `~/.opencode/skills/` |
-| **LOCAL** | References this project's specific architecture | `.opencode/skills/` |
-| **SKIP** | Wrong stack (Python/Go/Rust/Vue/Cloud/Data) or overly niche | Leave at `~/.agents/skills/` |
-| **KEEP BOTH** | Official global skill + custom local skill coexist (local overrides) | Both locations |
+### GLOBAL (install to `~/.opencode/skills/` — available in ALL projects)
 
----
+| # | Skill | Install Name | Why | Conflict Notes |
+|---|-------|-------------|-----|----------------|
+| 1 | **taste-skill v2** | `design-taste-frontend` | Design THEORY sections are universal: color calibration (Lila Rule, premium-consumer palette ban), typography rules (serif discipline, italic clearance), layout diversification (anti-center bias, section-layout-repetition ban), anti-slop rules, dark mode protocol. These apply to ANY UI project — RN or web. | **Implementation rules are web-only** (Next.js, RSC, Tailwind v4, Motion, GSAP, CSS Grid). Must be explicitly overridden for RN projects by our `nativewind-v4` and `reanimated-4` local skills. |
+| 2 | **output-skill** | `full-output-enforcement` | Purely behavioral: bans `// ...`, `// TODO`, truncated output, skeleton-only responses. Framework-agnostic — works for RN, web, any stack. | None. Zero conflicts. |
+| 3 | **redesign-skill** | `redesign-existing-projects` | Audit-first approach for existing codebases. Framework-agnostic design audit (typography, color, layout, interactivity, states). Doesn't prescribe specific implementation. | None. The fix priority order is universal. |
 
-## 3. Recommendations
+### BONUS GLOBAL (optional, recommended)
 
-### 3a. GLOBAL Skills to Activate (104 skills → `~/.opencode/skills/`)
+| # | Skill | Install Name | Why |
+|---|-------|-------------|-----|
+| 4 | **imagegen-frontend-mobile** | `imagegen-frontend-mobile` | Generates mobile app screen designs (icons, mockups, flows). Produces images, not code — platform-agnostic. Useful for Gurun's UI exploration AND any future mobile project. Install via same repo with `--skill "imagegen-frontend-mobile"`. |
 
-#### Expo & EAS (23) — Official Expo team, actively maintained
+### SKIP (not relevant to this stack)
 
-| Skill | Why | Lines |
-|-------|-----|-------|
-| `expo-app-clip` | iOS App Clip setup | ~100 |
-| `expo-brownfield` | Native app integration | ~200 |
-| `expo-data-fetching` | Network/API/caching patterns for Expo | 449 |
-| `expo-dev-client` | Custom dev builds with EAS | ~120 |
-| `expo-dom` | Web code in native webviews | ~150 |
-| `expo-examples` | 70+ integration examples reference | ~80 |
-| `expo-migrate-module` | Native module v1→v2 migration | ~100 |
-| `expo-module` | Custom native modules with Expo API | ~300 |
-| `expo-native-ui` | Native-feeling UI with Apple HIG | 181 |
-| `expo-project-structure` | Folder layout for Expo projects | ~60 |
-| `expo-router` | File-based routing (official) | ~200 |
-| `expo-tailwind-setup` | Tailwind CSS v4 in Expo | ~150 |
-| `expo-ui` | @expo/ui SwiftUI/Compose components | ~200 |
-| `expo-upgrade` | SDK version upgrade guidance | ~100 |
-| `expo-web-to-native` | Migrate web React apps to native | ~200 |
-| `eas-app-stores` | EAS Build → App Store/Play Store | ~200 |
-| `eas-hosting` | EAS Hosting for web/API routes | ~180 |
-| `eas-observe` | Performance metrics via EAS Observe | ~150 |
-| `eas-simulator` | Cloud iOS/Android simulator | ~150 |
-| `eas-update-insights` | OTA update health metrics | ~100 |
-| `eas-workflows` | EAS CI/CD workflow YAML | ~200 |
-| `expo-skill-eval` | Eval Expo skills end-to-end | ~120 |
-| `expo-skill-feedback` | Submit feedback on Expo skills | ~80 |
-
-#### React Native (7) — Core RN patterns
-
-| Skill | Why | Lines |
-|-------|-----|-------|
-| `react-native-best-practices` | RN perf: FPS, TTI, bundle, Hermes | 241 |
-| `react-native-architecture` | RN app architecture patterns | ~200 |
-| `react-native-design` | RN styling, navigation, animations | ~200 |
-| `react-native-expo` | Expo SDK config, EAS, CNG | ~200 |
-| `react-native-reusables` | shadcn-style RN components with RN Primitives | 40 |
-| `react-navigation` | Stack/Tab/Drawer patterns (RN v7) | ~150 |
-| `upgrading-react-native` | RN version upgrade guidance | ~150 |
-
-#### Software Mansion Argent (11) — Reanimated/Gesture Handler creators
-
-| Skill | Why | Lines |
-|-------|-----|-------|
-| `argent-react-native-app-workflow` | RN dev/debug workflow with Metro | ~60 |
-| `argent-react-native-optimization` | Profile-first RN optimization | ~120 |
-| `argent-react-native-profiler` | Hermes re-render/CPU profiling | ~120 |
-| `argent-metro-debugger` | CDP Metro debugging | ~80 |
-| `argent-screenshot-diff` | Visual regression testing | ~60 |
-| `argent-device-interact` | Tap/swipe/type on simulators | ~100 |
-| `argent-ios-simulator-setup` | iOS simulator boot/connect | ~60 |
-| `argent-android-emulator-setup` | Android emulator boot/connect | ~60 |
-| `argent-settings-permissions` | Grant/deny runtime permissions | ~80 |
-| `argent-create-flow` | Record reusable interaction flows | ~60 |
-| `argent-test-ui-flow` | Autonomous UI testing loop | ~100 |
-
-#### State & Data (3)
-
-| Skill | Why | Lines |
-|-------|-----|-------|
-| `tanstack-query` | Official TanStack Query v5 patterns (849 lines) | 849 |
-| `zustand` | LobeHub Zustand store conventions | 202 |
-| `react-state-management` | Redux/Zustand/Jotai/Query patterns | ~200 |
-
-#### Styling (5)
-
-| Skill | Why | Lines |
-|-------|-----|-------|
-| `nativewind` | Tailwind CSS for RN (official skill) | 57 |
-| `tailwindcss` | Tailwind CSS utility framework | ~200 |
-| `tailwind-design-system` | Design system with Tailwind tokens | ~200 |
-| `uniwind` | Tailwind v4 for RN (Uniwind) | ~200 |
-| `design-system-patterns` | Design tokens, theming, component arch | ~250 |
-
-#### TypeScript (2)
-
-| Skill | Why | Lines |
-|-------|-----|-------|
-| `typescript` | LobeHub TS style/type-safety guide | 74 |
-| `typescript-advanced-types` | Generics, conditional/mapped types | ~200 |
-
-#### Clerk Auth (11) — Official Clerk team
-
-| Skill | Why | Lines |
-|-------|-----|-------|
-| `clerk` | Router to all Clerk skills | ~50 |
-| `clerk-setup` | Clerk quickstart for any project | ~80 |
-| `clerk-custom-ui` | Custom sign-in/sign-up flows | ~200 |
-| `clerk-expo` | Expo-specific auth (has project-specific relevance) | 118 |
-| `clerk-tanstack-patterns` | Clerk + TanStack integration | ~100 |
-| `clerk-testing` | E2E testing for Clerk apps | ~150 |
-| `clerk-webhooks` | Clerk webhook handling | ~200 |
-| `clerk-cli` | Clerk CLI operations | ~200 |
-| `clerk-backend-api` | Clerk REST API endpoints | ~200 |
-| `clerk-orgs` | Multi-tenant orgs/RBAC | ~200 |
-| `clerk-billing` | Subscription/payment management | ~200 |
-
-#### Code Quality & SDLC (20)
-
-| Skill | Why | Lines |
-|-------|-----|-------|
-| `code-review-and-quality` | Multi-axis code review (addyosmani) | 396 |
-| `code-simplification` | Simplify without changing behavior | ~100 |
-| `performance-optimization` | Frontend/backend/query perf | 350 |
-| `security-and-hardening` | Input validation, auth, secrets | 467 |
-| `debugging-and-error-recovery` | Systematic root-cause debugging | 300 |
-| `debugging-strategies` | Profiling, tracing, RCA | ~200 |
-| `frontend-ui-engineering` | Production-quality accessible UI | 328 |
-| `error-handling-patterns` | Exceptions, Result types, graceful degredation | ~200 |
-| `git-workflow-and-versioning` | Branching, commits, releases | 355 |
-| `ci-cd-and-automation` | Pipeline setup and quality gates | ~200 |
-| `documentation-and-adrs` | ADRs and architectural docs | ~200 |
-| `architecture-decision-records` | ADR format and process | ~150 |
-| `planning-and-task-breakdown` | Dependency graph, vertical slicing | ~200 |
-| `incremental-implementation` | Small, reversible changes | ~150 |
-| `source-driven-development` | Official-doc-grounded implementation | ~100 |
-| `spec-driven-development` | Write specs before coding | ~200 |
-| `shipping-and-launch` | Pre-launch checklist, rollback | ~150 |
-| `dependency-upgrade` | Major version upgrade management | ~200 |
-| `changelog-automation` | Keep a Changelog format | ~150 |
-| `version-release` | Release process, GitHub Releases | ~100 |
-
-#### Testing (6)
-
-| Skill | Why | Lines |
-|-------|-----|-------|
-| `test-driven-development` | RED-GREEN-REFACTOR cycle | ~200 |
-| `testing` | Vitest testing guide | 129 |
-| `vitest` | Vitest unit testing framework | ~100 |
-| `javascript-testing-patterns` | Jest/Vitest, mocking, fixtures | ~250 |
-| `e2e-testing-patterns` | Playwright/Cypress E2E | ~250 |
-| `browser-testing-with-devtools` | Real browser debugging via CDP | ~150 |
-
-#### Accessibility (3)
-
-| Skill | Why | Lines |
-|-------|-----|-------|
-| `accessibility-compliance` | WCAG 2.2 mobile accessibility | 51 |
-| `wcag-audit-patterns` | WCAG audits with automated testing | ~200 |
-| `screen-reader-testing` | VoiceOver/NVDA/JAWS testing | ~120 |
-
-#### UI/UX/Design (7)
-
-| Skill | Why | Lines |
-|-------|-----|-------|
-| `ux` | LobeHub product design values | ~200 |
-| `ux-audit` | Pattern-language UX review | ~200 |
-| `product-design` | Feature scoping and design | ~200 |
-| `visual-design-foundations` | Typography, color, spacing | ~200 |
-| `responsive-design` | Container queries, fluid typography | ~200 |
-| `interaction-design` | Microinteractions, transitions | ~200 |
-| `motion` | Motion animation library (Framer Motion) | ~150 |
-
-#### Developer Experience (6)
-
-| Skill | Why | Lines |
-|-------|-----|-------|
-| `context-engineering` | Optimize agent context setup | ~80 |
-| `modern-javascript-patterns` | ES6+, async/await, functional | ~200 |
-| `pnpm` | Package manager guidance | ~100 |
-| `monorepo-management` | Turborepo/Nx workspace patterns | ~200 |
-| `turborepo` | Turborepo pipeline/caching | ~200 |
-| `i18n` | Internationalization (react-i18next) | 78 |
+| Skill | Reason |
+|-------|--------|
+| `design-taste-frontend-v1` | Superseded by v2. Legacy. |
+| `gpt-taste` | GPT/Codex specific prompt structure. Web-only implementation. |
+| `image-to-code` | Web code pipeline (image → HTML/CSS). Not applicable to RN. |
+| `high-end-visual-design` | Web premium style: CSS box-shadow, web fonts, Motion animations. RN uses Reanimated, not Motion. |
+| `minimalist-ui` | Deeply CSS-specific: SF Pro Display, Geist Sans, custom border styles, `#EAEAEA` borders. RN doesn't use CSS the same way. |
+| `industrial-brutalist-ui` | Web experimental styling. RN-incompatible. |
+| `stitch-design-taste` | Google Stitch-specific export format. Not relevant. |
+| `imagegen-frontend-web` | Web-only image generation (heroes, landing pages). |
+| `brandkit` | Brand identity boards — niche use case, low priority for this install cycle. |
 
 ---
 
-### 3b. Existing LOCAL Skills (6 — NO changes needed)
+## 2. Compatibility Analysis: `design-taste-frontend` Conflicts
 
-These are already in `.opencode/skills/` and should remain as-is. They are project-specific and override any global counterpart.
+The taste-skill v2 has explicit implementation defaults that CONFLICT with our RN stack:
 
-| Skill | Overlap with Global | Decision |
-|-------|--------------------|----------|
-| `expo-router-v4` | Overlaps with global `expo-router` | **KEEP BOTH** — local has project-specific routing tree + auth guards. Local takes precedence when loaded. |
-| `nativewind-v4` | Overlaps with global `nativewind` | **KEEP BOTH** — local documents this project's specific HSL theme variables and font classes. |
-| `reanimated-4` | Overlaps with Argent skills | **KEEP BOTH** — local is concise (159 lines), Argent skills add profiling/debugging. Complementary. |
-| `tanstack-query-zustand` | Overlaps with global `tanstack-query` + `zustand` | **KEEP BOTH** — local is project-specific (Ky client, equran.id, bootstrap prefetch). Global adds depth. |
-| `islamic-app-domain` | No overlap | **KEEP** — uniquely project-specific |
-| `clerk-auth` | Overlaps with global `clerk-expo` | **KEEP BOTH** — local is project-specific (SecureStore, route guards, API client). Global adds breadth. |
+| Taste-Skill Default | Our Project | Impact |
+|--------------------|-------------|--------|
+| Next.js + React Server Components | React Native + Expo Router | **Ignore.** RN has no RSC concept. |
+| Tailwind v4 (`@tailwindcss/postcss`) | NativeWind v4 (Tailwind v3 compatible) | **Ignore.** Our `nativewind-v4` local skill is authoritative. |
+| Motion (`motion/react` — formerly Framer Motion) | Reanimated 4 | **Ignore.** Our `reanimated-4` local skill is authoritative. |
+| Phosphor/Hugeicons, discourages `lucide-react` | Uses `lucide-react-native` | **Ignore.** Our icon choice is already set. |
+| GSAP for scroll animations | Reanimated worklets | **Ignore.** RN has no DOM/scroll in the web sense. |
+| CSS Grid / `max-w-[1400px]` | Flexbox + NativeWind utilities | **Ignore.** Use RN layout primitives. |
 
-### 3c. Skills to SKIP (337 skills)
-
-| Category | Count | Example Skills | Reason |
-|----------|-------|----------------|--------|
-| **Python** | 20+ | `python-*`, `fastapi-*`, `airflow-*`, `dbt-*`, `uv-package-manager` | Wrong language stack |
-| **Go** | 3 | `go-concurrency-patterns`, `go-*` | Wrong language stack |
-| **Rust** | 2 | `rust-async-patterns`, `memory-safety-patterns` | Wrong language stack |
-| **Vue/Nuxt** | 15+ | `vue*`, `nuxt*`, `pinia`, `unocss`, `uniapp*`, `vitepress`, `undocs` | Wrong framework |
-| **Angular** | 1 | `angular-migration` | Wrong framework |
-| **Flutter** | 1 | `flutter` | Wrong framework |
-| **Next.js** | 3 | `next`, `nextjs-app-router-patterns`, `clerk-nextjs-patterns` | Wrong framework (web) |
-| **Cloud/DevOps** | 20+ | `k8s-*`, `terraform-*`, `prometheus`, `grafana`, `istio`, `linkerd`, `helm-chart` | Not running infra here |
-| **ML/AI Training** | 20+ | `langchain`, `rag-implementation`, `lora-qlora`, `grpo-rlvr`, `preference-optimization`, `vision-sft`, `quantized-export`, `finetuning-*`, `checkpoint-promotion`, `eval-harness`, `trace-to-training`, `dataset-curation` | Not doing ML training |
-| **Blockchain/Web3** | 5 | `defi-protocol-templates`, `nft-standards`, `solidity-security`, `web3-testing`, `paypal-integration` | Not building blockchain |
-| **Security (niche)** | 10+ | `binary-analysis`, `anti-reversing`, `memory-forensics`, `protocol-reverse`, `attack-tree`, `stride-analysis`, `threat-mitigation` | Overly niche security skills |
-| **Desktop** | 3 | `electron`, `tauri`, `desktop` | Not building desktop apps |
-| **Data/Backend** | 10+ | `spark-*`, `event-store`, `projection-patterns`, `cqrs-implementation`, `saga-orchestration` | Not relevant for mobile app |
-| **PPTX** | 5 | `pptx-*` | Presentation creation — not applicable |
-| **Clerk variants (web)** | 8 | `clerk-nextjs-patterns`, `clerk-nuxt-patterns`, `clerk-astro-patterns`, `clerk-vue-patterns`, `clerk-react-patterns`, `clerk-react-router-patterns`, `clerk-chrome-extension-patterns`, `clerk-swift`, `clerk-android` | Wrong platform (web/native variants) |
-| **Audit skills** | 2 | `audit-clerk-skill`, `audit-expo-skill` | Skill-maintenance tools, not useful for app development |
-| **Niche/Overly Specific** | 200+ | `hermes-tweet`, `employment-contract-templates`, `incident-runbook-templates`, `postmortem-writing`, `on-call-handoff-patterns`, `startup-financial-modeling`, `team-composition-analysis`, `market-sizing-analysis`, `kpi-dashboard-design`, `backtesting-frameworks`, `risk-metrics-calculation`, `recsys-pipeline-architect`, `godot-gdscript-patterns`, `unity-ecs-patterns`, `godot-gdscript-patterns`, `game-dev*`, `stripe-integration`, `billing-automation`, `gdpr-data-handling`, `pci-compliance`, `file-conversion`, `slidev`, `design-prototype`, `brand-landingpage`, `co-marketing`, `prospecting`, `lead-magnets`, etc. | Not relevant to mobile app development or this project |
+**Resolution:** The design THEORY (sections 0, 1, 4.1-4.11, 8, 9) is universal and valuable. The implementation rules (sections 2, 3, 5, 6, 7) are web-only and must be skipped for RN projects. For future web projects, they become applicable.
 
 ---
 
-## 4. Overlap Resolution
+## 3. Existing Local Skill Overlaps
 
-| Conflicting Skills | Resolution |
-|--------------------|------------|
-| `expo-router` (global) vs `expo-router-v4` (local) | **Keep both.** Local has project routing tree + auth guards. Global has deeper Expo Router v4 coverage. Local takes priority. |
-| `nativewind` (global) vs `nativewind-v4` (local) | **Keep both.** Local has full HSL theme docs. Global adds generic patterns. |
-| `tanstack-query` (global) vs `tanstack-query-zustand` (local) | **Keep both.** Global adds 849 lines of depth. Local is project-specific (Ky client, equran.id). |
-| `zustand` (global) vs `tanstack-query-zustand` (local) | **Keep both.** Global adds LobeHub conventions. Local has project patterns. |
-| `clerk-expo` (global) vs `clerk-auth` (local) | **Keep both.** Global adds breadth (setup, custom UI, testing). Local has project-specific guard patterns. |
-| `argent-*` (global) vs `reanimated-4` (local) | **Keep both.** Argent is profiling/debugging-focused. Local is animation pattern-focused. Complementary. |
+| Existing Local Skill | Taste Skill Overlap | Resolution |
+|---------------------|--------------------|------------|
+| `nativewind-v4` | taste-skill's Tailwind rules and color tokens | Local wins for RN. Taste-skill theory supplements. |
+| `reanimated-4` | taste-skill's Motion/GSAP animation rules | Local wins. Taste-skill's motion theory (spring physics, staggered entry) is useful supplemental knowledge. |
+| `expo-router-v4` | No overlap | Independent. |
+| `tanstack-query-zustand` | No overlap | Independent. |
+| `islamic-app-domain` | No overlap | Independent. |
+| `clerk-auth` | No overlap | Independent. |
 
 ---
 
-## 5. Execution Plan
-
-### Prerequisites
+## 4. Execution Plan
 
 ```bash
-# Ensure target directory exists
-mkdir -p ~/.opencode/skills
-```
+# Step 1: Create global skills directory if needed
+mkdir -p ~/.opencode/skills/
 
-### Phase 1: Expo & EAS (23 skills)
+# Step 2: Install 3 skills from taste-skill repo
+npx skills add https://github.com/Leonxlnx/taste-skill --skill "design-taste-frontend"
+npx skills add https://github.com/Leonxlnx/taste-skill --skill "full-output-enforcement"
+npx skills add https://github.com/Leonxlnx/taste-skill --skill "redesign-existing-projects"
 
-```bash
-# Expo SDK
-cp -r ~/.agents/skills/expo-app-clip ~/.opencode/skills/
-cp -r ~/.agents/skills/expo-brownfield ~/.opencode/skills/
-cp -r ~/.agents/skills/expo-data-fetching ~/.opencode/skills/
-cp -r ~/.agents/skills/expo-dev-client ~/.opencode/skills/
-cp -r ~/.agents/skills/expo-dom ~/.opencode/skills/
-cp -r ~/.agents/skills/expo-examples ~/.opencode/skills/
-cp -r ~/.agents/skills/expo-migrate-module ~/.opencode/skills/
-cp -r ~/.agents/skills/expo-module ~/.opencode/skills/
-cp -r ~/.agents/skills/expo-native-ui ~/.opencode/skills/
-cp -r ~/.agents/skills/expo-project-structure ~/.opencode/skills/
-cp -r ~/.agents/skills/expo-router ~/.opencode/skills/
-cp -r ~/.agents/skills/expo-tailwind-setup ~/.opencode/skills/
-cp -r ~/.agents/skills/expo-ui ~/.opencode/skills/
-cp -r ~/.agents/skills/expo-upgrade ~/.opencode/skills/
-cp -r ~/.agents/skills/expo-web-to-native ~/.opencode/skills/
-cp -r ~/.agents/skills/expo-skill-eval ~/.opencode/skills/
-cp -r ~/.agents/skills/expo-skill-feedback ~/.opencode/skills/
+# Step 3: Move to OpenCode global skills directory
+cp -r ~/.agents/skills/design-taste-frontend ~/.opencode/skills/
+cp -r ~/.agents/skills/full-output-enforcement ~/.opencode/skills/
+cp -r ~/.agents/skills/redesign-existing-projects ~/.opencode/skills/
 
-# EAS
-cp -r ~/.agents/skills/eas-app-stores ~/.opencode/skills/
-cp -r ~/.agents/skills/eas-hosting ~/.opencode/skills/
-cp -r ~/.agents/skills/eas-observe ~/.opencode/skills/
-cp -r ~/.agents/skills/eas-simulator ~/.opencode/skills/
-cp -r ~/.agents/skills/eas-update-insights ~/.opencode/skills/
-cp -r ~/.agents/skills/eas-workflows ~/.opencode/skills/
-```
-
-### Phase 2: React Native + Argent (18 skills)
-
-```bash
-# RN Core
-cp -r ~/.agents/skills/react-native-best-practices ~/.opencode/skills/
-cp -r ~/.agents/skills/react-native-architecture ~/.opencode/skills/
-cp -r ~/.agents/skills/react-native-design ~/.opencode/skills/
-cp -r ~/.agents/skills/react-native-expo ~/.opencode/skills/
-cp -r ~/.agents/skills/react-native-reusables ~/.opencode/skills/
-cp -r ~/.agents/skills/react-navigation ~/.opencode/skills/
-cp -r ~/.agents/skills/upgrading-react-native ~/.opencode/skills/
-
-# Argent (Software Mansion)
-cp -r ~/.agents/skills/argent-react-native-app-workflow ~/.opencode/skills/
-cp -r ~/.agents/skills/argent-react-native-optimization ~/.opencode/skills/
-cp -r ~/.agents/skills/argent-react-native-profiler ~/.opencode/skills/
-cp -r ~/.agents/skills/argent-metro-debugger ~/.opencode/skills/
-cp -r ~/.agents/skills/argent-screenshot-diff ~/.opencode/skills/
-cp -r ~/.agents/skills/argent-device-interact ~/.opencode/skills/
-cp -r ~/.agents/skills/argent-ios-simulator-setup ~/.opencode/skills/
-cp -r ~/.agents/skills/argent-android-emulator-setup ~/.opencode/skills/
-cp -r ~/.agents/skills/argent-settings-permissions ~/.opencode/skills/
-cp -r ~/.agents/skills/argent-create-flow ~/.opencode/skills/
-cp -r ~/.agents/skills/argent-test-ui-flow ~/.opencode/skills/
-```
-
-### Phase 3: State, Styling, TypeScript (10 skills)
-
-```bash
-cp -r ~/.agents/skills/tanstack-query ~/.opencode/skills/
-cp -r ~/.agents/skills/zustand ~/.opencode/skills/
-cp -r ~/.agents/skills/react-state-management ~/.opencode/skills/
-cp -r ~/.agents/skills/nativewind ~/.opencode/skills/
-cp -r ~/.agents/skills/tailwindcss ~/.opencode/skills/
-cp -r ~/.agents/skills/tailwind-design-system ~/.opencode/skills/
-cp -r ~/.agents/skills/uniwind ~/.opencode/skills/
-cp -r ~/.agents/skills/design-system-patterns ~/.opencode/skills/
-cp -r ~/.agents/skills/typescript ~/.opencode/skills/
-cp -r ~/.agents/skills/typescript-advanced-types ~/.opencode/skills/
-```
-
-### Phase 4: Clerk Auth (11 skills)
-
-```bash
-cp -r ~/.agents/skills/clerk ~/.opencode/skills/
-cp -r ~/.agents/skills/clerk-setup ~/.opencode/skills/
-cp -r ~/.agents/skills/clerk-custom-ui ~/.opencode/skills/
-cp -r ~/.agents/skills/clerk-expo ~/.opencode/skills/
-cp -r ~/.agents/skills/clerk-tanstack-patterns ~/.opencode/skills/
-cp -r ~/.agents/skills/clerk-testing ~/.opencode/skills/
-cp -r ~/.agents/skills/clerk-webhooks ~/.opencode/skills/
-cp -r ~/.agents/skills/clerk-cli ~/.opencode/skills/
-cp -r ~/.agents/skills/clerk-backend-api ~/.opencode/skills/
-cp -r ~/.agents/skills/clerk-orgs ~/.opencode/skills/
-cp -r ~/.agents/skills/clerk-billing ~/.opencode/skills/
-```
-
-### Phase 5: Code Quality, SDLC, Testing (28 skills)
-
-```bash
-# Code quality
-cp -r ~/.agents/skills/code-review-and-quality ~/.opencode/skills/
-cp -r ~/.agents/skills/code-simplification ~/.opencode/skills/
-cp -r ~/.agents/skills/performance-optimization ~/.opencode/skills/
-cp -r ~/.agents/skills/security-and-hardening ~/.opencode/skills/
-cp -r ~/.agents/skills/debugging-and-error-recovery ~/.opencode/skills/
-cp -r ~/.agents/skills/debugging-strategies ~/.opencode/skills/
-cp -r ~/.agents/skills/frontend-ui-engineering ~/.opencode/skills/
-cp -r ~/.agents/skills/error-handling-patterns ~/.opencode/skills/
-
-# SDLC
-cp -r ~/.agents/skills/git-workflow-and-versioning ~/.opencode/skills/
-cp -r ~/.agents/skills/ci-cd-and-automation ~/.opencode/skills/
-cp -r ~/.agents/skills/documentation-and-adrs ~/.opencode/skills/
-cp -r ~/.agents/skills/architecture-decision-records ~/.opencode/skills/
-cp -r ~/.agents/skills/planning-and-task-breakdown ~/.opencode/skills/
-cp -r ~/.agents/skills/incremental-implementation ~/.opencode/skills/
-cp -r ~/.agents/skills/source-driven-development ~/.opencode/skills/
-cp -r ~/.agents/skills/spec-driven-development ~/.opencode/skills/
-cp -r ~/.agents/skills/shipping-and-launch ~/.opencode/skills/
-cp -r ~/.agents/skills/dependency-upgrade ~/.opencode/skills/
-cp -r ~/.agents/skills/changelog-automation ~/.opencode/skills/
-cp -r ~/.agents/skills/version-release ~/.opencode/skills/
-
-# Testing
-cp -r ~/.agents/skills/test-driven-development ~/.opencode/skills/
-cp -r ~/.agents/skills/testing ~/.opencode/skills/
-cp -r ~/.agents/skills/vitest ~/.opencode/skills/
-cp -r ~/.agents/skills/javascript-testing-patterns ~/.opencode/skills/
-cp -r ~/.agents/skills/e2e-testing-patterns ~/.opencode/skills/
-cp -r ~/.agents/skills/browser-testing-with-devtools ~/.opencode/skills/
-```
-
-### Phase 6: Accessibility, UX/Design, DX (16 skills)
-
-```bash
-# Accessibility
-cp -r ~/.agents/skills/accessibility-compliance ~/.opencode/skills/
-cp -r ~/.agents/skills/wcag-audit-patterns ~/.opencode/skills/
-cp -r ~/.agents/skills/screen-reader-testing ~/.opencode/skills/
-
-# UX/Design
-cp -r ~/.agents/skills/ux ~/.opencode/skills/
-cp -r ~/.agents/skills/ux-audit ~/.opencode/skills/
-cp -r ~/.agents/skills/product-design ~/.opencode/skills/
-cp -r ~/.agents/skills/visual-design-foundations ~/.opencode/skills/
-cp -r ~/.agents/skills/responsive-design ~/.opencode/skills/
-cp -r ~/.agents/skills/interaction-design ~/.opencode/skills/
-cp -r ~/.agents/skills/motion ~/.opencode/skills/
-
-# DX
-cp -r ~/.agents/skills/context-engineering ~/.opencode/skills/
-cp -r ~/.agents/skills/modern-javascript-patterns ~/.opencode/skills/
-cp -r ~/.agents/skills/pnpm ~/.opencode/skills/
-cp -r ~/.agents/skills/monorepo-management ~/.opencode/skills/
-cp -r ~/.agents/skills/turborepo ~/.opencode/skills/
-cp -r ~/.agents/skills/i18n ~/.opencode/skills/
-```
-
-### Verification
-
-```bash
-# Count activated skills
-ls ~/.opencode/skills/ | wc -l
-# Expected: 104
-
-# Verify no collisions with local project skills
-ls .opencode/skills/   # Should still have 6 local skills
-
-# Spot-check a few SKILL.md files load correctly
-head -3 ~/.opencode/skills/expo-data-fetching/SKILL.md
-head -3 ~/.opencode/skills/tanstack-query/SKILL.md
+# Step 4: Verify
+ls ~/.opencode/skills/ | grep -E "design-taste|full-output|redesign"
+# Each must have SKILL.md:
+cat ~/.opencode/skills/design-taste-frontend/SKILL.md | head -3
+cat ~/.opencode/skills/full-output-enforcement/SKILL.md | head -3
+cat ~/.opencode/skills/redesign-existing-projects/SKILL.md | head -3
 ```
 
 ---
 
-## 6. Summary
+## 5. Usage Notes
 
-| Category | Count |
-|----------|-------|
-| **GLOBAL to activate** | 104 |
-| **LOCAL (existing, keep)** | 6 |
-| **SKIP (not applicable)** | 337 |
-| **Total in `~/.agents/skills/`** | 441 |
-
-**104 cp commands** to activate the subset. Alternatively, use `rsync` or a script for efficiency.
+- **For RN projects:** invoke `design-taste-frontend` for design THEORY only. The `nativewind-v4` and `reanimated-4` local skills remain authoritative for implementation.
+- **For web projects:** `design-taste-frontend` applies fully (Next.js, Tailwind v4, Motion, etc.). This is where the implementation rules become useful.
+- **Invocation pattern:** "Use design-taste-frontend for the design direction, then apply nativewind-v4 for RN styling."
+- **Redesign-skill** works as-is on both platforms — it audits design quality independent of framework.
 
 ---
 
-## 7. Open Question
+## 6. Verification
 
-The skills at `~/.agents/skills/` are **already discoverable** by OpenCode (they appear in the system prompt's `available_skills` list). Do you still want to copy them to `~/.opencode/skills/` for explicit activation, or is the current discovery mechanism sufficient? Copying gives you curation control but duplicates disk space (~200MB total).
+After installation and `cp`:
+- [ ] `ls ~/.opencode/skills/` shows 3 new folders
+- [ ] Each folder has `SKILL.md` with readable content
+- [ ] Existing local skills in `.opencode/skills/` are untouched
+- [ ] `full-output-enforcement` will auto-activate on every code generation task
+- [ ] `redesign-existing-projects` can be invoked for any redesign or UI improvement task
 
 ---
 
-**Ready for review. Approve to execute the `cp` commands.** 
+Ready for review and approval.
