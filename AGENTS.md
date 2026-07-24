@@ -73,6 +73,8 @@ Do NOT attempt to use built-in `skill` tool to load workflows without reading th
 | Prayer / Quran / Qibla feature | `islamic-app-domain` |
 | Navigation / routing | `expo-router-v4` |
 | Auth (Clerk) | `clerk-auth` |
+| Web automation / scraping / UI testing | `agent-browser-expert` |
+| Deep research / YouTube / social media | `deep-research` |
 
 ### Lifecycle Mapping
 
@@ -231,6 +233,9 @@ Discover and install skills from these catalogs:
 | `tanstack-query-zustand` | State management — server vs client split |
 | `reanimated-4` | Animations, worklets, gesture handlers, carousel, compass |
 | `clerk-auth` | Auth setup, OAuth flows, protected routes, token management |
+| `agent-browser-expert` | Web automation, scraping, form interaction, screenshots |
+| `agent-reach` | YouTube transcripts, Twitter/X, Reddit, web page reading (Jina) |
+| `deep-research` | Multi-source research orchestration — routes to right tool |
 
 ## Combined Tool Flow
 
