@@ -83,6 +83,7 @@ Do NOT attempt to use built-in `skill` tool to load workflows without reading th
 | Navigation / routing | `expo-router-v4` |
 | Auth (Clerk) | `clerk-auth` |
 | Web automation / scraping / UI testing | `agent-browser-expert` |
+| Mobile device / emulator UI testing, bug repro on phone | `mobile-automation` |
 | Deep research / YouTube / social media | `deep-research` |
 
 ### Lifecycle Mapping
@@ -243,6 +244,7 @@ Discover and install skills from these catalogs:
 | `reanimated-4` | Animations, worklets, gesture handlers, carousel, compass |
 | `clerk-auth` | Auth setup, OAuth flows, protected routes, token management |
 | `agent-browser-expert` | Web automation, scraping, form interaction, screenshots |
+| `mobile-automation` | Drive emulator/real device — launch app, tap/swipe/type, a11y tree, screenshots, crash logs |
 | `agent-reach` | YouTube transcripts, Twitter/X, Reddit, web page reading (Jina) |
 | `deep-research` | Multi-source research orchestration — routes to right tool |
 

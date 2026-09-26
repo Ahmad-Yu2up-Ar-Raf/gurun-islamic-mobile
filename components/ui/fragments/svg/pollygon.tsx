@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Svg, { SvgProps, Path, Defs, LinearGradient, Stop } from 'react-native-svg';
 const PollyGon = (props: SvgProps) => (
-  <Svg xmlns="http://www.w3.org/2000/svg" width={15} height={13} fill="none" {...props}>
+  <Svg width={15} height={13} fill="none" {...props}>
     <Path
       fill="url(#a)"
       d="M8.405 12.334c-.484.843-1.699.846-2.187.005L.173 1.926A1.263 1.263 0 0 1 1.262.029L13.303 0a1.263 1.263 0 0 1 1.098 1.892L8.405 12.334Z"

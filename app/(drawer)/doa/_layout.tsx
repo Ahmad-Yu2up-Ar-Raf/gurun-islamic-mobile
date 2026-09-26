@@ -1,7 +1,6 @@
 import React from 'react';
 import { SCREEN_OPTIONS } from '@/components/ui/core/layout/nav';
 import { Stack } from 'expo-router';
-import FiltersCarousel from '@/components/ui/fragments/custom-ui/carousel/filter-carousel';
 
 export default function HomeLayout() {
   return (

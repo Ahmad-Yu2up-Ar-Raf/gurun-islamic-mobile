@@ -1,24 +1,20 @@
 {
   "expo": {
-    "name": " ",
-    "slug": " ",
+    "name": "gurun",
+    "slug": "gurun",
+    "owner": "jagoreng",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/logo/splash.svg",
+    "icon": "./assets/logo/logo.png",
     "scheme": "gurun",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
-    "splash": {
-      "image": "./assets/logo/splash.svg"
-    },
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
-      "edgeToEdgeEnabled": true,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/logo/logo.svg",
+        "foregroundImage": "./assets/logo/adaptive-logo.png",
         "backgroundColor": "#dc2626"
       }
     },

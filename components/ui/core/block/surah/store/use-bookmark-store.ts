@@ -1,9 +1,9 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Ayat } from '../types/surah-type';
+import { Ayah } from '../types/surah-type';
 
-export interface BookmarkType extends Ayat {
+export interface BookmarkType extends Ayah {
   id: string;
 }
 

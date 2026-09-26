@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import React from 'react';
-import { Sura } from '../types/surah-type';
+import { Surah } from '../types/surah-type';
 import { BottomSheet, useBottomSheet } from '@/components/ui/fragments/custom-ui/bottom-sheet';
 import { Button } from '@/components/ui/fragments/shadcn-ui/button';
 import { cn } from '@/lib/utils';
@@ -9,7 +9,7 @@ import { Text } from '@/components/ui/fragments/shadcn-ui/text';
 import { ChevronDown, Paintbrush } from 'lucide-react-native';
 
 type componentProps = {
-  sura: Sura;
+  sura: Surah;
   isVisible: boolean;
   close: () => void;
 };

@@ -64,7 +64,7 @@ export default function SurahBlock({ id, nameSurah }: ComponentProp) {
         scrollAnimationType="slide"
       />
 
-      <SuraMenu sura={data} isVisible={isVisible} close={close} />
+      <SuraMenu sura={data.data} isVisible={isVisible} close={close} />
 
       <LegendList
         data={ayahs ?? []}
