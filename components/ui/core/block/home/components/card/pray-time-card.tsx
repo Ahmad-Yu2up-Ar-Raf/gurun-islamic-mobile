@@ -22,13 +22,15 @@ export default function PrayTimeCard({ Pray }: componentsProps) {
   const tintColor = THEME[currentTheme].primary;
 
   return (
-    <Card className="flex w-[6.5em] content-center justify-center gap-4 bg-card/40 px-0 py-4">
+    <Card className="flex w-[6.6em] content-center justify-center gap-4 bg-card/40 px-0 pb-[1rem] pt-[1.2rem]">
       <CardHeader className="flex content-center items-center justify-center p-0">
         <ZuhurIcon fill={tintColor} />
       </CardHeader>
-      <CardContent className="flex content-center items-center justify-center gap-0">
-        <CardTitle className="font-poppins_medium  tracking-tighter text-sm capitalize">{Pray.sholat}</CardTitle>
-        <CardDescription className="font-poppins_semibold text-base text-foreground">
+      <CardContent className="flex content-center items-center justify-center gap-0 px-0 py-0 pt-0.5">
+        <CardTitle className="font-poppins_medium text-[0.99rem] text-foreground/90 capitalize tracking-tighter">
+          {Pray.sholat}
+        </CardTitle>
+        <CardDescription className="font-poppins_semibold text-lg text-foreground">
           {Pray.time}
         </CardDescription>
       </CardContent>
