@@ -8,7 +8,8 @@
 // yang pertama muncul saat app dibuka.
 
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { Drawer } from 'expo-router/drawer';
+import * as React from 'react';
+import { Drawer, useDrawerStatus } from 'expo-router/drawer';
 import { useColorScheme } from 'nativewind';
 import { THEME } from '@/lib/theme';
 import { View, Pressable } from 'react-native';
@@ -16,6 +17,7 @@ import { Text } from '@/components/ui/fragments/shadcn-ui/text';
 import { DrawerContentScrollView, type DrawerContentComponentProps } from 'expo-router/drawer';
 import { router, usePathname } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useAudioStore } from '@/components/ui/core/block/audio/store/use-audio-store';
 
 // ─── Menu Config ──────────────────────────────────────────────────────────────
 
@@ -39,6 +41,11 @@ function CustomDrawerContent(props: DrawerContentComponentProps) {
   const currentTheme = colorScheme ?? 'light';
   const insets = useSafeAreaInsets();
   const pathname = usePathname();
+  const drawerOpen = useDrawerStatus() === 'open';
+
+  React.useEffect(() => {
+    useAudioStore.getState().setDrawerOpen(drawerOpen);
+  }, [drawerOpen]);
 
   return (
     <DrawerContentScrollView

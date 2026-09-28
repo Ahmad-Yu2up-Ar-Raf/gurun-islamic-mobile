@@ -7,11 +7,45 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import KabbahIcon from '@/components/ui/fragments/svg/icons/kabbah';
 import QuranIcon from '@/components/ui/fragments/svg/icons/quran';
 import MasjidIcon from '@/components/ui/fragments/svg/icons/masjid';
-import { View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import SettingIcon from '@/components/ui/fragments/svg/icons/setting';
 import HomeIcon from '@/components/ui/fragments/svg/icons/home';
 import { Text } from '@/components/ui/fragments/shadcn-ui/text';
 import { cn } from '@/lib/utils';
+
+function NoRippleTabButton({
+  children,
+  style,
+  onPress,
+  onLongPress,
+  testID,
+  role,
+  accessibilityLabel,
+  'aria-selected': ariaSelected,
+}: {
+  children?: React.ReactNode;
+  style?: React.ComponentProps<typeof Pressable>['style'];
+  onPress?: React.ComponentProps<typeof Pressable>['onPress'];
+  onLongPress?: React.ComponentProps<typeof Pressable>['onLongPress'];
+  testID?: string;
+  role?: React.ComponentProps<typeof Pressable>['role'];
+  accessibilityLabel?: string;
+  'aria-selected'?: boolean;
+}) {
+  return (
+    <Pressable
+      onPress={onPress}
+      onLongPress={onLongPress}
+      testID={testID}
+      role={role}
+      accessibilityLabel={accessibilityLabel}
+      aria-selected={ariaSelected}
+      android_ripple={{ color: 'transparent', borderless: false }}
+      style={style}>
+      {children}
+    </Pressable>
+  );
+}
 
 export default function TabsLayout() {
   const { colorScheme } = useColorScheme();
@@ -30,6 +64,16 @@ export default function TabsLayout() {
           tabBarActiveTintColor: tintColor,
 
           tabBarInactiveTintColor: inactiveTintColor,
+          tabBarButton: (props) => (
+            <NoRippleTabButton
+              {...props}
+              onPress={(e) => {
+                console.log('[diag] tab press, onPress type:', typeof props.onPress);
+                console.log('[diag] prop keys:', Object.keys(props).join(','));
+                props.onPress?.(e);
+              }}
+            />
+          ),
           tabBarStyle: {
             backgroundColor,
 

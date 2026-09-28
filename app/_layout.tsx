@@ -6,6 +6,8 @@ import * as SplashScreen from 'expo-splash-screen';
 import * as React from 'react';
 import { useFonts } from 'expo-font';
 import Provider from '@/components/provider/provider';
+import { AudioController } from '@/components/ui/core/block/audio/components/audio-controller';
+import { MiniPlayer } from '@/components/ui/core/block/audio/components/mini-player';
 import { useLocationBootstrap } from '@/components/ui/core/block/home/hooks/use-location-bootstrap';
 import { Poppins_400Regular } from '@expo-google-fonts/poppins/400Regular';
 import { Poppins_500Medium } from '@expo-google-fonts/poppins/500Medium';
@@ -60,7 +62,18 @@ function AppBootstrap() {
       <Stack screenOptions={{ headerShown: false, animation: 'slide_from_right' }}>
         <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
         <Stack.Screen name="surah" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="player"
+          options={{
+            headerShown: false,
+            presentation: 'formSheet',
+            sheetGrabberVisible: true,
+            sheetAllowedDetents: [0.5, 1.0],
+          }}
+        />
       </Stack>
+      <AudioController />
+      <MiniPlayer />
       <PortalHost />
     </Provider>
   );

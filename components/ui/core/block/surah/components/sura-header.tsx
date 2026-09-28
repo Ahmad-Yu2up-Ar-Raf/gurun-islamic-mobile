@@ -10,6 +10,9 @@ import { cn } from '@/lib/utils';
 import { View, ViewProps } from 'react-native';
 
 import { BasmallahDark, Basmallah } from '../../../../fragments/svg/basmalah';
+import { Button } from '@/components/ui/fragments/shadcn-ui/button';
+import { Icon } from '@/components/ui/fragments/shadcn-ui/icon';
+import { Play } from 'lucide-react-native';
 import { useColorScheme } from 'nativewind';
 
 type componentProps = ViewProps & {
@@ -18,6 +21,7 @@ type componentProps = ViewProps & {
   arti: string | undefined;
   kategori: string | undefined;
   jumlahAyat: number | undefined;
+  onPlay?: () => void;
 };
 
 export function SuraHeader({
@@ -26,6 +30,7 @@ export function SuraHeader({
   arti,
   kategori,
   jumlahAyat,
+  onPlay,
   ...props
 }: componentProps) {
   const { colorScheme } = useColorScheme();
@@ -54,11 +59,17 @@ export function SuraHeader({
         </View>
         {/* FULL-WIDTH RADIAL GRADIENT (absolute, covers whole card width) */}
       </CardContent>
-      {/* <View className="absolute -bottom-2 right-1 z-50">
-        <Button className="size-11 w-fit rounded-2xl p-3">
-          <Icon as={Play} className="size-full fill-primary-foreground text-primary-foreground" />
-        </Button>
-      </View> */}
+      {/* Play full-surah recitation — opens the player sheet */}
+      {onPlay && (
+        <View className="absolute -bottom-2 right-1 z-50">
+          <Button
+            accessibilityLabel={`Play recitation of ${namaLatin ?? 'this surah'}`}
+            onPress={onPlay}
+            className="size-11 w-fit rounded-2xl p-3">
+            <Icon as={Play} className="size-full fill-primary-foreground text-primary-foreground" />
+          </Button>
+        </View>
+      )}
     </Card>
   );
 }

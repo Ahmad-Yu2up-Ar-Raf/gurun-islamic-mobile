@@ -5,6 +5,8 @@ import { NAV_THEME } from '@/lib/theme';
 
 import { StatusBar } from 'expo-status-bar';
 import { useColorScheme } from 'nativewind';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { focusManager, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AppState, Platform } from 'react-native';
 import type { AppStateStatus } from 'react-native';
@@ -47,12 +49,16 @@ export default function Provider({ children }: ComponentProps) {
   }, []);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider value={NAV_THEME[colorScheme ?? 'light'] as Theme}>
-        <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
-        {children}
-      </ThemeProvider>
-    </QueryClientProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider>
+        <QueryClientProvider client={queryClient}>
+          <ThemeProvider value={NAV_THEME[colorScheme ?? 'light'] as Theme}>
+            <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
+            {children}
+          </ThemeProvider>
+        </QueryClientProvider>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 }
 

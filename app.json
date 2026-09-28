@@ -10,9 +10,13 @@
     "userInterfaceStyle": "automatic",
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "UIBackgroundModes": ["audio"]
+      }
     },
     "android": {
+      "permissions": ["FOREGROUND_SERVICE", "FOREGROUND_SERVICE_MEDIA_PLAYBACK", "WAKE_LOCK"],
       "adaptiveIcon": {
         "foregroundImage": "./assets/logo/adaptive-logo.png",
         "backgroundColor": "#dc2626"
@@ -27,7 +31,12 @@
       "expo-router",
       "expo-secure-store",
       "expo-web-browser",
-      "expo-audio",
+      [
+        "expo-audio",
+        {
+          "enableBackgroundPlayback": true
+        }
+      ],
       "expo-image",
       "expo-splash-screen",
       "expo-status-bar"

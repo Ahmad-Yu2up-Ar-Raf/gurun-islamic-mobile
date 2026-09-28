@@ -14,6 +14,7 @@ import { useScrollTracker } from '@/hooks/use-scroll-tracker';
 import SuraMenu from './components/sura-menu';
 import { useBottomSheet } from '@/components/ui/fragments/custom-ui/bottom-sheet';
 import { FetchSurah } from './hooks/use-surah';
+import { usePlaySurah } from '../audio/hooks/use-audio-queue';
 import { Ayah } from './types/surah-type';
 
 type ComponentProp = {
@@ -24,6 +25,7 @@ type ComponentProp = {
 export default function SurahBlock({ id, nameSurah }: ComponentProp) {
   const { isLoading, data, isError } = FetchSurah(id);
   const { isVisible, open, close } = useBottomSheet();
+  const playSurah = usePlaySurah();
   const surah = data?.data;
   const ayahs = surah?.ayat;
   const { scrollY } = useScrollTracker();
@@ -82,6 +84,7 @@ export default function SurahBlock({ id, nameSurah }: ComponentProp) {
             namaLatin={surah?.namaLatin}
             arti={surah?.arti}
             jumlahAyat={surah?.jumlahAyat}
+            onPlay={surah ? () => playSurah(surah) : undefined}
           />
         }
         contentContainerStyle={{
