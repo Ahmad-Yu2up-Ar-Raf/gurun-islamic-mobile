@@ -42,7 +42,7 @@ const formatTime = (sec: number): string => {
 export function ExpandedPlayer() {
   const track = useActiveTrack();
   const status = useAudioStatus();
-  const queue = useAudioStore((s) => s.queue);
+  const queue = useAudioStore((s) => s.queue ?? []);
   const index = useAudioStore((s) => s.index);
 
   return (

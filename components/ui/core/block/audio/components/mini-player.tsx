@@ -26,19 +26,9 @@ export const MiniPlayer = React.memo(function MiniPlayer() {
   const track = useActiveTrack();
   const status = useAudioStatus();
   const drawerOpen = useAudioStore((s) => s.drawerOpen);
-  const { positionSec, durationSec } = useAudioStore((s) => ({
-    positionSec: s.positionSec,
-    durationSec: s.durationSec,
-  }));
+  const positionSec = useAudioStore((s) => s.positionSec);
+  const durationSec = useAudioStore((s) => s.durationSec);
   const transport = useTransportControls();
-
-  if (!track || drawerOpen || pathname === '/player') return null;
-
-  const playing = status === 'playing';
-  const busy = status === 'loading' || status === 'buffering';
-  const reciterLabel = isReciterKey(track.reciterKey)
-    ? RECITERS[track.reciterKey].label
-    : track.reciterKey;
 
   const commit = React.useCallback((action: () => void) => {
     try {
@@ -48,11 +38,20 @@ export const MiniPlayer = React.memo(function MiniPlayer() {
     }
     action();
   }, []);
+
   const store = useAudioStore.getState();
   const handlePlay = React.useCallback(() => {
     if (status === 'error') return commit(() => store.playTrack(track));
     return commit(transport.toggle);
   }, [status, track, commit, transport, store]);
+
+  const playing = status === 'playing';
+  const busy = status === 'loading' || status === 'buffering';
+  const reciterLabel = isReciterKey(track?.reciterKey ?? '')
+    ? (RECITERS[track!.reciterKey as keyof typeof RECITERS]?.label ?? track!.reciterKey)
+    : (track?.reciterKey ?? '');
+
+  if (!track || drawerOpen || pathname === '/player') return null;
 
   return (
     <Animated.View

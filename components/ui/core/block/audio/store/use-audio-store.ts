@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
+import { useShallow } from 'zustand/react/shallow';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import type { AudioStatus, AudioTrack, RepeatMode } from '../types/audio-type';
 import { DEFAULT_RECITER_KEY } from '../data/reciters';
@@ -148,16 +149,18 @@ export const useAudioStore = create<AudioPlayerState>()(
   )
 );
 
-export const useAudioQueue = () => useAudioStore((s) => s.queue);
+export const useAudioQueue = () => useAudioStore((s) => s.queue ?? []);
 export const useAudioIndex = () => useAudioStore((s) => s.index);
-export const useActiveTrack = () => useAudioStore((s) => s.queue[s.index] ?? null);
+export const useActiveTrack = () => useAudioStore((s) => (s.queue ?? [])[s.index] ?? null);
 export const useAudioStatus = () => useAudioStore((s) => s.status);
 export const useAudioPosition = () => useAudioStore((s) => s.positionSec);
 export const useAudioReciterKey = () => useAudioStore((s) => s.reciterKey);
 export const useAudioProgress = () =>
-  useAudioStore((s) => ({
-    positionSec: s.positionSec,
-    durationSec: s.durationSec,
-    bufferedSec: s.bufferedSec,
-  }));
+  useAudioStore(
+    useShallow((s) => ({
+      positionSec: s.positionSec,
+      durationSec: s.durationSec,
+      bufferedSec: s.bufferedSec,
+    }))
+  );
 export const useAudioDrawerOpen = () => useAudioStore((s) => s.drawerOpen);

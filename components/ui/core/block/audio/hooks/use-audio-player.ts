@@ -10,22 +10,21 @@ const IN_EXPO_GO = Constants.appOwnership === 'expo';
 const PUMP_DELTA_SEC = 0.8;
 const PUMP_INTERVAL_MS = 1000;
 
-let globalProgressSharedValue: SharedValue<number> | null = null;
-let globalDurationSharedValue: SharedValue<number> | null = null;
+// Module-level shared values (created once, not per hook call)
+const globalProgressSharedValue = useSharedValue<number>(0);
+const globalDurationSharedValue = useSharedValue<number>(0);
 
-function getGlobalProgress() {
-  if (!globalProgressSharedValue) {
-    globalProgressSharedValue = useSharedValue<number>(0);
-    globalDurationSharedValue = useSharedValue<number>(0);
-  }
-  return { progress: globalProgressSharedValue, duration: globalDurationSharedValue };
-}
+// Module-level ref for lock-screen warning deduplication (persists across Fast Refresh)
+const lockScreenWarnedRef = { current: false };
 
 const activateLockScreen = (player: ReturnType<typeof useAudioPlayer>, track: AudioTrack) => {
   if (IN_EXPO_GO) {
-    console.warn(
-      '[audio] Lock-screen controls unavailable in Expo Go — playback continues without them. Use a dev build for background services.'
-    );
+    if (!lockScreenWarnedRef.current) {
+      lockScreenWarnedRef.current = true;
+      console.warn(
+        '[audio] Lock-screen controls unavailable in Expo Go — playback continues without them. Use a dev build for background services.'
+      );
+    }
     return;
   }
   try {
@@ -38,7 +37,11 @@ const activateLockScreen = (player: ReturnType<typeof useAudioPlayer>, track: Au
 export function useAudioPlaybackEngine() {
   const player = useAudioPlayer(undefined, { updateInterval: PUMP_INTERVAL_MS });
   const playerStatus = useAudioPlayerStatus(player);
-  const { progress, duration } = getGlobalProgress();
+
+  // Use module-level shared values directly
+  const progress = globalProgressSharedValue;
+  const duration = globalDurationSharedValue;
+
   const loadedUrlRef = React.useRef<string | null>(null);
   const finishedUrlRef = React.useRef<string | null>(null);
   const lastPumpRef = React.useRef<{ url: string | null; position: number; duration: number }>({
@@ -46,11 +49,11 @@ export function useAudioPlaybackEngine() {
     position: -1,
     duration: -1,
   });
-  const queue = useAudioStore((s) => s.queue);
+  const queue = useAudioStore((s) => s.queue) ?? [];
   const index = useAudioStore((s) => s.index);
   const status = useAudioStore((s) => s.status);
   const seekRequestSec = useAudioStore((s) => s.seekRequestSec);
-  const track = queue[index] ?? null;
+  const track = (queue ?? [])[index] ?? null;
 
   React.useEffect(() => {
     try {
@@ -152,8 +155,9 @@ export function useAudioPlaybackEngine() {
 const advanceAfterFinish = (player: ReturnType<typeof useAudioPlayer>) => {
   const store = useAudioStore.getState();
   const { queue, index, repeat, shuffle } = store;
-  if (queue.length === 0) return;
-  if (repeat === 'one' && queue[index]) {
+  const safeQueue = queue ?? [];
+  if (safeQueue.length === 0) return;
+  if (repeat === 'one' && safeQueue[index]) {
     try {
       void player.seekTo(0).then(() => player.play());
       store.setStatus('playing');
@@ -162,12 +166,12 @@ const advanceAfterFinish = (player: ReturnType<typeof useAudioPlayer>) => {
     }
     return;
   }
-  if (shuffle && queue.length > 1) {
-    const pool = queue.map((_, i) => i).filter((i) => i !== index);
-    store.setQueue(queue, pool[Math.floor(Math.random() * pool.length)]);
+  if (shuffle && safeQueue.length > 1) {
+    const pool = safeQueue.map((_, i) => i).filter((i) => i !== index);
+    store.setQueue(safeQueue, pool[Math.floor(Math.random() * pool.length)]);
     return;
   }
-  const atEnd = index + 1 >= queue.length;
+  const atEnd = index + 1 >= safeQueue.length;
   if (atEnd && repeat !== 'all') {
     store.setStatus('paused');
     return;
@@ -176,5 +180,5 @@ const advanceAfterFinish = (player: ReturnType<typeof useAudioPlayer>) => {
 };
 
 export function useAudioProgressShared() {
-  return getGlobalProgress();
+  return { progress: globalProgressSharedValue, duration: globalDurationSharedValue };
 }
