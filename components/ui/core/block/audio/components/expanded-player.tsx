@@ -15,12 +15,7 @@ import {
   SkipForward,
   X,
 } from 'lucide-react-native';
-import Animated, {
-  Easing,
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 import { Text } from '@/components/ui/fragments/shadcn-ui/text';
 import { Icon } from '@/components/ui/fragments/shadcn-ui/icon';
 import { cn } from '@/lib/utils';
@@ -214,10 +209,10 @@ function SeekSlider({
     }
   }, [bufferedSec, durationSec]);
 
-  const fillStyle = useAnimatedStyle(() => ({ width: `${(progress as any).value * 100}%` }));
+  const fillStyle = useAnimatedStyle(() => ({ width: `${progress.value * 100}%` }));
   const bufferedStyle = useAnimatedStyle(() => ({ width: `${buffered.value * 100}%` }));
   const knobStyle = useAnimatedStyle(() => ({
-    left: `${(progress as any).value * 100}%`,
+    left: `${progress.value * 100}%`,
     transform: [{ translateX: -7 }],
   }));
 
@@ -266,12 +261,6 @@ function SeekSlider({
     </View>
   );
 }
-
-const knobStyle = useSharedValue(0);
-const knobAnimatedStyle = useAnimatedStyle(() => ({
-  left: `${knobStyle.value * 100}%`,
-  transform: [{ translateX: -7 }],
-}));
 
 const QueueRow = React.memo(function QueueRow({
   track,

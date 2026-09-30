@@ -75,6 +75,8 @@ export const useAudioStore = create<AudioPlayerState>()(
         set((state) => {
           if (state.status === 'playing') return { status: 'paused' as AudioStatus };
           if (state.status === 'paused') return { status: 'playing' as AudioStatus };
+          if (state.status === 'loading' || state.status === 'buffering')
+            return { status: 'paused' as AudioStatus };
           return {};
         }),
       next: () =>

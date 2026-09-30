@@ -1,18 +1,18 @@
 import * as React from 'react';
 import Constants from 'expo-constants';
-import { setAudioModeAsync, useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
+import { preload, setAudioModeAsync, useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import { toLockScreenMetadata } from '../services/audio-service';
 import type { AudioTrack } from '../types/audio-type';
 import { useAudioStore } from '../store/use-audio-store';
-import { useSharedValue, SharedValue } from 'react-native-reanimated';
+import { makeMutable, type SharedValue } from 'react-native-reanimated';
 
 const IN_EXPO_GO = Constants.appOwnership === 'expo';
 const PUMP_DELTA_SEC = 0.8;
 const PUMP_INTERVAL_MS = 1000;
 
-// Module-level shared values (created once, not per hook call)
-const globalProgressSharedValue = useSharedValue<number>(0);
-const globalDurationSharedValue = useSharedValue<number>(0);
+// Module-scope mutable values (makeMutable is hook-free, unlike useSharedValue)
+const globalProgress: SharedValue<number> = makeMutable(0);
+const globalDuration: SharedValue<number> = makeMutable(0);
 
 // Module-level ref for lock-screen warning deduplication (persists across Fast Refresh)
 const lockScreenWarnedRef = { current: false };
@@ -39,8 +39,9 @@ export function useAudioPlaybackEngine() {
   const playerStatus = useAudioPlayerStatus(player);
 
   // Use module-level shared values directly
-  const progress = globalProgressSharedValue;
-  const duration = globalDurationSharedValue;
+  const progress = globalProgress;
+  const duration = globalDuration;
+  const preloadedUrlRef = React.useRef<string | null>(null);
 
   const loadedUrlRef = React.useRef<string | null>(null);
   const finishedUrlRef = React.useRef<string | null>(null);
@@ -101,6 +102,21 @@ export function useAudioPlaybackEngine() {
       store.setError('Could not load this recitation. Try another reciter.');
     }
   }, [player, track, status]);
+
+  React.useEffect(() => {
+    if (!track) return;
+    const { queue, index } = useAudioStore.getState();
+    if (queue.length < 2) return;
+    const nextTrack = queue[index + 1] ?? queue[0];
+    if (!nextTrack || nextTrack.audioUrl === track.audioUrl) return;
+    if (preloadedUrlRef.current === nextTrack.audioUrl) return;
+    preloadedUrlRef.current = nextTrack.audioUrl;
+    try {
+      void preload({ uri: nextTrack.audioUrl }).catch(() => {});
+    } catch {
+      // Preload is best-effort; playback proceeds without it.
+    }
+  }, [player, track]);
 
   React.useEffect(() => {
     if (seekRequestSec == null) return;
@@ -180,5 +196,5 @@ const advanceAfterFinish = (player: ReturnType<typeof useAudioPlayer>) => {
 };
 
 export function useAudioProgressShared() {
-  return { progress: globalProgressSharedValue, duration: globalDurationSharedValue };
+  return { progress: globalProgress, duration: globalDuration };
 }

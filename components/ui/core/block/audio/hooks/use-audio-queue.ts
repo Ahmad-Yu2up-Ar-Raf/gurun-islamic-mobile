@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { router } from 'expo-router';
+import { router, usePathname } from 'expo-router';
 import { queryClient } from '@/components/provider/provider';
 import type { QuranResponse } from '../../quran/types/quran-type';
 import type { Surah } from '../../surah/types/surah-type';
@@ -53,22 +53,26 @@ export function useTransportControls() {
 }
 
 export function usePlaySurah() {
-  return React.useCallback((detail: Surah) => {
-    const store = useAudioStore.getState();
-    const reciterKey = store.reciterKey;
-    const track = toAudioTrackFromDetail(detail, reciterKey);
-    try {
-      const cached = queryClient.getQueryData<QuranResponse>(['quran']);
-      const list = cached?.data;
-      if (list && list.length > 0) {
-        const { queue } = buildQueue(list, detail.nomor, reciterKey);
-        store.playTrack(track, queue);
-      } else {
-        store.playTrack(track);
+  const pathname = usePathname();
+  return React.useCallback(
+    (detail: Surah) => {
+      const store = useAudioStore.getState();
+      const reciterKey = store.reciterKey;
+      const track = toAudioTrackFromDetail(detail, reciterKey);
+      try {
+        const cached = queryClient.getQueryData<QuranResponse>(['quran']);
+        const list = cached?.data;
+        if (list && list.length > 0) {
+          const { queue } = buildQueue(list, detail.nomor, reciterKey);
+          store.playTrack(track, queue);
+        } else {
+          store.playTrack(track);
+        }
+        if (pathname !== '/player') router.push('/player');
+      } catch {
+        store.setError('Could not start playback.');
       }
-      router.push('/player');
-    } catch {
-      store.setError('Could not start playback.');
-    }
-  }, []);
+    },
+    [pathname]
+  );
 }
