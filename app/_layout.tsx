@@ -61,14 +61,11 @@ function AppBootstrap() {
     <Provider>
       <Stack screenOptions={{ headerShown: false, animation: 'slide_from_right' }}>
         <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
-        <Stack.Screen name="surah" options={{ headerShown: false }} />
         <Stack.Screen
           name="player"
           options={{
             headerShown: false,
-            presentation: 'formSheet',
-            sheetGrabberVisible: true,
-            sheetAllowedDetents: [0.5, 1.0],
+            animation: 'fade',
           }}
         />
       </Stack>

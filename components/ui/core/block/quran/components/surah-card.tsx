@@ -23,18 +23,24 @@ type componentProps = ViewProps & {
 export function SurahCard({ className, sura, ...props }: componentProps) {
   const navigateToSurah = ({ id }: { id: number }) => {
     router.push({
-      pathname: '/surah/[id]',
-      params: { id: id, name: sura.namaLatin },
+      pathname: '/(drawer)/(tabs)/quran/[id]',
+      params: { id: String(id), name: sura.namaLatin },
     });
   };
 
   return (
     <Card
-      className={cn('w-full h-fit  my-0 p-0 overflow-hidden bg-background transition-all duration-200', className)}
+      className={cn(
+        'my-0 h-fit w-full overflow-hidden bg-background p-0 transition-all duration-200',
+        className
+      )}
       {...props}>
       <Pressable
         onPress={() => navigateToSurah({ id: sura.nomor })}
-        className=" border-b py-7 border-border active:opacity-40">
+        className="border-b border-border py-7 active:opacity-40"
+        accessibilityRole="button"
+        accessibilityLabel={`Buka surah ${sura.namaLatin}`}
+        accessibilityHint={`${sura.jumlahAyat} ayat`}>
         <CardContent className="h-full w-full flex-row items-center justify-between px-1">
           {/* LEFT content: flex 1 with right padding reserved for mosque */}
           <CardHeader className="relative z-40 w-fit flex-row items-center gap-6 p-0 py-0">

@@ -2,7 +2,6 @@ import * as React from 'react';
 import { ActivityIndicator, Pressable, View } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import { router } from 'expo-router';
-import { LegendList } from '@legendapp/list';
 import {
   FastForward,
   Pause,
@@ -18,6 +17,8 @@ import {
 import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 import { Text } from '@/components/ui/fragments/shadcn-ui/text';
 import { Icon } from '@/components/ui/fragments/shadcn-ui/icon';
+import { Separator } from '@/components/ui/fragments/shadcn-ui/separator';
+import { BottomSheet } from '@/components/ui/fragments/custom-ui/bottom-sheet';
 import { cn } from '@/lib/utils';
 import { RECITERS } from '../data/reciters';
 import { isReciterKey } from '../services/audio-service';
@@ -40,50 +41,49 @@ export function ExpandedPlayer() {
   const queue = useAudioStore((s) => s.queue ?? []);
   const index = useAudioStore((s) => s.index);
 
+  const close = React.useCallback(() => {
+    router.back();
+  }, []);
+
   return (
-    <View className="flex-1 bg-background px-5 pb-8 pt-2">
-      <View className="flex-row items-center justify-between pb-1">
-        <Text className="font-poppins_semibold text-sm uppercase text-muted-foreground">
-          Now Playing
-        </Text>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel="Close player"
-          hitSlop={12}
-          onPress={() => router.back()}
-          style={({ pressed }) => ({ opacity: pressed ? 0.6 : 1 })}>
-          <Icon as={X} size={24} className="text-foreground" />
-        </Pressable>
-      </View>
+    <BottomSheet isVisible onClose={close} maxSnapPoint={1}>
       {!track ? (
-        <View className="flex-1 items-center justify-center gap-2">
+        <View className="items-center justify-center gap-2 py-10">
           <Text className="font-poppins_medium text-base text-foreground">Nothing queued yet</Text>
           <Text className="font-poppins_regular text-sm text-muted-foreground">
             Open a surah and press play to start listening.
           </Text>
         </View>
       ) : (
-        <LegendList
-          data={queue}
-          keyExtractor={(item) => (item as AudioTrack).audioUrl}
-          estimatedItemSize={64}
-          recycleItems={true}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: 24 }}
-          ListHeaderComponent={<PlayerChrome />}
-          ListEmptyComponent={
-            <View className="items-center py-6">
-              <Text className="font-poppins_regular text-sm text-muted-foreground">
-                Queue is empty.
-              </Text>
-            </View>
-          }
-          renderItem={({ item, index: rowIndex }) => (
-            <QueueRow track={item as AudioTrack} rowIndex={rowIndex} active={rowIndex === index} />
-          )}
-        />
+        <View className="gap-4">
+          <PlayerChrome />
+          <Text className="font-poppins_semibold text-xs uppercase text-muted-foreground">
+            Up next
+          </Text>
+          <QueueList queue={queue} index={index} />
+        </View>
       )}
       {status === 'error' && track && <PlayerError />}
+    </BottomSheet>
+  );
+}
+
+function QueueList({ queue, index }: { queue: AudioTrack[]; index: number }) {
+  if (queue.length === 0) {
+    return (
+      <View className="items-center py-6">
+        <Text className="font-poppins_regular text-sm text-muted-foreground">Queue is empty.</Text>
+      </View>
+    );
+  }
+  return (
+    <View className="gap-3 pb-4">
+      {queue.map((item, rowIndex) => (
+        <React.Fragment key={item.audioUrl}>
+          {rowIndex > 0 && <Separator className="opacity-60" />}
+          <QueueRow track={item} rowIndex={rowIndex} active={rowIndex === index} />
+        </React.Fragment>
+      ))}
     </View>
   );
 }
@@ -275,7 +275,7 @@ const QueueRow = React.memo(function QueueRow({
   const remove = () => useAudioStore.getState().removeTrack(rowIndex);
 
   return (
-    <View className={cn('flex-row items-center gap-3 rounded-xl px-2 py-2', active && 'bg-accent')}>
+    <View className={cn('flex-row items-center gap-3 rounded-xl px-2 py-3', active && 'bg-accent')}>
       <Pressable
         accessibilityRole="button"
         accessibilityLabel={`Play ${track.namaLatin}`}

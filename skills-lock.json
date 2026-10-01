@@ -7,6 +7,13 @@
       "skillPath": "skills/animate-expo/SKILL.md",
       "computedHash": "3e914b8abdff154a289dcabc63817b6b5d649272a0d054e7e799f37e4bb1c471"
     },
+    "anti-ui-slop": {
+      "source": "uizze.com",
+      "sourceUrl": "https://uizze.com",
+      "sourceType": "well-known",
+      "computedHash": "f1a89862e4b0ad941dea61f5328810364ab2d01b8912d274c6cbe658e3a350d6",
+      "wellKnownDigest": "sha256:dbdb37943735a1d03ebd84cd3db9812899e860b22bf8e6741da3099b17fcbbf6"
+    },
     "assess-react-native-migration": {
       "source": "callstackincubator/agent-skills",
       "sourceType": "github",
@@ -282,6 +289,12 @@
       "sourceType": "github",
       "skillPath": "skills/redesign-skill/SKILL.md",
       "computedHash": "47eced3e960a2c961d3cbee11fa1216264f589344b586a5cbd03967cd6b9c54b"
+    },
+    "refero-design": {
+      "source": "referodesign/refero_skill",
+      "sourceType": "github",
+      "skillPath": "skills/refero-design/SKILL.md",
+      "computedHash": "b0800d5d1e5089a32e92e02227b754a79717399c21aa29caa55cab80d3956fbb"
     },
     "stitch-design-taste": {
       "source": "Leonxlnx/taste-skill",

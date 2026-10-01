@@ -1,5 +1,6 @@
 // 📄 File: components/ui/core/block/surah/surah-block.tsx
 import React, { useCallback } from 'react'; // ✅ Import useCallback
+import { View } from 'react-native';
 import { LegendList } from '@legendapp/list';
 import { AyatCard } from './components/ayat-card';
 import { SuraHeader } from './components/sura-header';
@@ -7,7 +8,10 @@ import { ChevronLeft, Settings } from 'lucide-react-native';
 
 // ✅ Import HeaderComponent langsung dari file nav lu
 import { HeaderComponent } from '../../layout/nav';
-import { Stack } from 'expo-router';
+import { Wrapper } from '../../layout/wrapper';
+import { Button } from '@/components/ui/fragments/shadcn-ui/button';
+import { Text } from '@/components/ui/fragments/shadcn-ui/text';
+import { Stack, router } from 'expo-router';
 
 import LoadingIndicator from '../../loading-indicator';
 import { useScrollTracker } from '@/hooks/use-scroll-tracker';
@@ -23,7 +27,7 @@ type ComponentProp = {
 };
 
 export default function SurahBlock({ id, nameSurah }: ComponentProp) {
-  const { isLoading, data, isError } = FetchSurah(id);
+  const { isLoading, data, isError, error, refetch } = FetchSurah(id);
   const { isVisible, open, close } = useBottomSheet();
   const playSurah = usePlaySurah();
   const surah = data?.data;
@@ -46,7 +50,39 @@ export default function SurahBlock({ id, nameSurah }: ComponentProp) {
   }
 
   if (isError || !data) {
-    return null;
+    return (
+      <Wrapper edges={['top']} className="m-auto justify-center overflow-visible">
+        <View
+          className="flex-1 items-center justify-center gap-2 px-6 py-16"
+          accessible
+          accessibilityRole="alert"
+          accessibilityLabel={`Gagal memuat ${nameSurah}`}>
+          <Text className="text-center font-poppins_semibold text-base">
+            Gagal memuat {nameSurah}
+          </Text>
+          <Text variant="muted" className="text-center font-poppins_regular text-sm">
+            {error instanceof Error ? error.message : 'Terjadi kesalahan. Silakan coba lagi.'}
+          </Text>
+          <View className="mt-2 w-full max-w-xs flex-row items-center justify-center gap-2">
+            <Button
+              onPress={() => refetch()}
+              className="flex-1"
+              accessibilityRole="button"
+              accessibilityLabel="Coba muat ulang surah">
+              <Text>Coba lagi</Text>
+            </Button>
+            <Button
+              variant="ghost"
+              onPress={() => router.back()}
+              className="flex-1"
+              accessibilityRole="button"
+              accessibilityLabel="Kembali ke daftar surah">
+              <Text>Kembali</Text>
+            </Button>
+          </View>
+        </View>
+      </Wrapper>
+    );
   }
 
   return (
@@ -62,7 +98,7 @@ export default function SurahBlock({ id, nameSurah }: ComponentProp) {
         rightIcon={Settings}
         rightAction={open}
         scrollAnimatedPosition={scrollY}
-        scrollTriggerPoint={80} // Di ketinggian 80px animasi title langsung muncul otomatis!
+        scrollTriggerPoint={100} // Di ketinggian 80px animasi title langsung muncul otomatis!
         scrollAnimationType="slide"
       />
 
@@ -90,10 +126,20 @@ export default function SurahBlock({ id, nameSurah }: ComponentProp) {
         contentContainerStyle={{
           // ✅ Berikan paddingTop lebih tinggi (sekitar 100px) agar ayat pertama
           // tidak tertutup oleh HeaderComponent yang melayang secara absolut di atasnya.
-          paddingTop: 100,
+          paddingTop: 50,
           paddingBottom: 100,
           paddingHorizontal: 12,
         }}
+        ListEmptyComponent={
+          <View
+            className="items-center justify-center px-6 py-16"
+            accessible
+            accessibilityLabel="Belum ada ayat untuk surah ini">
+            <Text variant="muted" className="text-center font-poppins_regular text-sm">
+              Belum ada ayat untuk surah ini.
+            </Text>
+          </View>
+        }
         className="px-6"
         recycleItems={true}
         showsVerticalScrollIndicator={false}
