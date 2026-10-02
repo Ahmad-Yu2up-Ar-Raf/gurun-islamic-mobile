@@ -130,12 +130,12 @@ function PlayerButton({
       accessibilityLabel={label}
       hitSlop={8}
       size={'icon'}
-      variant={'ghost'}
+      variant={primary ? 'default' : 'ghost'}
       onPress={onPress}
       style={({ pressed }) => ({ opacity: pressed ? 0.6 : 1 })}
       className={cn(
-        'size-9 items-center justify-center rounded-full',
-        primary && 'bg-secondary active:bg-secondary/60'
+        'size-9 items-center justify-center rounded-full'
+        //  && 'bg-primary active:bg-primary/60'
       )}>
       {children}
     </Button>
