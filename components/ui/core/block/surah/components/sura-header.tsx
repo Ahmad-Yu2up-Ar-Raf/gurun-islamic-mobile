@@ -60,7 +60,7 @@ export function SuraHeader({
         {/* FULL-WIDTH RADIAL GRADIENT (absolute, covers whole card width) */}
       </CardContent>
       {/* Play full-surah recitation — opens the player sheet */}
-      {/* {onPlay && (
+      {onPlay && (
         <View className="absolute -bottom-2 right-1 z-50">
           <Button
             accessibilityLabel={`Play recitation of ${namaLatin ?? 'this surah'}`}
@@ -69,7 +69,7 @@ export function SuraHeader({
             <Icon as={Play} className="size-full fill-primary-foreground text-primary-foreground" />
           </Button>
         </View>
-      )} */}
+      )}
     </Card>
   );
 }

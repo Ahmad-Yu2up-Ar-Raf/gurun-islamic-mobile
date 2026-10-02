@@ -4,6 +4,7 @@ import { useKeyboardHeight } from '@/hooks/use-keyboard-height';
 
 import React, { useEffect } from 'react';
 import { Dimensions, Modal, ScrollView, TouchableWithoutFeedback, ViewStyle } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Gesture, GestureDetector, GestureHandlerRootView } from 'react-native-gesture-handler';
 import Animated, {
   runOnJS,
@@ -43,6 +44,7 @@ type BottomSheetContentProps = {
   panGesture: any;
   disablePanGesture?: boolean;
   maxContentHeight: number;
+  contentBottomPadding: number;
   onMeasureChrome: (height: number) => void;
   onMeasureContent: (height: number) => void;
   onHandlePress?: () => void;
@@ -62,6 +64,7 @@ const BottomSheetContent = ({
   panGesture,
   disablePanGesture,
   maxContentHeight,
+  contentBottomPadding,
   onMeasureChrome,
   onMeasureContent,
   onHandlePress,
@@ -82,7 +85,10 @@ const BottomSheetContent = ({
       style={[
         {
           height: SCREEN_HEIGHT,
-          top: SCREEN_HEIGHT,
+          // Anchored to the bottom edge of the screen (not the window top) so the
+          // sheet's bottom edge always lands exactly on the screen bottom, even when
+          // the window is shorter than the full screen (translucent status bar).
+          bottom: -SCREEN_HEIGHT,
         },
         rBottomSheetStyle,
         style,
@@ -114,7 +120,8 @@ const BottomSheetContent = ({
           never has to compete with the sheet's drag gesture. */}
       <ScrollView
         style={{ maxHeight: maxContentHeight }}
-        contentContainerClassName="p-4 pb-10"
+        contentContainerClassName="p-4"
+        contentContainerStyle={{ paddingBottom: contentBottomPadding }}
         onContentSizeChange={(_width, height) => onMeasureContent(height)}
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}>
@@ -149,6 +156,7 @@ export function BottomSheet({
   disablePanGesture = false,
 }: BottomSheetProps) {
   const { keyboardHeight, isKeyboardVisible } = useKeyboardHeight();
+  const insets = useSafeAreaInsets();
 
   const translateY = useSharedValue(0);
   const context = useSharedValue({ y: 0 });
@@ -165,7 +173,7 @@ export function BottomSheet({
   // this is the *full* content height regardless of how much is currently clipped.
   const [contentHeight, setContentHeight] = React.useState(0);
 
-  const maxAllowedHeight = maxSnapPoint * SCREEN_HEIGHT;
+  const maxAllowedHeight = Math.max(maxSnapPoint * SCREEN_HEIGHT - insets.top, 0);
   // Fit-content height, clamped to the configured maximum. This is what the sheet
   // actually animates to — there's no array of stops anymore, just this one value.
   const openHeight = Math.min(chromeHeight + contentHeight, maxAllowedHeight);
@@ -298,6 +306,7 @@ export function BottomSheet({
             panGesture={panGesture}
             disablePanGesture={disablePanGesture}
             maxContentHeight={maxContentHeight}
+            contentBottomPadding={insets.bottom + 40}
             onMeasureChrome={setChromeHeight}
             onMeasureContent={setContentHeight}
             onHandlePress={handlePress}

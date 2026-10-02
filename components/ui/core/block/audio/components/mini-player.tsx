@@ -18,7 +18,7 @@ import { isReciterKey } from '../services/audio-service';
 import { useActiveTrack, useAudioStatus, useAudioStore } from '../store/use-audio-store';
 import { useTransportControls } from '../hooks/use-audio-queue';
 import { SeekBar } from './seek-bar';
-
+import { Button } from '@/components/ui/fragments/shadcn-ui/button';
 export const MiniPlayer = React.memo(function MiniPlayer() {
   const insets = useSafeAreaInsets();
   const pathname = usePathname();
@@ -60,8 +60,8 @@ export const MiniPlayer = React.memo(function MiniPlayer() {
       pointerEvents="box-none"
       className="absolute inset-x-3"
       style={{ bottom: 70 + insets.bottom + 8 }}>
-      <View className="overflow-hidden rounded-t-2xl border border-border bg-card">
-        <View className="flex-row items-center gap-3 px-3 py-2.5">
+      <View className="overflow-hidden rounded-2xl border border-border bg-card">
+        <View className="flex-row items-center gap-2 px-3 py-2.5">
           {/* <View className="size-11 items-center justify-center rounded-xl bg-primary/15">
             <Text className="font-teko_semibold text-xl leading-none text-secondary">
               {track.surahNomor}
@@ -85,7 +85,7 @@ export const MiniPlayer = React.memo(function MiniPlayer() {
             </Text>
           </Pressable>
           <PlayerButton label={`Play previous surah`} onPress={() => commit(transport.prev)}>
-            <Icon as={SkipBack} size={22} className="text-foreground" />
+            <Icon as={SkipBack} size={19} className="text-secondary" />
           </PlayerButton>
           <PlayerButton
             label={playing ? 'Pause recitation' : 'Play recitation'}
@@ -94,11 +94,15 @@ export const MiniPlayer = React.memo(function MiniPlayer() {
             {busy ? (
               <ActivityIndicator size="small" className="text-primary-foreground" />
             ) : (
-              <Icon as={playing ? Pause : Play} size={24} className="text-primary-foreground" />
+              <Icon
+                as={playing ? Pause : Play}
+                size={19}
+                className="fill-primary-foreground text-primary-foreground"
+              />
             )}
           </PlayerButton>
           <PlayerButton label="Play next surah" onPress={() => commit(transport.next)}>
-            <Icon as={SkipForward} size={22} className="text-foreground" />
+            <Icon as={SkipForward} size={19} className="text-secondary" />
           </PlayerButton>
         </View>
         <View className="">
@@ -121,14 +125,19 @@ function PlayerButton({
   onPress: () => void;
 }) {
   return (
-    <Pressable
+    <Button
       accessibilityRole="button"
       accessibilityLabel={label}
       hitSlop={8}
+      size={'icon'}
+      variant={'ghost'}
       onPress={onPress}
       style={({ pressed }) => ({ opacity: pressed ? 0.6 : 1 })}
-      className={cn('size-12 items-center justify-center rounded-full', primary && 'bg-primary')}>
+      className={cn(
+        'size-9 items-center justify-center rounded-full',
+        primary && 'bg-secondary active:bg-secondary/60'
+      )}>
       {children}
-    </Pressable>
+    </Button>
   );
 }

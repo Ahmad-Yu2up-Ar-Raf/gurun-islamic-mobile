@@ -183,9 +183,6 @@ function PlayerChrome() {
         </Text>
         <ReciterPicker />
       </View>
-      <Text className="pt-1 font-poppins_semibold text-xs uppercase text-muted-foreground">
-        Up next
-      </Text>
     </View>
   );
 }
