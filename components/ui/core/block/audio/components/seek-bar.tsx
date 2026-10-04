@@ -8,7 +8,7 @@ export function SeekBar() {
   const fillStyle = useAnimatedStyle(() => ({ width: `${progress.value * 100}%` }));
 
   return (
-    <View className="h-0.5 w-full overflow-hidden rounded-full bg-muted">
+    <View className="h-1 w-full overflow-hidden rounded-full bg-primary/10">
       <Animated.View style={fillStyle} className="h-full rounded-full bg-primary" />
     </View>
   );

@@ -60,13 +60,8 @@ export const MiniPlayer = React.memo(function MiniPlayer() {
       pointerEvents="box-none"
       className="absolute inset-x-3"
       style={{ bottom: 70 + insets.bottom + 8 }}>
-      <View className="overflow-hidden rounded-2xl border border-border bg-card">
-        <View className="flex-row items-center gap-2 px-3 py-2.5">
-          {/* <View className="size-11 items-center justify-center rounded-xl bg-primary/15">
-            <Text className="font-teko_semibold text-xl leading-none text-secondary">
-              {track.surahNomor}
-            </Text>
-          </View> */}
+      <View className="overflow-hidden rounded-2xl bg-card">
+        <View className="flex-row items-center gap-2 px-4 py-4">
           <Pressable
             accessibilityRole="button"
             accessibilityLabel={`Open player for ${track.namaLatin}`}
@@ -75,7 +70,7 @@ export const MiniPlayer = React.memo(function MiniPlayer() {
             className="min-w-0 flex-1">
             <Text
               numberOfLines={1}
-              className="font-poppins_semibold text-sm leading-tight text-foreground">
+              className="font-poppins_semibold text-sm leading-tight text-secondary">
               {track.namaLatin}
             </Text>
             <Text
@@ -105,7 +100,7 @@ export const MiniPlayer = React.memo(function MiniPlayer() {
             <Icon as={SkipForward} size={19} className="text-secondary" />
           </PlayerButton>
         </View>
-        <View className="">
+        <View className="px-2">
           <SeekBar />
         </View>
       </View>
