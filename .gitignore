@@ -67,3 +67,7 @@ Pods/
 .env
 .env.*
 !.env.example
+
+# AI agent skills and local configuration (reproducible via skills-lock.json)
+.agents/
+.agent/
