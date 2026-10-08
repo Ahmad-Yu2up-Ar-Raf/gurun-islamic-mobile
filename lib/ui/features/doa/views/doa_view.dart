@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forui_lucide/forui_lucide.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../app/providers.dart';
@@ -85,7 +86,7 @@ class _DoaCard extends StatelessWidget {
                   ],
                 ),
               ),
-              const Icon(Icons.more_horiz, size: 16),
+              const Icon(FLucideIcons.ellipsis, size: 16),
             ],
           ),
           const SizedBox(height: 20),

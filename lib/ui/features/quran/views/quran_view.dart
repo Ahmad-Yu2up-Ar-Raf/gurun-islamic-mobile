@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:forui_lucide/forui_lucide.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../app/providers.dart';
@@ -18,7 +20,7 @@ class QuranView extends ConsumerWidget {
       title: 'Quran',
       leading: Builder(
         builder: (context) => IconButton(
-          icon: const Icon(Icons.menu),
+          icon: const Icon(FLucideIcons.menu),
           onPressed: () => Scaffold.of(context).openDrawer(),
         ),
       ),
@@ -106,10 +108,10 @@ class _ProgressCard extends StatelessWidget {
             Positioned(
               right: -10,
               bottom: -40,
-              child: Icon(
-                Icons.menu_book,
-                size: 176,
-                color: scheme.secondary.withValues(alpha: 0.15),
+              child: SvgPicture.asset(
+                'assets/svg/quran_rehal.svg',
+                width: 176,
+                height: 140,
               ),
             ),
           ],
@@ -208,7 +210,8 @@ class _SurahRow extends StatelessWidget {
                       Text(
                         '۝',
                         style: TextStyle(
-                          fontFamily: 'Poppins',
+                          // U+06DD lives in the Arabic font, not Poppins.
+                          fontFamily: 'Arabic',
                           fontWeight: FontWeight.w600,
                           fontSize: 30,
                           color: scheme.secondary,

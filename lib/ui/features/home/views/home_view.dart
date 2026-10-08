@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:forui_lucide/forui_lucide.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../app/app_colors.dart';
@@ -9,6 +11,7 @@ import '../../../../app/providers.dart';
 import '../../../../app/theme.dart';
 import '../../../../domain/use_cases/prayer_schedule.dart';
 import '../../../core/app_scaffold.dart';
+import '../../../core/state_views.dart';
 import '../../../core/themed_text.dart';
 
 /// 1-second countdown state derived from today's schedule.
@@ -53,7 +56,8 @@ class CountdownNotifier extends Notifier<CountdownState> {
         dateString: formatDateId(now),
       );
     }
-    final next = nextPrayerTarget(schedule, now);
+    final tomorrow = ref.watch(tomorrowJadwalProvider).value;
+    final next = nextPrayerTarget(schedule, now, tomorrow: tomorrow);
     return CountdownState(
       nextLabel: next.label,
       remaining: formatDuration(next.target.difference(now)),
@@ -67,7 +71,7 @@ final countdownProvider = NotifierProvider<CountdownNotifier, CountdownState>(
   CountdownNotifier.new,
 );
 
-/// Home = hero clock only (`PrayTimeSection` is commented out in RN).
+/// Home = hero clock + prayer-times carousel (1:1 with RN `HomeBlock`).
 class HomeView extends ConsumerWidget {
   const HomeView({super.key});
 
@@ -79,17 +83,22 @@ class HomeView extends ConsumerWidget {
       title: 'Gurun',
       leading: Builder(
         builder: (context) => IconButton(
-          icon: const Icon(Icons.menu),
+          icon: const Icon(FLucideIcons.menu),
           onPressed: () => Scaffold.of(context).openDrawer(),
         ),
       ),
-      actions: [IconButton(icon: const Icon(Icons.search), onPressed: () {})],
+      actions: [
+        IconButton(
+          icon: const Icon(FLucideIcons.settings),
+          onPressed: () => context.go('/settings'),
+        ),
+      ],
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
             child: _HeroClock(now: now, state: countdown),
           ),
-          const SliverToBoxAdapter(child: _FiturMenu()),
+          const SliverToBoxAdapter(child: _PrayerSection()),
           const SliverToBoxAdapter(child: SizedBox(height: 100)),
         ],
       ),
@@ -97,77 +106,109 @@ class HomeView extends ConsumerWidget {
   }
 }
 
-/// `Fitur` menu (HomeMenuCard port): the drawer menu is commented out in
-/// RN, so this section keeps Doa/Dzikir/Asmaul/Hadist reachable.
-class _FiturMenu extends StatelessWidget {
-  const _FiturMenu();
+/// `PrayTimeSection` port: header + horizontal 5-card carousel fed by
+/// `todayScheduleProvider` (replaces the non-RN `Fitur` menu).
+class _PrayerSection extends ConsumerWidget {
+  const _PrayerSection();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final schedule = ref.watch(todayScheduleProvider);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const ThemedText('Prayer Times', variant: TextVariant.title),
+        const SizedBox(height: 12),
+        SizedBox(
+          height: 148,
+          child: schedule.when(
+            data: (items) => ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemCount: items.length,
+              separatorBuilder: (_, _) => const SizedBox(width: 8),
+              itemBuilder: (context, i) => _PrayTimeCard(item: items[i]),
+            ),
+            loading: () =>
+                const LoadingState(message: 'Memuat jadwal shalat...'),
+            error: (e, _) => ErrorState(
+              title: 'Gagal memuat jadwal shalat',
+              message: '$e',
+              onRetry: () => ref.invalidate(todayScheduleProvider),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _PrayTimeCard extends StatelessWidget {
+  const _PrayTimeCard({required this.item});
+
+  final PrayerScheduleItem item;
 
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    const items = [
-      (Icons.wb_sunny, 'Dzikir', '/dzikir'),
-      (Icons.book, 'Doa', '/doa'),
-      (Icons.star, 'Asmaul Husna', '/asmaul-husna'),
-      (Icons.history, 'Hadist', '/hadist'),
-    ];
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 4, bottom: 8),
-          child: ThemedText(
-            'Fitur',
-            variant: TextVariant.caption,
-            color: scheme.onSurfaceVariant,
-            uppercase: true,
+    return Container(
+      width: 105,
+      padding: const EdgeInsets.symmetric(vertical: 18),
+      decoration: BoxDecoration(
+        color: scheme.surfaceContainer.withValues(alpha: 0.4),
+        borderRadius: BorderRadius.circular(AppRadius.lg),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SvgPicture.asset(
+            'assets/svg/prayer_sun.svg',
+            width: 30,
+            height: 30,
+            colorFilter: ColorFilter.mode(scheme.primary, BlendMode.srcIn),
           ),
-        ),
-        Container(
-          decoration: BoxDecoration(
-            border: Border.all(color: scheme.outline),
-            borderRadius: BorderRadius.circular(AppRadius.lg),
+          const SizedBox(height: 12),
+          ThemedText(item.label, variant: TextVariant.body),
+          const SizedBox(height: 4),
+          ThemedText(
+            item.time.length >= 5 ? item.time.substring(0, 5) : item.time,
+            variant: TextVariant.headline,
           ),
-          child: Column(
-            children: [
-              for (var i = 0; i < items.length; i++) ...[
-                InkWell(
-                  onTap: () => context.push(items[i].$3),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 16,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(
-                              items[i].$1,
-                              size: 20,
-                              color: scheme.onSurfaceVariant,
-                            ),
-                            const SizedBox(width: 12),
-                            ThemedText(items[i].$2, variant: TextVariant.body),
-                          ],
-                        ),
-                        Icon(
-                          Icons.chevron_right,
-                          size: 16,
-                          color: scheme.onSurfaceVariant,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                if (i < items.length - 1)
-                  Divider(height: 1, color: scheme.outline),
-              ],
-            ],
-          ),
-        ),
-      ],
+        ],
+      ),
+    );
+  }
+}
+
+/// Renders the hero mosque one frame late (see note at the call site).
+class _DeferredMosque extends StatefulWidget {
+  const _DeferredMosque();
+
+  @override
+  State<_DeferredMosque> createState() => _DeferredMosqueState();
+}
+
+class _DeferredMosqueState extends State<_DeferredMosque> {
+  var _ready = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) setState(() => _ready = true);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (!_ready) return const SizedBox.shrink();
+    final scheme = Theme.of(context).colorScheme;
+    return Transform.scale(
+      scale: 1.1,
+      child: SvgPicture.asset(
+        'assets/svg/mosque.svg',
+        width: MediaQuery.sizeOf(context).width,
+        colorFilter: ColorFilter.mode(scheme.surfaceContainer, BlendMode.srcIn),
+      ),
     );
   }
 }
@@ -188,18 +229,46 @@ class _HeroClock extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          // Radial glow behind the clock.
+          // Radial gold glow (RN `BackgroundGradient`: 52% → 60%/.8 → bg,
+          // centered at 88% height, radius 90% width).
           Container(
             decoration: BoxDecoration(
               gradient: RadialGradient(
-                center: Alignment.center,
+                center: const Alignment(0, 0.76),
                 radius: 0.9,
                 colors: [
-                  scheme.primary,
-                  scheme.primary.withValues(alpha: 0.8),
-                  scheme.surface.withValues(alpha: 0.06),
+                  const Color(0xFFFFA10A),
+                  const Color(0xFFFFB133).withValues(alpha: 0.8),
+                  scheme.surface,
                 ],
-                stops: const [0, 0.4, 0.75],
+                stops: const [0, 0.55, 1],
+              ),
+            ),
+          ),
+          // Mosque silhouette (RN `MosqueBackground`, card-tinted,
+          // -bottom-6, scale-110). Deferred past the first frame: the
+          // 164KB vector's maiden raster on software GL would otherwise
+          // block the main thread during plugin/service startup (ANR).
+          const Positioned(
+            left: 0,
+            right: 0,
+            bottom: -24,
+            child: _DeferredMosque(),
+          ),
+          // Fade gradient melting the mosque base into the background
+          // (RN `LinearGradient` card → background).
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            height: 120,
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [scheme.surface.withValues(alpha: 0), scheme.surface],
+                ),
               ),
             ),
           ),

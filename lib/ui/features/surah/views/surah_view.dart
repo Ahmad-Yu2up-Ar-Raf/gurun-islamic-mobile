@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:forui_lucide/forui_lucide.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../app/app_colors.dart';
 import '../../../../app/providers.dart';
 import '../../../core/state_views.dart';
 import '../../../core/themed_text.dart';
@@ -85,9 +88,14 @@ class _SuraHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final bright = Theme.brightnessOf(context) == Brightness.light;
     return Container(
       margin: const EdgeInsets.only(bottom: 20),
-      padding: const EdgeInsets.only(top: 16),
+      padding: const EdgeInsets.only(top: 16, bottom: 20),
+      decoration: BoxDecoration(
+        color: scheme.surfaceContainer,
+        borderRadius: BorderRadius.circular(AppRadius.lg),
+      ),
       child: Column(
         children: [
           ThemedText(
@@ -106,12 +114,10 @@ class _SuraHeader extends StatelessWidget {
               align: TextAlign.center,
             ),
           ),
-          const SizedBox(height: 8),
-          ArabicText(
-            'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',
-            fontSize: 22,
-            align: TextAlign.center,
-            color: scheme.onSurface,
+          const SizedBox(height: 12),
+          SvgPicture.asset(
+            bright ? 'assets/svg/basmalah.svg' : 'assets/svg/basmalah_dark.svg',
+            width: MediaQuery.sizeOf(context).width * 0.6,
           ),
         ],
       ),
@@ -153,13 +159,17 @@ class _AyatCard extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CountPill(label: this.ref),
-              const Icon(Icons.more_horiz, size: 16),
+              const Icon(FLucideIcons.ellipsis, size: 16),
             ],
           ),
           const SizedBox(height: 28),
           ArabicText(arab),
           const SizedBox(height: 28),
-          ThemedText(latin, variant: TextVariant.subhead),
+          ThemedText(
+            latin,
+            variant: TextVariant.subhead,
+            color: scheme.secondary,
+          ),
           const SizedBox(height: 8),
           ThemedText(
             indonesia,
@@ -170,24 +180,20 @@ class _AyatCard extends ConsumerWidget {
           Row(
             children: [
               // Inert by design: audio arrives in Wave 2.
-              Icon(
-                Icons.play_circle_outline,
-                size: 20,
-                color: scheme.onSurfaceVariant,
-              ),
+              Icon(FLucideIcons.play, size: 20, color: scheme.onSurfaceVariant),
               const SizedBox(width: 20),
               GestureDetector(
                 onTap: () =>
                     ref.read(bookmarkProvider.notifier).toggle(this.ref),
                 child: Icon(
-                  saved ? Icons.bookmark : Icons.bookmark_border,
+                  FLucideIcons.bookmark,
                   size: 20,
                   color: saved ? scheme.primary : scheme.onSurfaceVariant,
                 ),
               ),
               const SizedBox(width: 20),
               Icon(
-                Icons.share_outlined,
+                FLucideIcons.share2,
                 size: 20,
                 color: scheme.onSurfaceVariant,
               ),

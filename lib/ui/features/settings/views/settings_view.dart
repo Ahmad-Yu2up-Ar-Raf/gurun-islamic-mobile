@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forui_lucide/forui_lucide.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../app/app_colors.dart';
@@ -90,7 +91,7 @@ class _MenuRow extends StatelessWidget {
             ),
             trailing ??
                 Icon(
-                  Icons.chevron_right,
+                  FLucideIcons.chevronRight,
                   size: 18,
                   color: scheme.onSurfaceVariant,
                 ),

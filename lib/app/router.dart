@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:forui/forui.dart';
 import 'package:go_router/go_router.dart';
 
+import 'gurun_forui_theme.dart';
 import 'providers.dart';
 import 'theme.dart';
 import '../ui/features/asmaul_husna/views/asmaul_husna_view.dart';
@@ -94,32 +97,43 @@ class ScaffoldWithNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    Widget tabIcon(String asset, bool selected) => SvgPicture.asset(
+      asset,
+      width: 24,
+      height: 24,
+      colorFilter: ColorFilter.mode(
+        selected ? scheme.secondary : scheme.onSurfaceVariant,
+        BlendMode.srcIn,
+      ),
+    );
+    final index = navigationShell.currentIndex;
     return Scaffold(
       body: navigationShell,
       bottomNavigationBar: NavigationBar(
-        selectedIndex: navigationShell.currentIndex,
+        selectedIndex: index,
         onDestinationSelected: _goBranch,
         height: 70,
         elevation: 3,
-        destinations: const [
+        destinations: [
           NavigationDestination(
-            icon: Icon(Icons.home_outlined),
-            selectedIcon: Icon(Icons.home),
+            icon: tabIcon('assets/svg/tab_home.svg', false),
+            selectedIcon: tabIcon('assets/svg/tab_home.svg', true),
             label: 'Home',
           ),
           NavigationDestination(
-            icon: Icon(Icons.menu_book_outlined),
-            selectedIcon: Icon(Icons.menu_book),
+            icon: tabIcon('assets/svg/tab_quran.svg', false),
+            selectedIcon: tabIcon('assets/svg/tab_quran.svg', true),
             label: 'Quran',
           ),
           NavigationDestination(
-            icon: Icon(Icons.explore_outlined),
-            selectedIcon: Icon(Icons.explore),
+            icon: tabIcon('assets/svg/tab_kabbah.svg', false),
+            selectedIcon: tabIcon('assets/svg/tab_kabbah.svg', true),
             label: 'Qibla',
           ),
           NavigationDestination(
-            icon: Icon(Icons.settings_outlined),
-            selectedIcon: Icon(Icons.settings),
+            icon: tabIcon('assets/svg/tab_settings.svg', false),
+            selectedIcon: tabIcon('assets/svg/tab_settings.svg', true),
             label: 'Settings',
           ),
         ],
@@ -137,9 +151,17 @@ class GurunApp extends ConsumerWidget {
     final themeMode = ref.watch(themeModeProvider);
     return MaterialApp.router(
       title: 'Gurun',
+      supportedLocales: FLocalizations.supportedLocales,
+      localizationsDelegates: const [...FLocalizations.localizationsDelegates],
       theme: buildAppTheme(Brightness.light),
       darkTheme: buildAppTheme(Brightness.dark),
       themeMode: themeMode,
+      builder: (context, child) => FTheme(
+        data: Theme.brightnessOf(context) == Brightness.light
+            ? gurunLightTheme
+            : gurunDarkTheme,
+        child: FToaster(child: FTooltipGroup(child: child!)),
+      ),
       routerConfig: buildRouter(),
     );
   }

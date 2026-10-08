@@ -1,6 +1,13 @@
 {
   "version": 1,
   "skills": {
+    "bump-flutter-tests": {
+      "source": "duobaseio/forui",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/bump-flutter-tests/SKILL.md",
+      "computedHash": "6e3b6d95a2d17b4dfd1dd04bd4f5683ca51f05fbf0114c9afb1f33c23bb9d99a"
+    },
     "dart-add-unit-test": {
       "source": "dart-lang/skills",
       "sourceType": "github",
@@ -156,6 +163,20 @@
       "sourceType": "github",
       "skillPath": "skills/mobile-automation/SKILL.md",
       "computedHash": "c73ada090d05451bd030b50f88457368185bddbb276b0e6aa758f8c1c3e0fb2f"
+    },
+    "release": {
+      "source": "duobaseio/forui",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/release/SKILL.md",
+      "computedHash": "f933bd496276bbf2c2df8c2a5d084c608e91ceba9de9495473ab0a79b95ed905"
+    },
+    "release-all": {
+      "source": "duobaseio/forui",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/release-all/SKILL.md",
+      "computedHash": "6f011310c46b75b12a426f44c1ea9e78a1e5a3b99223fd171e4f157c63bddf27"
     }
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/models/content_models.dart';
+import '../data/models/prayer_models.dart';
 import '../data/models/surah_models.dart';
 import '../data/repositories/device_repositories.dart';
 import '../data/repositories/repositories.dart';
@@ -172,4 +173,16 @@ final todayScheduleProvider = FutureProvider<List<PrayerScheduleItem>>((
   final today = findTodayJadwal(month.jadwal, DateTime.now());
   if (today == null) return const [];
   return buildTodaySchedule(today, DateTime.now());
+});
+
+/// Tomorrow's raw schedule (shares the cached month fetch) so the
+/// post-Isya countdown can target tomorrow's Subuh instead of midnight.
+final tomorrowJadwalProvider = FutureProvider<DailyJadwal?>((ref) async {
+  final region = ref.watch(regionProvider);
+  final repo = ref.watch(prayerRepositoryProvider);
+  final month = await repo.fetchSchedule(region.province, region.city);
+  return findTodayJadwal(
+    month.jadwal,
+    DateTime.now().add(const Duration(days: 1)),
+  );
 });

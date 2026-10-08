@@ -104,6 +104,7 @@ class AppButton extends StatelessWidget {
     this.ghost = false,
     this.loading = false,
     this.expanded = false,
+    this.icon,
   });
 
   final String label;
@@ -111,6 +112,7 @@ class AppButton extends StatelessWidget {
   final bool ghost;
   final bool loading;
   final bool expanded;
+  final Widget? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -130,7 +132,12 @@ class AppButton extends StatelessWidget {
                 borderRadius: BorderRadius.circular(AppRadius.lg),
               ),
             ),
-            child: _Label(label: label, style: style, loading: loading),
+            child: _Label(
+              label: label,
+              style: style,
+              loading: loading,
+              icon: icon,
+            ),
           )
         : FilledButton(
             onPressed: loading ? null : onPressed,
@@ -141,7 +148,12 @@ class AppButton extends StatelessWidget {
                 borderRadius: BorderRadius.circular(AppRadius.lg),
               ),
             ),
-            child: _Label(label: label, style: style, loading: loading),
+            child: _Label(
+              label: label,
+              style: style,
+              loading: loading,
+              icon: icon,
+            ),
           );
     return expanded ? SizedBox(width: double.infinity, child: button) : button;
   }
@@ -152,11 +164,13 @@ class _Label extends StatelessWidget {
     required this.label,
     required this.style,
     required this.loading,
+    this.icon,
   });
 
   final String label;
   final TextStyle style;
   final bool loading;
+  final Widget? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -167,7 +181,15 @@ class _Label extends StatelessWidget {
         child: CircularProgressIndicator(strokeWidth: 2, color: style.color),
       );
     }
-    return Text(label, style: style);
+    if (icon == null) return Text(label, style: style);
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        icon!,
+        const SizedBox(width: 8),
+        Text(label, style: style),
+      ],
+    );
   }
 }
 

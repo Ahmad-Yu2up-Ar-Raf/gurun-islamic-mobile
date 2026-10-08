@@ -4,6 +4,8 @@ import 'package:adhan/adhan.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_compass/flutter_compass.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:forui_lucide/forui_lucide.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../app/providers.dart';
@@ -31,7 +33,7 @@ class QiblaView extends ConsumerWidget {
       title: 'Qibla Finder',
       leading: Builder(
         builder: (context) => IconButton(
-          icon: const Icon(Icons.menu),
+          icon: const Icon(FLucideIcons.menu),
           onPressed: () => Scaffold.of(context).openDrawer(),
         ),
       ),
@@ -115,8 +117,12 @@ class _Compass extends StatelessWidget {
                 // Layer 2: qibla arrow (rotates toward bearing).
                 Transform.rotate(
                   angle: degreeToRadian(rotation),
-                  child: const RepaintBoundary(
-                    child: Icon(Icons.navigation, size: 102),
+                  child: RepaintBoundary(
+                    child: SvgPicture.asset(
+                      'assets/svg/qibla_arrow.svg',
+                      width: 102,
+                      height: 102,
+                    ),
                   ),
                 ),
                 // Layer 1: Kaaba marker (fixed).
@@ -251,6 +257,7 @@ class _SensorError extends StatelessWidget {
           const SizedBox(height: 16),
           AppButton(
             label: 'Coba Camera Mode',
+            icon: const Icon(FLucideIcons.camera, size: 16),
             onPressed: () => _openCameraMode(context),
           ),
         ],

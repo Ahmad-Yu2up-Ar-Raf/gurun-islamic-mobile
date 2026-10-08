@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../app/app_colors.dart';
 import 'themed_text.dart';
@@ -55,9 +56,21 @@ class AppScaffold extends StatelessWidget {
   }
 }
 
-/// Drawer with Gurun branding only (menu list is commented out in RN).
+/// Drawer with Gurun branding + 8 destinations (mirrors RN `DRAWER_MENU`,
+/// benchmark `sheet-menu.png`; RN marks are emoji).
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
+
+  static const _destinations = [
+    ('🏠', 'Home', '/home'),
+    ('📖', 'Quran', '/quran'),
+    ('🕌', 'Qibla', '/qibla'),
+    ('🤲', 'Doa', '/doa'),
+    ('📿', 'Dzikir', '/dzikir'),
+    ('⭐', 'Asmaul Husna', '/asmaul-husna'),
+    ('📚', 'Hadist', '/hadist'),
+    ('⚙️', 'Settings', '/settings'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -89,9 +102,25 @@ class AppDrawer extends StatelessWidget {
               ),
             ),
             Container(
-              margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+              margin: const EdgeInsets.fromLTRB(16, 12, 16, 4),
               height: 0.5,
               color: scheme.onSurfaceVariant.withValues(alpha: 0.2),
+            ),
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                  for (final (mark, label, route) in _destinations)
+                    ListTile(
+                      leading: Text(mark, style: const TextStyle(fontSize: 20)),
+                      title: ThemedText(label, variant: TextVariant.body),
+                      onTap: () {
+                        Navigator.of(context).pop();
+                        context.go(route);
+                      },
+                    ),
+                ],
+              ),
             ),
           ],
         ),
