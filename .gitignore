@@ -1,0 +1,69 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+Thumbs.db
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ / Android Studio
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# VS Code (launch/tasks are personal; uncomment to track shared settings)
+.vscode/
+
+# Flutter/Dart/Pub
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+.ephemeral/
+app.*.symbols
+app.*.map.json
+.widget_preview/
+
+# Android generated
+.gradle/
+android/local.properties
+android/.gradle/
+android/captures/
+android/app/debug/
+android/app/profile/
+android/app/release/
+android/app/build/
+**/*.apk
+**/*.aab
+**/*.ap_
+*.keystore
+*.jks
+
+# iOS generated
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Flutter.podspec
+ios/Flutter/Flutter-Generated.xcconfig
+ios/Runner.xcworkspace/
+ios/Runner/GeneratedPluginRegistrant.*
+Pods/
+*.xcworkspace
+*.xcuserdata
+
+# Secrets — never commit
+.env
+.env.*
+!.env.example
