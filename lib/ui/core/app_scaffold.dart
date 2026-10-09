@@ -4,6 +4,10 @@ import 'package:go_router/go_router.dart';
 import '../../app/app_colors.dart';
 import 'themed_text.dart';
 
+/// True while any screen's drawer (sheet menu) is open. The shell listens
+/// to hide the bottom bar so focus stays on the menu (RN drawer behavior).
+final ValueNotifier<bool> sheetMenuOpen = ValueNotifier<bool>(false);
+
 /// Screen wrapper: safe area + scroll column with screen-edge padding.
 /// Mirrors the RN `Wrapper` (`px-8` outer, feature `gap-3`).
 class AppScaffold extends StatelessWidget {
@@ -39,6 +43,7 @@ class AppScaffold extends StatelessWidget {
         scrolledUnderElevation: 0,
       ),
       drawer: const AppDrawer(),
+      onDrawerChanged: (open) => sheetMenuOpen.value = open,
       body: SafeArea(
         child: Column(
           children: [

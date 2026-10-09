@@ -81,6 +81,7 @@ class HomeView extends ConsumerWidget {
     final now = DateTime.now();
     return AppScaffold(
       title: 'Gurun',
+      edgePadding: 0,
       leading: Builder(
         builder: (context) => IconButton(
           icon: const Icon(FLucideIcons.menu),
@@ -98,7 +99,14 @@ class HomeView extends ConsumerWidget {
           SliverToBoxAdapter(
             child: _HeroClock(now: now, state: countdown),
           ),
-          const SliverToBoxAdapter(child: _PrayerSection()),
+          // RN hero `mb-16` breathing room before the carousel.
+          const SliverToBoxAdapter(child: SizedBox(height: 48)),
+          const SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: _PrayerSection(),
+            ),
+          ),
           const SliverToBoxAdapter(child: SizedBox(height: 100)),
         ],
       ),
@@ -167,7 +175,11 @@ class _PrayTimeCard extends StatelessWidget {
             colorFilter: ColorFilter.mode(scheme.primary, BlendMode.srcIn),
           ),
           const SizedBox(height: 12),
-          ThemedText(item.label, variant: TextVariant.body),
+          ThemedText(
+            item.label,
+            variant: TextVariant.body,
+            weight: FontWeight.w500,
+          ),
           const SizedBox(height: 4),
           ThemedText(
             item.time.length >= 5 ? item.time.substring(0, 5) : item.time,

@@ -30,15 +30,16 @@ class SurahView extends ConsumerWidget {
           slivers: [
             SliverAppBar(
               floating: true,
+              centerTitle: true,
               backgroundColor: scheme.surface.withValues(alpha: 0.9),
               leading: IconButton(
-                icon: const Icon(Icons.chevron_left),
+                icon: const Icon(FLucideIcons.chevronLeft),
                 onPressed: () => context.pop(),
               ),
               title: ThemedText(surah.namaLatin, variant: TextVariant.headline),
               actions: [
                 IconButton(
-                  icon: const Icon(Icons.settings_outlined),
+                  icon: const Icon(FLucideIcons.settings),
                   onPressed: () {},
                 ),
               ],
@@ -91,7 +92,7 @@ class _SuraHeader extends StatelessWidget {
     final bright = Theme.brightnessOf(context) == Brightness.light;
     return Container(
       margin: const EdgeInsets.only(bottom: 20),
-      padding: const EdgeInsets.only(top: 16, bottom: 20),
+      padding: const EdgeInsets.only(top: 16, bottom: 16),
       decoration: BoxDecoration(
         color: scheme.surfaceContainer,
         borderRadius: BorderRadius.circular(AppRadius.lg),
@@ -117,7 +118,7 @@ class _SuraHeader extends StatelessWidget {
           const SizedBox(height: 12),
           SvgPicture.asset(
             bright ? 'assets/svg/basmalah.svg' : 'assets/svg/basmalah_dark.svg',
-            width: MediaQuery.sizeOf(context).width * 0.6,
+            width: MediaQuery.sizeOf(context).width * 0.75,
           ),
         ],
       ),
@@ -185,8 +186,9 @@ class _AyatCard extends ConsumerWidget {
               GestureDetector(
                 onTap: () =>
                     ref.read(bookmarkProvider.notifier).toggle(this.ref),
+                // RN parity: filled primary glyph when saved.
                 child: Icon(
-                  FLucideIcons.bookmark,
+                  saved ? Icons.bookmark : FLucideIcons.bookmark,
                   size: 20,
                   color: saved ? scheme.primary : scheme.onSurfaceVariant,
                 ),

@@ -10,6 +10,7 @@ class ThemedText extends StatelessWidget {
     this.align,
     this.maxLines,
     this.uppercase = false,
+    this.weight,
   });
 
   final String data;
@@ -18,6 +19,7 @@ class ThemedText extends StatelessWidget {
   final TextAlign? align;
   final int? maxLines;
   final bool uppercase;
+  final FontWeight? weight;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,7 @@ class ThemedText extends StatelessWidget {
     };
     return Text(
       uppercase ? data.toUpperCase() : data,
-      style: base?.copyWith(color: color),
+      style: base?.copyWith(color: color, fontWeight: weight),
       textAlign: align,
       maxLines: maxLines,
       overflow: maxLines == null ? null : TextOverflow.ellipsis,

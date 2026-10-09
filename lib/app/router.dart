@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'gurun_forui_theme.dart';
 import 'providers.dart';
 import 'theme.dart';
+import '../ui/core/app_scaffold.dart';
 import '../ui/features/asmaul_husna/views/asmaul_husna_view.dart';
 import '../ui/features/doa/views/doa_view.dart';
 import '../ui/features/dzikir/views/dzikir_view.dart';
@@ -83,15 +84,22 @@ GoRouter buildRouter() => GoRouter(
   ],
 );
 
-class ScaffoldWithNavBar extends StatelessWidget {
+/// Shell scaffold. The bottom bar hides while the drawer (sheet menu) is
+/// open so focus stays on the menu (1:1 with the RN drawer overlay).
+class ScaffoldWithNavBar extends StatefulWidget {
   const ScaffoldWithNavBar({super.key, required this.navigationShell});
 
   final StatefulNavigationShell navigationShell;
 
+  @override
+  State<ScaffoldWithNavBar> createState() => _ScaffoldWithNavBarState();
+}
+
+class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
   void _goBranch(int index) {
-    navigationShell.goBranch(
+    widget.navigationShell.goBranch(
       index,
-      initialLocation: index == navigationShell.currentIndex,
+      initialLocation: index == widget.navigationShell.currentIndex,
     );
   }
 
@@ -107,36 +115,42 @@ class ScaffoldWithNavBar extends StatelessWidget {
         BlendMode.srcIn,
       ),
     );
-    final index = navigationShell.currentIndex;
+    final index = widget.navigationShell.currentIndex;
     return Scaffold(
-      body: navigationShell,
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: index,
-        onDestinationSelected: _goBranch,
-        height: 70,
-        elevation: 3,
-        destinations: [
-          NavigationDestination(
-            icon: tabIcon('assets/svg/tab_home.svg', false),
-            selectedIcon: tabIcon('assets/svg/tab_home.svg', true),
-            label: 'Home',
-          ),
-          NavigationDestination(
-            icon: tabIcon('assets/svg/tab_quran.svg', false),
-            selectedIcon: tabIcon('assets/svg/tab_quran.svg', true),
-            label: 'Quran',
-          ),
-          NavigationDestination(
-            icon: tabIcon('assets/svg/tab_kabbah.svg', false),
-            selectedIcon: tabIcon('assets/svg/tab_kabbah.svg', true),
-            label: 'Qibla',
-          ),
-          NavigationDestination(
-            icon: tabIcon('assets/svg/tab_settings.svg', false),
-            selectedIcon: tabIcon('assets/svg/tab_settings.svg', true),
-            label: 'Settings',
-          ),
-        ],
+      body: widget.navigationShell,
+      bottomNavigationBar: ValueListenableBuilder<bool>(
+        valueListenable: sheetMenuOpen,
+        builder: (_, drawerOpen, _) {
+          if (drawerOpen) return const SizedBox.shrink();
+          return NavigationBar(
+            selectedIndex: index,
+            onDestinationSelected: _goBranch,
+            height: 70,
+            elevation: 3,
+            destinations: [
+              NavigationDestination(
+                icon: tabIcon('assets/svg/tab_home.svg', false),
+                selectedIcon: tabIcon('assets/svg/tab_home.svg', true),
+                label: 'Home',
+              ),
+              NavigationDestination(
+                icon: tabIcon('assets/svg/tab_quran.svg', false),
+                selectedIcon: tabIcon('assets/svg/tab_quran.svg', true),
+                label: 'Quran',
+              ),
+              NavigationDestination(
+                icon: tabIcon('assets/svg/tab_kabbah.svg', false),
+                selectedIcon: tabIcon('assets/svg/tab_kabbah.svg', true),
+                label: 'Qibla',
+              ),
+              NavigationDestination(
+                icon: tabIcon('assets/svg/tab_settings.svg', false),
+                selectedIcon: tabIcon('assets/svg/tab_settings.svg', true),
+                label: 'Settings',
+              ),
+            ],
+          );
+        },
       ),
     );
   }

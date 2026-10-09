@@ -144,11 +144,12 @@ class _SectionTabsState extends State<_SectionTabs> {
               child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 decoration: BoxDecoration(
-                  border: _selected == i
-                      ? Border(
-                          bottom: BorderSide(color: scheme.secondary, width: 2),
-                        )
-                      : null,
+                  border: Border(
+                    bottom: BorderSide(
+                      color: _selected == i ? scheme.secondary : scheme.outline,
+                      width: _selected == i ? 2 : 1,
+                    ),
+                  ),
                 ),
                 child: Text(
                   labels[i],
@@ -223,6 +224,7 @@ class _SurahRow extends StatelessWidget {
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w600,
                           fontSize: 11,
+                          height: 1,
                           color: scheme.secondary,
                         ),
                       ),
@@ -233,7 +235,11 @@ class _SurahRow extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ThemedText(namaLatin, variant: TextVariant.body),
+                    ThemedText(
+                      namaLatin,
+                      variant: TextVariant.body,
+                      weight: FontWeight.w500,
+                    ),
                     Row(
                       children: [
                         ThemedText(

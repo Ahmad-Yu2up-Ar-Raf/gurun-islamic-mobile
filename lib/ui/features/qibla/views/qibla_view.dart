@@ -125,39 +125,43 @@ class _Compass extends StatelessWidget {
                     ),
                   ),
                 ),
-                // Layer 1: Kaaba marker (fixed).
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      width: 28,
-                      height: 28,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: scheme.primary),
-                      ),
-                      child: Icon(
-                        Icons.mosque,
-                        size: 15,
-                        color: scheme.primary,
-                      ),
-                    ),
-                    if (!facing)
+                // Layer 1: Kaaba marker, fixed at the top of the ring
+                // (RN `z-50` layering; the needle rotates beneath it).
+                Positioned(
+                  top: -14,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
                       Container(
-                        margin: const EdgeInsets.only(top: 4),
-                        width: 0,
-                        height: 60,
+                        width: 28,
+                        height: 28,
                         decoration: BoxDecoration(
-                          border: Border(
-                            left: BorderSide(
-                              color: scheme.primary.withValues(alpha: 0.6),
-                              width: 2,
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: scheme.primary),
+                        ),
+                        child: Icon(
+                          Icons.mosque,
+                          size: 15,
+                          color: scheme.primary,
+                        ),
+                      ),
+                      if (!facing)
+                        Container(
+                          margin: const EdgeInsets.only(top: 4),
+                          width: 0,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            border: Border(
+                              left: BorderSide(
+                                color: scheme.primary.withValues(alpha: 0.6),
+                                width: 2,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
