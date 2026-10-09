@@ -21,7 +21,7 @@ class QuranView extends ConsumerWidget {
       leading: Builder(
         builder: (context) => IconButton(
           icon: const Icon(FLucideIcons.menu),
-          onPressed: () => Scaffold.of(context).openDrawer(),
+          onPressed: openSheetMenu,
         ),
       ),
       edgePadding: 20,

@@ -34,7 +34,7 @@ class QiblaView extends ConsumerWidget {
       leading: Builder(
         builder: (context) => IconButton(
           icon: const Icon(FLucideIcons.menu),
-          onPressed: () => Scaffold.of(context).openDrawer(),
+          onPressed: openSheetMenu,
         ),
       ),
       body: compass.when(
@@ -88,78 +88,104 @@ class _Compass extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 24),
+          // Central page glow behind the dial (echoes the gold aura in
+          // `qibla.png`; primary-tinted so it adapts to both modes).
           SizedBox(
-            width: _compassSize,
-            height: _compassSize,
+            width: _compassSize + 96,
+            height: _compassSize + 96,
             child: Stack(
               alignment: Alignment.center,
               children: [
-                // Layer 3: compass ring (rotates with heading).
-                Transform.rotate(
-                  angle: degreeToRadian(-heading),
-                  child: RepaintBoundary(
-                    child: Container(
-                      width: _compassSize,
-                      height: _compassSize,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: facing
-                              ? scheme.primary
-                              : scheme.primary.withValues(alpha: 0.5),
-                          width: 4,
-                        ),
-                      ),
-                      child: const _RingLabels(),
+                Container(
+                  decoration: BoxDecoration(
+                    gradient: RadialGradient(
+                      radius: 0.65,
+                      colors: [
+                        scheme.primary.withValues(alpha: 0.22),
+                        scheme.primary.withValues(alpha: 0.07),
+                        scheme.surface.withValues(alpha: 0),
+                      ],
+                      stops: const [0, 0.6, 1],
                     ),
                   ),
                 ),
-                // Layer 2: qibla arrow (rotates toward bearing).
-                Transform.rotate(
-                  angle: degreeToRadian(rotation),
-                  child: RepaintBoundary(
-                    child: SvgPicture.asset(
-                      'assets/svg/qibla_arrow.svg',
-                      width: 102,
-                      height: 102,
-                    ),
-                  ),
-                ),
-                // Layer 1: Kaaba marker, fixed at the top of the ring
-                // (RN `z-50` layering; the needle rotates beneath it).
-                Positioned(
-                  top: -14,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
+                SizedBox(
+                  width: _compassSize,
+                  height: _compassSize,
+                  child: Stack(
+                    alignment: Alignment.center,
                     children: [
-                      Container(
-                        width: 28,
-                        height: 28,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: scheme.primary),
-                        ),
-                        child: Icon(
-                          Icons.mosque,
-                          size: 15,
-                          color: scheme.primary,
-                        ),
-                      ),
-                      if (!facing)
-                        Container(
-                          margin: const EdgeInsets.only(top: 4),
-                          width: 0,
-                          height: 60,
-                          decoration: BoxDecoration(
-                            border: Border(
-                              left: BorderSide(
-                                color: scheme.primary.withValues(alpha: 0.6),
-                                width: 2,
+                      // Layer 3: compass ring (rotates with heading).
+                      Transform.rotate(
+                        angle: degreeToRadian(-heading),
+                        child: RepaintBoundary(
+                          child: Container(
+                            width: _compassSize,
+                            height: _compassSize,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: facing
+                                    ? scheme.primary
+                                    : scheme.primary.withValues(alpha: 0.5),
+                                width: 4,
                               ),
                             ),
+                            child: const _RingLabels(),
                           ),
                         ),
+                      ),
+                      // Layer 2: qibla arrow (rotates toward bearing).
+                      Transform.rotate(
+                        angle: degreeToRadian(rotation),
+                        child: RepaintBoundary(
+                          child: SvgPicture.asset(
+                            'assets/svg/qibla_arrow.svg',
+                            width: 102,
+                            height: 102,
+                          ),
+                        ),
+                      ),
+                      // Layer 1: Kaaba marker, fixed at the top of the ring
+                      // (RN `z-50` layering; the needle rotates beneath it).
+                      Positioned(
+                        top: -14,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: 28,
+                              height: 28,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(color: scheme.primary),
+                              ),
+                              child: Icon(
+                                Icons.mosque,
+                                size: 15,
+                                color: scheme.primary,
+                              ),
+                            ),
+                            if (!facing)
+                              Container(
+                                margin: const EdgeInsets.only(top: 4),
+                                width: 0,
+                                height: 60,
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    left: BorderSide(
+                                      color: scheme.primary.withValues(
+                                        alpha: 0.6,
+                                      ),
+                                      width: 2,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),

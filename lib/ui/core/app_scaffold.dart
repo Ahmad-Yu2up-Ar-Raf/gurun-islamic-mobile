@@ -4,9 +4,13 @@ import 'package:go_router/go_router.dart';
 import '../../app/app_colors.dart';
 import 'themed_text.dart';
 
-/// True while any screen's drawer (sheet menu) is open. The shell listens
-/// to hide the bottom bar so focus stays on the menu (RN drawer behavior).
-final ValueNotifier<bool> sheetMenuOpen = ValueNotifier<bool>(false);
+/// Key of the shell scaffold that owns the sheet-menu drawer.
+/// Screens open the menu through [openSheetMenu] (the drawer lives on the
+/// shell so it can dim the bottom bar while open).
+final GlobalKey<ScaffoldState> shellScaffoldKey = GlobalKey<ScaffoldState>();
+
+/// Opens the sheet menu from any screen's leading button.
+void openSheetMenu() => shellScaffoldKey.currentState?.openDrawer();
 
 /// Screen wrapper: safe area + scroll column with screen-edge padding.
 /// Mirrors the RN `Wrapper` (`px-8` outer, feature `gap-3`).
@@ -42,8 +46,6 @@ class AppScaffold extends StatelessWidget {
         elevation: 0,
         scrolledUnderElevation: 0,
       ),
-      drawer: const AppDrawer(),
-      onDrawerChanged: (open) => sheetMenuOpen.value = open,
       body: SafeArea(
         child: Column(
           children: [
@@ -112,19 +114,34 @@ class AppDrawer extends StatelessWidget {
               color: scheme.onSurfaceVariant.withValues(alpha: 0.2),
             ),
             Expanded(
-              child: ListView(
+              child: ListView.separated(
                 padding: EdgeInsets.zero,
-                children: [
-                  for (final (mark, label, route) in _destinations)
-                    ListTile(
-                      leading: Text(mark, style: const TextStyle(fontSize: 20)),
-                      title: ThemedText(label, variant: TextVariant.body),
-                      onTap: () {
-                        Navigator.of(context).pop();
-                        context.go(route);
-                      },
+                itemCount: _destinations.length,
+                separatorBuilder: (_, _) => Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  height: 0.5,
+                  color: Theme.of(context).colorScheme.outline
+                      .withValues(alpha: 0.5),
+                ),
+                itemBuilder: (context, i) {
+                  final (mark, label, route) = _destinations[i];
+                  return ListTile(
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 4,
                     ),
-                ],
+                    leading: Text(mark, style: const TextStyle(fontSize: 20)),
+                    title: ThemedText(
+                      label,
+                      variant: TextVariant.body,
+                      weight: FontWeight.w500,
+                    ),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      context.go(route);
+                    },
+                  );
+                },
               ),
             ),
           ],

@@ -96,6 +96,8 @@ class ScaffoldWithNavBar extends StatefulWidget {
 }
 
 class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
+  var _drawerOpen = false;
+
   void _goBranch(int index) {
     widget.navigationShell.goBranch(
       index,
@@ -117,12 +119,15 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
     );
     final index = widget.navigationShell.currentIndex;
     return Scaffold(
+      key: shellScaffoldKey,
+      drawer: const AppDrawer(),
+      onDrawerChanged: (open) => setState(() => _drawerOpen = open),
       body: widget.navigationShell,
-      bottomNavigationBar: ValueListenableBuilder<bool>(
-        valueListenable: sheetMenuOpen,
-        builder: (_, drawerOpen, _) {
-          if (drawerOpen) return const SizedBox.shrink();
-          return NavigationBar(
+      bottomNavigationBar: Opacity(
+        opacity: _drawerOpen ? 0.35 : 1,
+        child: IgnorePointer(
+          ignoring: _drawerOpen,
+          child: NavigationBar(
             selectedIndex: index,
             onDestinationSelected: _goBranch,
             height: 70,
@@ -149,8 +154,8 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
                 label: 'Settings',
               ),
             ],
-          );
-        },
+          ),
+        ),
       ),
     );
   }

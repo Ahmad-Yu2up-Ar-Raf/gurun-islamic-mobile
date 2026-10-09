@@ -85,7 +85,7 @@ class HomeView extends ConsumerWidget {
       leading: Builder(
         builder: (context) => IconButton(
           icon: const Icon(FLucideIcons.menu),
-          onPressed: () => Scaffold.of(context).openDrawer(),
+          onPressed: openSheetMenu,
         ),
       ),
       actions: [
@@ -101,12 +101,10 @@ class HomeView extends ConsumerWidget {
           ),
           // RN hero `mb-16` breathing room before the carousel.
           const SliverToBoxAdapter(child: SizedBox(height: 48)),
-          const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: _PrayerSection(),
-            ),
-          ),
+          // Header keeps screen-edge inset; the carousel itself runs
+          // full-bleed so cards scroll edge-to-edge (content padding
+          // preserves the first/last card inset).
+          const SliverToBoxAdapter(child: _PrayerSection()),
           const SliverToBoxAdapter(child: SizedBox(height: 100)),
         ],
       ),
@@ -125,13 +123,17 @@ class _PrayerSection extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const ThemedText('Prayer Times', variant: TextVariant.title),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: ThemedText('Prayer Times', variant: TextVariant.title),
+        ),
         const SizedBox(height: 12),
         SizedBox(
           height: 148,
           child: schedule.when(
             data: (items) => ListView.separated(
               scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               itemCount: items.length,
               separatorBuilder: (_, _) => const SizedBox(width: 8),
               itemBuilder: (context, i) => _PrayTimeCard(item: items[i]),
@@ -214,8 +216,11 @@ class _DeferredMosqueState extends State<_DeferredMosque> {
   Widget build(BuildContext context) {
     if (!_ready) return const SizedBox.shrink();
     final scheme = Theme.of(context).colorScheme;
+    // 1.25x keeps the silhouette dominant at the hero base (RN scale-110
+    // minimum). Stacking stays glow < mosque < fade < clock < info row:
+    // the opaque vector must never cover the clock/timer (`home.png`).
     return Transform.scale(
-      scale: 1.1,
+      scale: 1.25,
       child: SvgPicture.asset(
         'assets/svg/mosque.svg',
         width: MediaQuery.sizeOf(context).width,
