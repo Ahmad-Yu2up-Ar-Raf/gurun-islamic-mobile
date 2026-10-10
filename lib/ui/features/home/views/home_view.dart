@@ -104,7 +104,7 @@ class HomeView extends ConsumerWidget {
           // Header keeps screen-edge inset; the carousel itself runs
           // full-bleed so cards scroll edge-to-edge (content padding
           // preserves the first/last card inset).
-          const SliverToBoxAdapter(child: _PrayerSection()),
+          // const SliverToBoxAdapter(child: _PrayerSection()),
           const SliverToBoxAdapter(child: SizedBox(height: 100)),
         ],
       ),
@@ -114,43 +114,43 @@ class HomeView extends ConsumerWidget {
 
 /// `PrayTimeSection` port: header + horizontal 5-card carousel fed by
 /// `todayScheduleProvider` (replaces the non-RN `Fitur` menu).
-class _PrayerSection extends ConsumerWidget {
-  const _PrayerSection();
+// class _PrayerSection extends ConsumerWidget {
+//   const _PrayerSection();
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final schedule = ref.watch(todayScheduleProvider);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: ThemedText('Prayer Times', variant: TextVariant.title),
-        ),
-        const SizedBox(height: 12),
-        SizedBox(
-          height: 148,
-          child: schedule.when(
-            data: (items) => ListView.separated(
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              itemCount: items.length,
-              separatorBuilder: (_, _) => const SizedBox(width: 8),
-              itemBuilder: (context, i) => _PrayTimeCard(item: items[i]),
-            ),
-            loading: () =>
-                const LoadingState(message: 'Memuat jadwal shalat...'),
-            error: (e, _) => ErrorState(
-              title: 'Gagal memuat jadwal shalat',
-              message: '$e',
-              onRetry: () => ref.invalidate(todayScheduleProvider),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
+//     final schedule = ref.watch(todayScheduleProvider);
+//     return Column(
+//       crossAxisAlignment: CrossAxisAlignment.start,
+//       children: [
+//         const Padding(
+//           padding: EdgeInsets.symmetric(horizontal: 20),
+//           child: ThemedText('Prayer Times', variant: TextVariant.title),
+//         ),
+//         const SizedBox(height: 12),
+//         SizedBox(
+//           height: 148,
+//           child: schedule.when(
+//             data: (items) => ListView.separated(
+//               scrollDirection: Axis.horizontal,
+//               padding: const EdgeInsets.symmetric(horizontal: 20),
+//               itemCount: items.length,
+//               separatorBuilder: (_, _) => const SizedBox(width: 8),
+//               itemBuilder: (context, i) => _PrayTimeCard(item: items[i]),
+//             ),
+//             loading: () =>
+//                 const LoadingState(message: 'Memuat jadwal shalat...'),
+//             error: (e, _) => ErrorState(
+//               title: 'Gagal memuat jadwal shalat',
+//               message: '$e',
+//               onRetry: () => ref.invalidate(todayScheduleProvider),
+//             ),
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+// }
 
 class _PrayTimeCard extends StatelessWidget {
   const _PrayTimeCard({required this.item});
@@ -220,7 +220,7 @@ class _DeferredMosqueState extends State<_DeferredMosque> {
     // minimum). Stacking stays glow < mosque < fade < clock < info row:
     // the opaque vector must never cover the clock/timer (`home.png`).
     return Transform.scale(
-      scale: 1.25,
+      scale: 1.08,
       child: SvgPicture.asset(
         'assets/svg/mosque.svg',
         width: MediaQuery.sizeOf(context).width,
@@ -241,13 +241,13 @@ class _HeroClock extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
     final hour = now.hour.toString().padLeft(2, '0');
     final minute = now.minute.toString().padLeft(2, '0');
+
     return SizedBox(
-      height: MediaQuery.sizeOf(context).width * 0.76,
+      height: MediaQuery.sizeOf(context).width * 0.85,
       child: Stack(
         alignment: Alignment.center,
         children: [
-          // Radial gold glow (RN `BackgroundGradient`: 52% → 60%/.8 → bg,
-          // centered at 88% height, radius 90% width).
+          // 1. Background Radial Glow (Tetep di bawah)
           Container(
             decoration: BoxDecoration(
               gradient: RadialGradient(
@@ -262,18 +262,61 @@ class _HeroClock extends StatelessWidget {
               ),
             ),
           ),
-          // Mosque silhouette (RN `MosqueBackground`, card-tinted,
-          // -bottom-6, scale-110). Deferred past the first frame: the
-          // 164KB vector's maiden raster on software GL would otherwise
-          // block the main thread during plugin/service startup (ANR).
+
+          // 2. POSISI JAM DIGESER KE ATAS DI SINI ⬇️
+          Positioned(
+            top: 90, // Atur jarak dari atas container (bisa diganti misal 30, 50, dsb)
+            left: 0,
+            right: 0,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                // Row untuk Jam & Menit (Kiri & Kanan)
+                Row(
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 28),
+                        child: Text(
+                          hour,
+                          textAlign: TextAlign.right,
+                          style: schluberStyle(context: context, fontSize: 100),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 30),
+                        child: Text(
+                          minute,
+                          style: schluberStyle(context: context, fontSize: 100),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                // Titik Dua (:) di tengah-tengah
+                // 2. TITIK DUA DIGESER KE KANAN DI SINI ➡️
+                Transform.translate(
+                  offset: const Offset(2, 0), // Angka 12 ini atur geseran ke kanan (positif = kanan, negatif = kiri)
+                  child: Text(
+                    ':',
+                    style: schluberStyle(context: context, fontSize: 100),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          // 3. Siluet Masjid (Tetep)
           const Positioned(
             left: 0,
             right: 0,
-            bottom: -24,
+            bottom: 20,
             child: _DeferredMosque(),
           ),
-          // Fade gradient melting the mosque base into the background
-          // (RN `LinearGradient` card → background).
+
+          // 4. Fade Gradient (Tetep)
           Positioned(
             left: 0,
             right: 0,
@@ -289,32 +332,10 @@ class _HeroClock extends StatelessWidget {
               ),
             ),
           ),
-          Row(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 28),
-                  child: Text(
-                    hour,
-                    textAlign: TextAlign.right,
-                    style: schluberStyle(context: context, fontSize: 88),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 28),
-                  child: Text(
-                    minute,
-                    style: schluberStyle(context: context, fontSize: 88),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Text(':', style: schluberStyle(context: context, fontSize: 88)),
+
+          // 5. Info Bawah (remaining time & city) (Tetep)
           Positioned(
-            bottom: 20,
+            bottom: 15,
             left: 0,
             right: 0,
             child: Row(

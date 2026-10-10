@@ -113,37 +113,37 @@ class AppDrawer extends StatelessWidget {
               height: 0.5,
               color: scheme.onSurfaceVariant.withValues(alpha: 0.2),
             ),
-            Expanded(
-              child: ListView.separated(
-                padding: EdgeInsets.zero,
-                itemCount: _destinations.length,
-                separatorBuilder: (_, _) => Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
-                  height: 0.5,
-                  color: Theme.of(context).colorScheme.outline
-                      .withValues(alpha: 0.5),
-                ),
-                itemBuilder: (context, i) {
-                  final (mark, label, route) = _destinations[i];
-                  return ListTile(
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 4,
-                    ),
-                    leading: Text(mark, style: const TextStyle(fontSize: 20)),
-                    title: ThemedText(
-                      label,
-                      variant: TextVariant.body,
-                      weight: FontWeight.w500,
-                    ),
-                    onTap: () {
-                      Navigator.of(context).pop();
-                      context.go(route);
-                    },
-                  );
-                },
-              ),
-            ),
+            // Expanded(
+            //   child: ListView.separated(
+            //     padding: EdgeInsets.zero,
+            //     itemCount: _destinations.length,
+            //     separatorBuilder: (_, _) => Container(
+            //       margin: const EdgeInsets.symmetric(horizontal: 20),
+            //       height: 0.5,
+            //       color: Theme.of(context).colorScheme.outline
+            //           .withValues(alpha: 0.5),
+            //     ),
+            //     itemBuilder: (context, i) {
+            //       final (mark, label, route) = _destinations[i];
+            //       return ListTile(
+            //         contentPadding: const EdgeInsets.symmetric(
+            //           horizontal: 20,
+            //           vertical: 4,
+            //         ),
+            //         leading: Text(mark, style: const TextStyle(fontSize: 20)),
+            //         title: ThemedText(
+            //           label,
+            //           variant: TextVariant.body,
+            //           weight: FontWeight.w500,
+            //         ),
+            //         onTap: () {
+            //           Navigator.of(context).pop();
+            //           context.go(route);
+            //         },
+            //       );
+            //     },
+            //   ),
+            // ),
           ],
         ),
       ),

@@ -85,33 +85,47 @@ class _ProgressCard extends StatelessWidget {
         color: scheme.surfaceContainer,
         child: Stack(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 28),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ThemedText(
-                    'Daily Quran',
-                    variant: TextVariant.caption,
-                    color: scheme.onSurface.withValues(alpha: 0.7),
-                  ),
-                  TekoText('Bismillah', fontSize: 36, color: scheme.secondary),
-                  ThemedText(
-                    'Time to recite',
-                    variant: TextVariant.caption,
-                    color: scheme.onSurfaceVariant,
-                  ),
-                ],
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                // UBAH PADDING ATAS JADI LEBIH BESAR BIAR TEKSNYA TURUN KE BAWAH ⬇️
+                // Format: fromLTRB(left, top, right, bottom)
+                padding: const EdgeInsets.fromLTRB(30, 21, 30, 12),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ThemedText(
+                      'Daily Quran',
+                      variant: TextVariant.caption,
+                      color: scheme.onSurface.withValues(alpha: 0.7),
+                    ),
+                    const SizedBox(height: 2),
+                    TekoText(
+                      'Bismillah',
+                      fontSize: 39,
+                      color: scheme.secondary,
+                    ),
+                    // Tarik teks bawah ke atas buat nutup sisa gap font Teko
+                    Transform.translate(
+                      offset: const Offset(0, -6),
+                      child: ThemedText(
+                        'Time to recite',
+                        variant: TextVariant.caption,
+                        color: scheme.onSurfaceVariant,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             Positioned(
               right: -10,
-              bottom: -40,
+              bottom: -34,
               child: SvgPicture.asset(
                 'assets/svg/quran_rehal.svg',
-                width: 176,
-                height: 140,
+                width: 196,
+                height: 160,
               ),
             ),
           ],
@@ -218,14 +232,17 @@ class _SurahRow extends StatelessWidget {
                           color: scheme.secondary,
                         ),
                       ),
-                      Text(
-                        '$nomor',
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w600,
-                          fontSize: 11,
-                          height: 1,
-                          color: scheme.secondary,
+                      Transform.translate(
+                        offset: const Offset(0, -3), // Angka 12 ini atur geseran ke kanan (positif = kanan, negatif = kiri)
+                        child: Text(
+                          '$nomor',
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w600,
+                            fontSize: 12,
+                            height: 3,
+                            color: scheme.secondary,
+                          ),
                         ),
                       ),
                     ],
