@@ -65,6 +65,8 @@ class AppScaffold extends StatelessWidget {
 
 /// Drawer with Gurun branding + 8 destinations (mirrors RN `DRAWER_MENU`,
 /// benchmark `sheet-menu.png`; RN marks are emoji).
+/// Drawer with Gurun branding + 8 destinations (mirrors RN `DRAWER_MENU`,
+/// benchmark `sheet-menu.png`; RN marks are emoji).
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
 
@@ -85,6 +87,11 @@ class AppDrawer extends StatelessWidget {
     return Drawer(
       width: 280,
       backgroundColor: scheme.surface,
+      // TAMBAHKAN PROPERTI SHAPE INI BUAT MENGHILANGKAN ROUNDED DI SISI KANAN ⬇️
+      shape: const RoundedRectangleBorder(
+        borderRadius:
+            BorderRadius.zero, // Bikin semua sudutnya kotak tajam (0 radius)
+      ),
       child: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
