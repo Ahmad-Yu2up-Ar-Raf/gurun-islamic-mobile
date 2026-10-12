@@ -9,15 +9,52 @@ import '../../../../app/providers.dart';
 import '../../../core/state_views.dart';
 import '../../../core/themed_text.dart';
 
-/// Surah detail: floating header + basmalah header + ayat cards.
+/// Surah detail: pinned app bar (title fades in on scroll) + basmalah
+/// header + ayat cards.
 /// Play buttons render visually but are inert (Wave 2 owns audio).
-class SurahView extends ConsumerWidget {
+class SurahView extends ConsumerStatefulWidget {
   const SurahView({super.key, required this.id});
 
   final int id;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<SurahView> createState() => _SurahViewState();
+}
+
+class _SurahViewState extends ConsumerState<SurahView> {
+  late final ScrollController _scroll;
+  final _titleOpacity = ValueNotifier<double>(0);
+
+  /// Scroll window (px) over which the app-bar title fades 0 → 1.
+  static const _fadeStart = 40.0;
+  static const _fadeRange = 80.0;
+
+  @override
+  void initState() {
+    super.initState();
+    _scroll = ScrollController()..addListener(_onScroll);
+  }
+
+  void _onScroll() {
+    if (!_scroll.hasClients) return;
+    _titleOpacity.value = ((_scroll.offset - _fadeStart) / _fadeRange).clamp(
+      0.0,
+      1.0,
+    );
+  }
+
+  @override
+  void dispose() {
+    _scroll
+      ..removeListener(_onScroll)
+      ..dispose();
+    _titleOpacity.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final id = widget.id;
     if (id < 1 || id > 114) {
       WidgetsBinding.instance.addPostFrameCallback((_) => context.go('/quran'));
       return const SizedBox.shrink();
@@ -27,16 +64,28 @@ class SurahView extends ConsumerWidget {
     return Scaffold(
       body: async.when(
         data: (surah) => CustomScrollView(
+          controller: _scroll,
           slivers: [
             SliverAppBar(
-              floating: true,
+              pinned: true,
               centerTitle: true,
-              backgroundColor: scheme.surface.withValues(alpha: 0.9),
+              backgroundColor: scheme.surface,
+              surfaceTintColor: Colors.transparent,
+              scrolledUnderElevation: 0,
+              elevation: 0,
               leading: IconButton(
                 icon: const Icon(FLucideIcons.chevronLeft),
                 onPressed: () => context.pop(),
               ),
-              title: ThemedText(surah.namaLatin, variant: TextVariant.headline),
+              title: ValueListenableBuilder<double>(
+                valueListenable: _titleOpacity,
+                builder: (_, opacity, child) =>
+                    Opacity(opacity: opacity, child: child),
+                child: ThemedText(
+                  surah.namaLatin,
+                  variant: TextVariant.headline,
+                ),
+              ),
               actions: [
                 IconButton(
                   icon: const Icon(FLucideIcons.settings),
@@ -91,8 +140,8 @@ class _SuraHeader extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
     final bright = Theme.brightnessOf(context) == Brightness.light;
     return Container(
-      margin: const EdgeInsets.only(bottom: 20),
-      padding: const EdgeInsets.only(top: 16, bottom: 16),
+      margin: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
       decoration: BoxDecoration(
         color: scheme.surfaceContainer,
         borderRadius: BorderRadius.circular(AppRadius.lg),
@@ -105,7 +154,7 @@ class _SuraHeader extends StatelessWidget {
             color: scheme.secondary,
             align: TextAlign.center,
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 6),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 64),
             child: ThemedText(
@@ -118,7 +167,7 @@ class _SuraHeader extends StatelessWidget {
           const SizedBox(height: 12),
           SvgPicture.asset(
             bright ? 'assets/svg/basmalah.svg' : 'assets/svg/basmalah_dark.svg',
-            width: MediaQuery.sizeOf(context).width * 0.75,
+            width: MediaQuery.sizeOf(context).width * 0.6,
           ),
         ],
       ),
@@ -164,7 +213,15 @@ class _AyatCard extends ConsumerWidget {
             ],
           ),
           const SizedBox(height: 28),
-          ArabicText(arab),
+          // Full-width RTL box: short (single-line) verses otherwise shrink
+          // to intrinsic width and sit against the Column's left edge.
+          SizedBox(
+            width: double.infinity,
+            child: Directionality(
+              textDirection: TextDirection.rtl,
+              child: ArabicText(arab, align: TextAlign.right),
+            ),
+          ),
           const SizedBox(height: 28),
           ThemedText(
             latin,
