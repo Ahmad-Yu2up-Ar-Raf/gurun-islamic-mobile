@@ -82,6 +82,7 @@ class HomeView extends ConsumerWidget {
     return AppScaffold(
       title: 'Gurun',
       edgePadding: 0,
+      showAppBar: false,
       leading: Builder(
         builder: (context) => IconButton(
           icon: const Icon(FLucideIcons.menu),
@@ -96,6 +97,8 @@ class HomeView extends ConsumerWidget {
       ],
       body: CustomScrollView(
         slivers: [
+          // Site header scrolls away with the content (non-sticky).
+          const SliverToBoxAdapter(child: _HomeHeader()),
           SliverToBoxAdapter(
             child: _HeroClock(now: now, state: countdown),
           ),
@@ -225,6 +228,32 @@ class _DeferredMosqueState extends State<_DeferredMosque> {
         'assets/svg/mosque.svg',
         width: MediaQuery.sizeOf(context).width,
         colorFilter: ColorFilter.mode(scheme.surfaceContainer, BlendMode.srcIn),
+      ),
+    );
+  }
+}
+
+/// Non-sticky site header: menu + title + settings rendered as scroll
+/// content (mirrors the [AppScaffold] app bar it replaces on Home).
+class _HomeHeader extends StatelessWidget {
+  const _HomeHeader();
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: kToolbarHeight,
+      child: Row(
+        children: [
+          IconButton(
+            icon: const Icon(FLucideIcons.menu),
+            onPressed: openSheetMenu,
+          ),
+          const Expanded(child: Center(child: TekoText('Gurun', fontSize: 28))),
+          IconButton(
+            icon: const Icon(FLucideIcons.settings),
+            onPressed: () => context.go('/settings'),
+          ),
+        ],
       ),
     );
   }

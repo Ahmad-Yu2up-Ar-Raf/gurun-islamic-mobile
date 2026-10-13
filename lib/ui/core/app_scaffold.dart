@@ -24,6 +24,7 @@ class AppScaffold extends StatelessWidget {
     this.actions,
     this.belowHeader,
     this.edgePadding = AppSpacing.md,
+    this.showAppBar = true,
   });
 
   final String title;
@@ -34,18 +35,24 @@ class AppScaffold extends StatelessWidget {
   final Widget? belowHeader;
   final double edgePadding;
 
+  /// When false, no pinned [AppBar] is built: the screen renders its own
+  /// header inside the scrollable body (e.g. Home's non-sticky header).
+  final bool showAppBar;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: TekoText(title, fontSize: 28),
-        centerTitle: centerTitle,
-        leading: leading,
-        actions: actions,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        scrolledUnderElevation: 0,
-      ),
+      appBar: showAppBar
+          ? AppBar(
+              title: TekoText(title, fontSize: 28),
+              centerTitle: centerTitle,
+              leading: leading,
+              actions: actions,
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              scrolledUnderElevation: 0,
+            )
+          : null,
       body: SafeArea(
         child: Column(
           children: [

@@ -81,10 +81,7 @@ class _SurahViewState extends ConsumerState<SurahView> {
                 valueListenable: _titleOpacity,
                 builder: (_, opacity, child) =>
                     Opacity(opacity: opacity, child: child),
-                child: ThemedText(
-                  surah.namaLatin,
-                  variant: TextVariant.headline,
-                ),
+                child: ThemedText(surah.namaLatin, variant: TextVariant.title),
               ),
               actions: [
                 IconButton(
@@ -141,7 +138,12 @@ class _SuraHeader extends StatelessWidget {
     final bright = Theme.brightnessOf(context) == Brightness.light;
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+      padding: const EdgeInsets.fromLTRB(
+        AppSpacing.md,
+        AppSpacing.md + AppSpacing.xs,
+        AppSpacing.md,
+        AppSpacing.md,
+      ),
       decoration: BoxDecoration(
         color: scheme.surfaceContainer,
         borderRadius: BorderRadius.circular(AppRadius.lg),
@@ -154,7 +156,7 @@ class _SuraHeader extends StatelessWidget {
             color: scheme.secondary,
             align: TextAlign.center,
           ),
-          const SizedBox(height: 6),
+          const SizedBox(height: AppSpacing.xs),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 64),
             child: ThemedText(
@@ -164,10 +166,10 @@ class _SuraHeader extends StatelessWidget {
               align: TextAlign.center,
             ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: AppSpacing.sm),
           SvgPicture.asset(
             bright ? 'assets/svg/basmalah.svg' : 'assets/svg/basmalah_dark.svg',
-            width: MediaQuery.sizeOf(context).width * 0.6,
+            width: MediaQuery.sizeOf(context).width * 0.55,
           ),
         ],
       ),
