@@ -15,7 +15,7 @@ import '../../../core/app_scaffold.dart';
 import '../../../core/state_views.dart';
 import '../../../core/themed_text.dart';
 
-const _compassSize = 292.0;
+const _compassSize = 328.0;
 
 /// Qibla compass: ring rotates by `-heading`, arrow by `bearing - heading`.
 /// Camera-mode fallback opens the Google Qibla Finder embed.
@@ -85,6 +85,10 @@ class _Compass extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final facing = rotation.abs() <= 5;
+    final glowRadius = _compassSize * 0.55;
+    final needleScale = _compassSize / 292.0 * 1.15; // scale with compass
+    final needleOffsetY = -27.1 * (_compassSize / 292.0); // proportional offset
+
     return LayoutBuilder(
       builder: (context, constraints) {
         return SingleChildScrollView(
@@ -94,32 +98,34 @@ class _Compass extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(height: 8),
+                const SizedBox(height: 12),
                 // Top decorative chevron (RN polygon marker above the dial).
                 RepaintBoundary(
                   child: SvgPicture.asset(
                     'assets/svg/qibla_pollygon.svg',
-                    width: 15,
-                    height: 13,
+                    width: 16,
+                    height: 14,
+                    colorFilter: ColorFilter.mode(
+                      scheme.primary.withValues(alpha: 0.7),
+                      BlendMode.srcIn,
+                    ),
                   ),
                 ),
+                const SizedBox(height: 6),
                 // Full-width gold band + centered dial. The band is
                 // edge-to-edge (AppScaffold edgePadding is 0 for this
                 // screen); the dial stays geometrically centered.
                 SizedBox(
                   width: double.infinity,
-                  height: _compassSize + 72,
+                  height: _compassSize + 80,
                   child: Stack(
                     alignment: Alignment.center,
                     clipBehavior: Clip.none,
                     children: [
-                      // Full-bleed vertical fade: transparent edges, dense
-                      // gold core (echoes the RN Expo glow streak).
-                      Positioned(
-                        left: 0,
-                        right: 0,
-                        top: 0,
-                        bottom: 0,
+                      // Full-bleed vertical fade: transparent edges, rich
+                      // gold core with smoother transitions (mirrors RN
+                      // Expo glow streak).
+                      Positioned.fill(
                         child: Container(
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
@@ -127,28 +133,43 @@ class _Compass extends StatelessWidget {
                               end: Alignment.bottomCenter,
                               colors: [
                                 scheme.surface.withValues(alpha: 0),
-                                scheme.primary.withValues(alpha: 0.32),
-                                scheme.primary.withValues(alpha: 0.32),
+                                scheme.primary.withValues(alpha: 0.18),
+                                scheme.primary.withValues(alpha: 0.28),
+                                scheme.primary.withValues(alpha: 0.18),
                                 scheme.surface.withValues(alpha: 0),
                               ],
-                              stops: const [0.0, 0.28, 0.72, 1.0],
+                              stops: const [0.0, 0.22, 0.5, 0.78, 1.0],
                             ),
                           ),
                         ),
                       ),
-                      // Central radial aura behind the dial.
+                      // Central radial aura behind the dial — softer,
+                      // wider, more premium.
                       Container(
-                        width: _compassSize + 88,
-                        height: _compassSize + 72,
+                        width: _compassSize + glowRadius * 1.6,
+                        height: _compassSize + glowRadius * 1.2,
                         decoration: BoxDecoration(
                           gradient: RadialGradient(
-                            radius: 0.65,
+                            radius: 0.75,
                             colors: [
-                              scheme.primary.withValues(alpha: 0.22),
-                              scheme.primary.withValues(alpha: 0.07),
+                              scheme.primary.withValues(alpha: 0.18),
+                              scheme.primary.withValues(alpha: 0.10),
+                              scheme.primary.withValues(alpha: 0.04),
                               scheme.surface.withValues(alpha: 0),
                             ],
-                            stops: const [0, 0.6, 1],
+                            stops: const [0, 0.35, 0.65, 1],
+                          ),
+                        ),
+                      ),
+                      // Subtle inner ring highlight for depth.
+                      Container(
+                        width: _compassSize + 6,
+                        height: _compassSize + 6,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: scheme.primary.withValues(alpha: 0.08),
+                            width: 1,
                           ),
                         ),
                       ),
@@ -172,28 +193,34 @@ class _Compass extends StatelessWidget {
                                       color: facing
                                           ? scheme.primary
                                           : scheme.primary.withValues(
-                                              alpha: 0.5,
+                                              alpha: 0.55,
                                             ),
                                       width: 4,
                                     ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: scheme.primary.withValues(
+                                          alpha: facing ? 0.25 : 0.12,
+                                        ),
+                                        blurRadius: facing ? 16 : 8,
+                                        spreadRadius: facing ? 2 : 0,
+                                      ),
+                                    ],
                                   ),
                                   child: const _RingLabels(),
                                 ),
                               ),
                             ),
-                            // Layer 2: qibla needle. The SVG (40x87,
-                            // circle cy 67.093) is rendered at width 46
-                            // (scale ~1.15) and shifted up 27px so the
-                            // circle sits exactly at the dial center; the
-                            // outer rotate then pivots around that dot.
+                            // Layer 2: qibla needle — scaled with compass,
+                            // centered on its circle pivot.
                             Transform.rotate(
                               angle: degreeToRadian(rotation),
                               child: RepaintBoundary(
                                 child: Transform.translate(
-                                  offset: const Offset(0, -27.1),
+                                  offset: Offset(0, needleOffsetY),
                                   child: SvgPicture.asset(
                                     'assets/svg/qibla_arrow.svg',
-                                    width: 46,
+                                    width: 46 * needleScale,
                                   ),
                                 ),
                               ),
@@ -201,23 +228,33 @@ class _Compass extends StatelessWidget {
                             // Layer 1: Kaaba marker pinned on the ring
                             // (surface-filled circle + primary border).
                             Positioned(
-                              top: -18,
+                              top: -20,
                               child: Container(
-                                width: 36,
-                                height: 36,
+                                width: 40,
+                                height: 40,
                                 decoration: BoxDecoration(
                                   color: scheme.surface,
                                   shape: BoxShape.circle,
                                   border: Border.all(
                                     color: scheme.primary,
-                                    width: 1.5,
+                                    width: 2,
                                   ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: scheme.primary.withValues(
+                                        alpha: 0.2,
+                                      ),
+                                      blurRadius: 8,
+                                      spreadRadius: 0,
+                                      offset: const Offset(0, 2),
+                                    ),
+                                  ],
                                 ),
                                 child: Center(
                                   child: SvgPicture.asset(
                                     'assets/svg/tab_kabbah.svg',
-                                    width: 18,
-                                    height: 18,
+                                    width: 20,
+                                    height: 20,
                                     colorFilter: ColorFilter.mode(
                                       scheme.onSurface,
                                       BlendMode.srcIn,
@@ -232,32 +269,38 @@ class _Compass extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 28),
+                const SizedBox(height: 30),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: ThemedText(
                     '${bearing.round()}°',
                     variant: TextVariant.title,
                     align: TextAlign.center,
+                    weight: FontWeight.w700,
                   ),
                 ),
+                const SizedBox(height: 6),
                 ThemedText(
                   'Device angle to qibla',
                   variant: TextVariant.caption,
                   color: scheme.onSurfaceVariant,
                   align: TextAlign.center,
                 ),
-                const SizedBox(height: 24),
+                const SizedBox(height: 28),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Container(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 12,
+                      horizontal: 20,
+                      vertical: 14,
                     ),
                     decoration: BoxDecoration(
-                      color: scheme.secondary.withValues(alpha: 0.1),
-                      borderRadius: BorderRadius.circular(16),
+                      color: scheme.secondary.withValues(alpha: 0.12),
+                      borderRadius: BorderRadius.circular(18),
+                      border: Border.all(
+                        color: scheme.secondary.withValues(alpha: 0.25),
+                        width: 1,
+                      ),
                     ),
                     child: ThemedText(
                       facing
@@ -267,10 +310,11 @@ class _Compass extends StatelessWidget {
                       variant: TextVariant.caption,
                       color: scheme.secondary,
                       align: TextAlign.center,
+                      weight: FontWeight.w600,
                     ),
                   ),
                 ),
-                const SizedBox(height: 24),
+                const SizedBox(height: 28),
               ],
             ),
           ),
@@ -286,6 +330,13 @@ class _RingLabels extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    // Scale dots and label padding with compass size.
+    final radius = _compassSize / 2;
+    final labelInset = 28.0;
+    final dotRadius = 5.0;
+    final dotDistance = radius - 22; // distance from center to dot center
+    final dotOffset = dotDistance / 1.41421356; // 45° diagonal
+
     Text label(String s) => Text(
       s,
       style: TextStyle(
@@ -293,27 +344,38 @@ class _RingLabels extends StatelessWidget {
         fontWeight: FontWeight.w700,
         fontSize: 18,
         color: scheme.onSurface,
+        letterSpacing: 0.2,
       ),
     );
-    // ponytail: fixed 8px dots at 45° diagonals; upgrade to CustomPainter
-    // if tick density ever needs to scale with dial size.
+
     Widget dot(double dx, double dy) => Positioned(
-      left: _compassSize / 2 + dx - 4,
-      top: _compassSize / 2 + dy - 4,
+      left: radius + dx - dotRadius,
+      top: radius + dy - dotRadius,
       child: Container(
-        width: 8,
-        height: 8,
+        width: dotRadius * 2,
+        height: dotRadius * 2,
         decoration: BoxDecoration(
-          color: scheme.primary.withValues(alpha: 0.6),
+          color: scheme.primary.withValues(alpha: 0.75),
           shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(
+              color: scheme.primary.withValues(alpha: 0.35),
+              blurRadius: 4,
+              spreadRadius: 0.5,
+            ),
+          ],
         ),
       ),
     );
+
     return Stack(
       clipBehavior: Clip.none,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+          padding: EdgeInsets.symmetric(
+            horizontal: labelInset,
+            vertical: labelInset,
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -326,10 +388,10 @@ class _RingLabels extends StatelessWidget {
             ],
           ),
         ),
-        dot(67.9, -67.9),
-        dot(-67.9, -67.9),
-        dot(67.9, 67.9),
-        dot(-67.9, 67.9),
+        dot(dotOffset, -dotOffset),
+        dot(-dotOffset, -dotOffset),
+        dot(dotOffset, dotOffset),
+        dot(-dotOffset, dotOffset),
       ],
     );
   }
